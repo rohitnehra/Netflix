@@ -304,7 +304,7 @@ body{
 		background-image: url(/static/videos/back.jpg);
 		top: 0vw;
 		background-size: cover;
-		position: absolute;
+		position: relative;
 	}
 
 	.aaa{
@@ -345,6 +345,24 @@ body{
 		font-size: 1.3vw;
 		font-weight: 700;
 		line-height: 1.2;
+	}
+
+	.videos-tab{
+		width: 100%;
+		height: 8vw;
+		position: relative;
+		top: -7vw;
+	}
+
+	.videos-tab cont{
+		font-size: 1.4vw;
+    color: #e5e5e5;
+    font-weight: 700;
+    margin: 0 4% .5em 4%;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 6em;
+	margin-top: 1vw;
 	}
 	</style>
 <body class="logado">
@@ -410,6 +428,54 @@ body{
 <p2>Eles decifram a mente de assassinos em série nas prisões de segurança máxima. E cunharam um novo termo: serial killer.</p2>
 </div>
 </div>
+
+<div class="videos-tab">
+<cont>Em alta</cont>
+<style>
+.video-a{
+	width: 100%;
+	height: 11vw;
+	overflow-y: auto;
+}
+.video{
+    height: 9vw;
+    width: 16vw;
+	margin-left: 0.1vw;
+	display: inline-block;
+	left: 2.5vw;
+	position: relative;
+	cursor: pointer;
+}
+
+.video .focus{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+</style>
+<div class="video-a">
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
+</div>
+
+</div>
+
 
 
 </body>
