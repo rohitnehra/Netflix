@@ -212,10 +212,11 @@ body{
 .header{
 	width: 100%;
 	height: 3.8vw;
-	background: rgba(0,0,0,.50);
+	background: rgba(0,0,0,.80);
 	position: fixed;
 	left: 0;
 	top: 0;
+	z-index: 10000;
 }
 
 	.header svg{
@@ -284,8 +285,67 @@ body{
 		position: absolute;
 		float: right;
 		right: 0;
+		cursor: pointer;
 	}
 
+	.seta{
+	position: relative;
+    border-style: solid;
+    border-width: 0.3vw 0.3vw 0 0.3vw;
+    border-color: #fff transparent transparent transparent;
+	top: 0.3vw;
+	right: -0.5vw;
+	float: right;
+	}
+
+	.apresent{
+		width: 100%;
+		height: 50vw;
+		background-image: url(/static/videos/back.jpg);
+		top: 0vw;
+		background-size: cover;
+		position: absolute;
+	}
+
+	.aaa{
+		background: linear-gradient(to bottom, #14141494, #141414);
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		height: 7vw;
+	}
+
+	.logo-serie{
+		background-image: url(/static/videos/logo.webp);
+		height: 12vw;
+		width: 30vw;
+		position: relative;
+		z-index: 1000000000;
+		top: 17vw;
+		left: 5vw;
+		background-size: cover;
+	}
+
+	.apresent-info{
+		width: 30vw;
+		height: 9vw;
+		position: absolute;
+		bottom: 11vw;
+		left: 5vw;
+	}
+
+	.apresent-info p{
+		color: #fff;
+		font-size: 1.7vw;
+		font-weight: 700;
+	}
+
+	.apresent-info p2{
+		color: #fff;
+		font-size: 1.3vw;
+		font-weight: 700;
+		line-height: 1.2;
+	}
 	</style>
 <body class="logado">
 
@@ -298,7 +358,7 @@ body{
   if($_COOKIE['usuario'] == 1){?>
 	<div class="avatar people1"></div>
 	<div class="people">
-	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Alexandre</p>
+	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Alexandre	<span class="seta"></span></p>
 	</div>
 <?php } ?>
 
@@ -307,6 +367,7 @@ body{
 	<div class="avatar people2"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Vitor</p>
+	<span class="seta"></span>
 	</div>
 <?php } ?>
 
@@ -315,6 +376,7 @@ body{
 	<div class="avatar people3"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">LucasAD</p>
+	<span class="seta"></span>
 	</div>
 <?php } ?>
 
@@ -323,6 +385,7 @@ body{
 	<div class="avatar people5"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Salviti</p>
+	<span class="seta"></span>
 	</div>
 <?php } ?>
 
@@ -331,11 +394,23 @@ body{
 	<div class="avatar people4"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Kids</p>
+	<span class="seta"></span>
 	</div>
 <?php } ?>
 </div>
 
 </div>
+
+
+<div class="apresent">
+<div class="logo-serie"></div>
+<div class="aaa"></div>
+<div class="apresent-info">
+<p>Assista à temporada 2 agora</p>
+<p2>Eles decifram a mente de assassinos em série nas prisões de segurança máxima. E cunharam um novo termo: serial killer.</p2>
+</div>
+</div>
+
 
 </body>
 
