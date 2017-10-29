@@ -423,34 +423,37 @@ body{
 <div class="videos-tab">
 <cont>Em alta</cont>
 <style>
-.video-a{
+.videos-tab{
 	width: 100%;
-	height: 11vw;
-	overflow-x: hidden;
+}
+.video-a{
+	position: relative;
+	height: 10vw;
+	overflow: scroll;
+	display: flex;
 }
 .video{
-    height: 9vw;
-    width: 16vw;
-	margin-left: 0.1vw;
+	margin-left: 0.4vw;
 	display: inline-block;
 	left: 2.5vw;
 	position: relative;
 	cursor: pointer;
 	box-sizing: border-box;
-  transition: 1s transform;
-  -webkit-transition: 1s -webkit-transform;
-  transform-origin: 0px 0px;
-  -webkit-transform-origin: 0px 0px;
-  backface-visibility: hidden;
 }
 
 .video .focus{
-	width: 100%;
-	height: 100%;
+	height: 9vw;
+    width: 16vw;
 	position: relative;
 }
 </style>
 <div class="video-a">
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
 <div class="video">
 <img src="/static/videos/stranger.jpg" class="focus"/>
 </div>
