@@ -288,12 +288,12 @@ body{
 		cursor: pointer;
 	}
 
-	.seta{
+	.seta1{
 	position: relative;
     border-style: solid;
     border-width: 0.3vw 0.3vw 0 0.3vw;
     border-color: #fff transparent transparent transparent;
-	top: 0.3vw;
+	top: 1vw;
 	right: -0.5vw;
 	float: right;
 	}
@@ -378,37 +378,28 @@ body{
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Alexandre	<span class="seta"></span></p>
 	</div>
-<?php } ?>
-
-<?php
-  if($_COOKIE['usuario'] == 2){?>
+<?php }
+  else if($_COOKIE['usuario'] == 2){?>
 	<div class="avatar people2"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Vitor</p>
 	<span class="seta"></span>
 	</div>
-<?php } ?>
-
-<?php
-  if($_COOKIE['usuario'] == 3){?>
+<?php } 
+  else if($_COOKIE['usuario'] == 3){?>
 	<div class="avatar people3"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">LucasAD</p>
 	<span class="seta"></span>
 	</div>
-<?php } ?>
-
-<?php
-  if($_COOKIE['usuario'] == 4){?>
+<?php }
+  else if($_COOKIE['usuario'] == 4){?>
 	<div class="avatar people5"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Salviti</p>
 	<span class="seta"></span>
 	</div>
-<?php } ?>
-
-<?php
-  if($_COOKIE['usuario'] == 5){?>
+<?php } else if($_COOKIE['usuario'] == 5){?>
 	<div class="avatar people4"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Kids</p>
@@ -435,7 +426,7 @@ body{
 .video-a{
 	width: 100%;
 	height: 11vw;
-	overflow-y: auto;
+	overflow-x: hidden;
 }
 .video{
     height: 9vw;
@@ -445,6 +436,12 @@ body{
 	left: 2.5vw;
 	position: relative;
 	cursor: pointer;
+	box-sizing: border-box;
+  transition: 1s transform;
+  -webkit-transition: 1s -webkit-transform;
+  transform-origin: 0px 0px;
+  -webkit-transform-origin: 0px 0px;
+  backface-visibility: hidden;
 }
 
 .video .focus{
