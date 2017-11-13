@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 13-Nov-2017 às 22:44
+-- Generation Time: 14-Nov-2017 às 00:16
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `netflix`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `netflix_profiles`
+--
+
+CREATE TABLE `netflix_profiles` (
+  `id` int(11) NOT NULL,
+  `idcry` int(11) NOT NULL,
+  `nome` text NOT NULL,
+  `datec` datetime NOT NULL,
+  `iduser` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `netflix_profiles`
+--
+
+INSERT INTO `netflix_profiles` (`id`, `idcry`, `nome`, `datec`, `iduser`) VALUES
+(9, 0, 'Silvio', '2017-11-13 20:58:59', '14');
 
 -- --------------------------------------------------------
 
@@ -46,13 +67,17 @@ CREATE TABLE `netflix_user` (
 --
 
 INSERT INTO `netflix_user` (`id`, `idcry`, `email`, `password`, `datec`, `lastlogin`, `configurado`, `ip`, `banned`, `inisession`) VALUES
-(11, 'c50e9b94b6d4da1d9ec80de7116fdedd2ae0e7d7', 'kaway@hotmail.com', 'a0b48bf6735b085374fa984535372a8025210e45', '2017-11-13 19:24:19', '2017-11-13 19:24:19', 0, '187.55.16.13', 0, '2017-11-13 19:24:19'),
-(12, '7e609268371fa12ff3822f3c62c84524afc3b33b', 'anelisenaiara2006@hotmail.com', 'a873d476f684dd7a02e0ff310c060f547e3b1459', '2017-11-13 19:38:13', '2017-11-13 19:38:13', 0, '187.55.16.13', 0, '2017-11-13 19:38:13'),
-(13, 'd43aac04c43419806300a8f776c2e9a18091efa3', 'kaway5@hotmail.com', 'a0b48bf6735b085374fa984535372a8025210e45', '2017-11-13 19:42:48', '2017-11-13 19:42:48', 0, '187.55.16.13', 0, '2017-11-13 19:42:48');
+(14, 'c5d7c71e0e49bb63c78490ca2c643164de3f3372', 'kaway@hotmail.com', 'a0b48bf6735b085374fa984535372a8025210e45', '2017-11-13 20:58:49', '2017-11-13 21:12:57', 1, '187.55.16.13', 0, '2017-11-13 20:58:49');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `netflix_profiles`
+--
+ALTER TABLE `netflix_profiles`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `netflix_user`
@@ -65,10 +90,15 @@ ALTER TABLE `netflix_user`
 --
 
 --
+-- AUTO_INCREMENT for table `netflix_profiles`
+--
+ALTER TABLE `netflix_profiles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT for table `netflix_user`
 --
 ALTER TABLE `netflix_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
