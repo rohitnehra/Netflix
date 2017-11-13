@@ -1,3 +1,9 @@
+<?php
+if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
+    echo '<script>location.href="dashboard.php";</script>';
+}
+?>
+
 <head>
 <title>
 Netflix
@@ -63,8 +69,8 @@ body{
 <body>
 
 <div class="header-al-home-a">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 81.387"><g fill="#b81d24"><path d="M256.09 76.212c4.178.405 8.354.84 12.52 1.29l9.198-22.712 8.743 24.807c4.486.562 8.97 1.152 13.44 1.768l-15.328-43.501L299.996 0H287.01l-.135.186-8.283 20.455L271.32.003h-12.822l13.237 37.565-15.644 38.644zM246.393 75.322V0h-12.817v74.265c4.275.33 8.552.684 12.817 1.056M150.113 71.11c3.46 0 6.916.026 10.366.054V43.492h15.397V31.708H160.48v-19.91h17.733V0h-30.6v71.12c.831 0 1.666-.013 2.5-.01M110.319 71.83c4.27-.152 8.544-.28 12.824-.384V11.8h11.98V.003H98.339V11.8h11.982v60.03h-.002zM12.295 79.772V34.897L27.471 77.96c4.667-.524 9.341-1.017 14.028-1.483V.001H29.201v46.483L12.825.001H0v81.384h.077c4.063-.562 8.14-1.096 12.218-1.613M85.98 11.797V.001H55.377V75.202a1100.584 1100.584 0 0 1 30.578-2.211V61.184c-5.916.344-11.82.74-17.71 1.181V43.497h15.397V31.706H68.245V11.797H85.98zM203.614 60.62V-.003h-12.873v71.876c10.24.376 20.44.9 30.606 1.56V61.619c-5.9-.381-11.81-.712-17.733-1"/></g></svg>
-
+<a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 81.387"><g fill="#b81d24"><path d="M256.09 76.212c4.178.405 8.354.84 12.52 1.29l9.198-22.712 8.743 24.807c4.486.562 8.97 1.152 13.44 1.768l-15.328-43.501L299.996 0H287.01l-.135.186-8.283 20.455L271.32.003h-12.822l13.237 37.565-15.644 38.644zM246.393 75.322V0h-12.817v74.265c4.275.33 8.552.684 12.817 1.056M150.113 71.11c3.46 0 6.916.026 10.366.054V43.492h15.397V31.708H160.48v-19.91h17.733V0h-30.6v71.12c.831 0 1.666-.013 2.5-.01M110.319 71.83c4.27-.152 8.544-.28 12.824-.384V11.8h11.98V.003H98.339V11.8h11.982v60.03h-.002zM12.295 79.772V34.897L27.471 77.96c4.667-.524 9.341-1.017 14.028-1.483V.001H29.201v46.483L12.825.001H0v81.384h.077c4.063-.562 8.14-1.096 12.218-1.613M85.98 11.797V.001H55.377V75.202a1100.584 1100.584 0 0 1 30.578-2.211V61.184c-5.916.344-11.82.74-17.71 1.181V43.497h15.397V31.706H68.245V11.797H85.98zM203.614 60.62V-.003h-12.873v71.876c10.24.376 20.44.9 30.606 1.56V61.619c-5.9-.381-11.81-.712-17.733-1"/></g></svg>
+</a>
 <?php
             if(isset($_GET['ActionFree'])){
 
@@ -97,8 +103,8 @@ Entrar
     background: #f3f3f3;
     position: absolute;
     width: 34vw;
-    height: 40vw;
-    bottom: 0;
+    height: 35vw;
+    bottom: 7vw;
     border-radius: 0.1vw;
 }
 
@@ -295,7 +301,7 @@ Entrar
 <span style="float: left; position: absolute; top: 7.6vw; left: 2.6vw;">E-mail</span>
 <input type="text" id="email" class="email-input"/>
 <span style="float: left; position: absolute; top: 13.6vw; left: 2.6vw;">Senha</span>
-<input type="text" id="senha" class="pass-input"/>
+<input type="password" id="senha" class="pass-input"/>
 <button class="free-btn" id="cadastrar" name="cadastrar">CRIAR CONTA FREE 1 MÊS</button>
 <style>
 
@@ -346,12 +352,108 @@ $(document).ready(function() {
 <div class="center">
 <div class="card-login">
 <p class="entrar">Entrar</p>
+
+<Style>
+.tens{
+    position: absolute;
+    top: 30vw;
+    left: 2vw;
+}
+
+.tens a{
+    color: red;
+    text-decoration: none;
+}
+
+.tens a:hover{
+    text-decoration: underline;
+}
+
+</style>
+
+<p class="tens">Não tens uma conta, <a href="account.php?ActionFree=1">registre-se agora</a></p>
+
 <center>
 <div style="padding-top: 2vw;">
+<form action="#" method="post">
 <span style="float: left; position: absolute; top: 7.6vw; left: 2.6vw;">E-mail</span>
-<input type="text" class="email-input"/>
+<input type="text" class="email-input" name="lemail" id="lemail"/>
 <span style="float: left; position: absolute; top: 13.6vw; left: 2.6vw;">Senha</span>
-<input type="text" class="pass-input"/>
+<input type="password" class="pass-input" name="lsenha" id="lsenha"/>
+<button class="login-btn" id="login" name="cadastrar">Entrar</button>
+
+<div id="resposta2">
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#login").click(function() {
+        var email2 = $("#lemail");
+        var emailPost2 = email2.val();
+        var senha2 = $("#lsenha");
+        var senhaPost2 = senha2.val();
+        $.post("login.php", {lemail: emailPost2, lsenha: senhaPost2},
+        function(data){
+         $("#resposta2").html(data);
+         }
+         , "html");
+         return false;
+    });
+});
+</script>
+
+</form>
+
+<style>
+.login-btn{
+                display: inline-block;
+                text-decoration: none;
+                line-height: 1rem;
+                vertical-align: middle;
+                cursor: pointer;
+                font-weight: 700;
+                letter-spacing: .025rem;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: none;
+                position: relative;
+                min-height: 3.6vw;
+                top: 5vw;
+                -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                -moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                color: #fff;
+                width: 30vw;
+                background: #e50914;
+                font-size: 1.5vw;
+            }
+</style>
+
+<style>
+#resposta2{
+    width: 30vw;
+    color: red;
+    position: relative;
+    top: 6vw;
+    height: auto;
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 0.3vw;
+    font-size: 1.5vw;
+}
+</style>
+
+
+
 </div>
 </center>
 </div>

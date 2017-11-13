@@ -5,10 +5,6 @@ require 'static/php/system/config.php';
 <?php
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 	
-		$iduser2 = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
-		$user2 = DBRead('user', "WHERE id = '{$iduser2}' LIMIT 1 ");
-		$user2 = $user2[0];
-	
 	
 			$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
 			$user = DBRead('user', "WHERE id = '{$iduser}' LIMIT 1 ");
@@ -19,7 +15,42 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 			echo '<script>location.href="dashboard.php";</script>';	
 			}
 			
+			
+	if(isset($_COOKIE['usuario'])){
+		$idperfil = DBEscape( strip_tags(trim($_COOKIE['usuario']) ) );
+		$perfil = DBRead('profiles', "WHERE id = '{$idperfil}' LIMIT 1 ");
+
+		if($perfil){
+			$perfil = $perfil[0];
+			}else{
+			echo '<script>location.href="account.php?error";</script>';	
+			}
+			if($perfil['iduser'] <> $user['id']){
+				setcookie("iduser" , "");
+				setcookie("inisession" , "");
+				setcookie("perfil" , "");
+				setcookie("usuario" , "");
+				header("location: account.php?error");
+			}
+
+		
+		
 	}
+	}
+
+	if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){
+		echo '<script>location.href="account.php";</script>';
+	}
+	if(empty($_COOKIE['inisession'])){
+		echo '<script>location.href="account.php";</script>';
+	}
+	if(empty($_COOKIE['iduser'])){
+		echo '<script>location.href="account.php";</script>';
+	}
+	if($user['configurado'] == 0){
+		echo '<script>location.href="configure.php";</script>';
+	}
+
 	?>
 <head>
 <title>
@@ -176,8 +207,26 @@ body{
 <div class="who alc">Quem está assistindo?</div>
 <form method="post">
 <div class="what center">
-<button style="border:none; background: transparent;" name="people1"><div class="avatar1 people1"></div></button>
-<div class="pessoas"><p class="ava-who">Alexandre</p></div>
+<?php
+$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
+if (!$peoples)
+echo '';	
+else  
+	foreach ($peoples as $people):	 
+?>
+<button style="border:none; background: transparent;" name="people"><div class="avatar1 people1"></div></button>
+<div class="pessoas"><p class="ava-who"><?php echo $people['nome']; ?></p></div>
+
+<?php
+if (isset($_POST['people'])) {
+	setcookie("usuario", $people['id']);
+	header("dashboard.php#escolhido");
+	exit();
+}
+?>
+
+	<?php endforeach;?>
+
 
 <!-- <button style="border:none; background: transparent;" name="people2"><div class="avatar1 people2"></div></button>
 <div class="pessoas"><p class="ava-who">Vitor</p></div>
@@ -193,36 +242,6 @@ body{
 </div> -->
 </form>
 
-<?php
-if (isset($_POST['people1'])) {
-	setcookie("usuario", 1);
-	header("/");
-	exit();
-}
-if (isset($_POST['people2'])) {
-	setcookie("usuario", 2);
-	header("/");
-	exit();
-}
-
-if (isset($_POST['people3'])) {
-	setcookie("usuario", 3);
-	header("/");
-	exit();
-}
-
-if (isset($_POST['people4'])) {
-	setcookie("usuario", 4);
-	header("/");
-	exit();
-}
-
-if (isset($_POST['kids'])) {
-	setcookie("usuario", 5);
-	header("/");
-	exit();
-}
-?>
 
 </div>
 </body>
@@ -396,40 +415,20 @@ body{
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 81.387"><g fill="#b81d24"><path d="M256.09 76.212c4.178.405 8.354.84 12.52 1.29l9.198-22.712 8.743 24.807c4.486.562 8.97 1.152 13.44 1.768l-15.328-43.501L299.996 0H287.01l-.135.186-8.283 20.455L271.32.003h-12.822l13.237 37.565-15.644 38.644zM246.393 75.322V0h-12.817v74.265c4.275.33 8.552.684 12.817 1.056M150.113 71.11c3.46 0 6.916.026 10.366.054V43.492h15.397V31.708H160.48v-19.91h17.733V0h-30.6v71.12c.831 0 1.666-.013 2.5-.01M110.319 71.83c4.27-.152 8.544-.28 12.824-.384V11.8h11.98V.003H98.339V11.8h11.982v60.03h-.002zM12.295 79.772V34.897L27.471 77.96c4.667-.524 9.341-1.017 14.028-1.483V.001H29.201v46.483L12.825.001H0v81.384h.077c4.063-.562 8.14-1.096 12.218-1.613M85.98 11.797V.001H55.377V75.202a1100.584 1100.584 0 0 1 30.578-2.211V61.184c-5.916.344-11.82.74-17.71 1.181V43.497h15.397V31.706H68.245V11.797H85.98zM203.614 60.62V-.003h-12.873v71.876c10.24.376 20.44.9 30.606 1.56V61.619c-5.9-.381-11.81-.712-17.733-1"/></g></svg>
 
 <div class="right-user">
+
 <?php
-  if($_COOKIE['usuario'] == 1){?>
-	<div class="avatar people1"></div>
+$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
+if (!$peoples)
+echo '';	
+else  
+	foreach ($peoples as $people):	 
+?>
+<div class="avatar people1"></div>
 	<div class="people">
-	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Alexandre	<span class="seta"></span></p>
+	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;"><?Php echo $people['nome']; ?>	<span class="seta"></span></p>
 	</div>
-<?php }
-  else if($_COOKIE['usuario'] == 2){?>
-	<div class="avatar people2"></div>
-	<div class="people">
-	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Vitor</p>
-	<span class="seta"></span>
-	</div>
-<?php } 
-  else if($_COOKIE['usuario'] == 3){?>
-	<div class="avatar people3"></div>
-	<div class="people">
-	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">LucasAD</p>
-	<span class="seta"></span>
-	</div>
-<?php }
-  else if($_COOKIE['usuario'] == 4){?>
-	<div class="avatar people5"></div>
-	<div class="people">
-	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Salviti</p>
-	<span class="seta"></span>
-	</div>
-<?php } else if($_COOKIE['usuario'] == 5){?>
-	<div class="avatar people4"></div>
-	<div class="people">
-	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;">Kids</p>
-	<span class="seta"></span>
-	</div>
-<?php } ?>
+
+	<?php endforeach;?>
 </div>
 
 </div>
@@ -453,7 +452,7 @@ body{
 .video-a{
 	position: relative;
 	height: 10vw;
-	overflow: scroll;
+	overflow: hidden;
 	display: flex;
 }
 .video{
