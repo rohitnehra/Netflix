@@ -1,3 +1,26 @@
+<?php
+require 'static/php/system/database.php';
+require 'static/php/system/config.php';
+?>
+<?php
+if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
+	
+		$iduser2 = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
+		$user2 = DBRead('user', "WHERE id = '{$iduser2}' LIMIT 1 ");
+		$user2 = $user2[0];
+	
+	
+			$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
+			$user = DBRead('user', "WHERE id = '{$iduser}' LIMIT 1 ");
+		
+		if($user){
+			$user = $user[0];
+			}else{
+			echo '<script>location.href="dashboard.php";</script>';	
+			}
+			
+	}
+	?>
 <head>
 <title>
 <?php
@@ -8,6 +31,7 @@ if(empty($_COOKIE['usuario'])){
 else{
 	echo 'Netflix';
 }
+
 ?>
 </title>
 <link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"/>
@@ -155,7 +179,7 @@ body{
 <button style="border:none; background: transparent;" name="people1"><div class="avatar1 people1"></div></button>
 <div class="pessoas"><p class="ava-who">Alexandre</p></div>
 
-<button style="border:none; background: transparent;" name="people2"><div class="avatar1 people2"></div></button>
+<!-- <button style="border:none; background: transparent;" name="people2"><div class="avatar1 people2"></div></button>
 <div class="pessoas"><p class="ava-who">Vitor</p></div>
 
 <button style="border:none; background: transparent;" name="people3"><div class="avatar1 people3"></div></button>
@@ -166,7 +190,7 @@ body{
 
 <button style="border:none; background: transparent;" name="kids"><div class="avatar1 kids"></div></button>
 <div class="pessoas"><p class="ava-who">Kids</p></div>
-</div>
+</div> -->
 </form>
 
 <?php
