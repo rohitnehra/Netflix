@@ -22,13 +22,14 @@ $num1 = rand(15, 50);
 $num2 = rand(121235321, 20);
 $antispam5 = $num1 * $num2;
 $antispam = DBEscape(strip_tags(trim(sha1($antispam5))));
+$foto = 1;
 $ip=mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
 mysql_query("SET NAMES 'utf8'");
 mysql_query('SET character_set_connection=utf8');
 mysql_query('SET character_set_client=utf8');
 mysql_query('SET character_set_results=utf8');
 $iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
-$insert = mysql_query("insert into netflix_profiles (nome,datec,iduser) values ('{$nome}','{$datec}','{$iduser}')");
+$insert = mysql_query("insert into netflix_profiles (nome,datec,iduser,foto) values ('{$nome}','{$datec}','{$iduser}','{$foto}')");
 mysql_close($conexao);
 if($insert) {
     $iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
@@ -38,6 +39,8 @@ if($insert) {
     } 
 	print "Perfil criado com sucesso";
     echo '<script>location.href="dashboard.php";</script>';
+    echo '<script> $("#postadd").fadeOut(1200);</script>';
+
 }else {
     print "Ocorreu um erro!";
 }

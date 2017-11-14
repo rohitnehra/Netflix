@@ -130,6 +130,11 @@ body{
 		background-image: url(/static/avatar/user1.png);
 	}
 
+
+	.peopleplus{
+		background-image: url(/static/avatar/plus.png);
+	}
+
 	.people2{
 		background-image: url(/static/avatar/user2.png);
 	}
@@ -170,6 +175,35 @@ body{
 		border: 0.3vw solid #fff;
 	}
 
+	.avatar2{
+		height: 8vw;
+		width: 8vw;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		position: relative;
+		text-decoration: none;
+		border: 0.3vw solid rgba(0,0,0,.4);
+		background-repeat: no-repeat;
+		-moz-background-size: cover;
+		background-size: cover;
+		background-color: #333;
+		margin-top: 2vw;
+		display: inline-block;
+		margin-left: 1vw;
+		cursor: pointer;
+		
+	}
+
+	.avatar2:hover{
+		border: 0.3vw solid #fff;
+	}
+
+	.avatar2:focus{
+		border: 0.3vw solid #fff;
+	}
+
+
 	.ava-who{
 		color: grey;
 		font-size: 1.3vw;
@@ -205,27 +239,225 @@ body{
 <div class="change-profile center">
 
 <div class="who alc">Quem está assistindo?</div>
-<form method="post">
 <div class="what center">
 <?php
-$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
+$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 4" );
 if (!$peoples)
 echo '';	
 else  
 	foreach ($peoples as $people):	 
 ?>
-<button style="border:none; background: transparent;" name="people"><div class="avatar1 people1"></div></button>
+<button style="border:none; background: transparent;" name="people">
+<a style="color: transparent" href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
+<div class="avatar1 people<?Php echo $people['foto'] ?>"></div></a>
+</button>
 <div class="pessoas"><p class="ava-who"><?php echo $people['nome']; ?></p></div>
 
-<?php
-if (isset($_POST['people'])) {
-	setcookie("usuario", $people['id']);
-	header("dashboard.php#escolhido");
-	exit();
-}
-?>
+
+
 
 	<?php endforeach;?>
+
+	<style>
+	.ata{
+		background: transparent;
+	}
+	</style>
+<?php
+require 'db.php';
+$totaldepost = mysql_query("SELECT * FROM netflix_profiles WHERE iduser = $iduser ");
+$totaldepost = mysql_num_rows($totaldepost);
+if($totaldepost < 4){
+?>
+	<button style="border:none; background: transparent;" name="people">
+<div class="avatar1 peopleplus" id="addpeople2"></div>
+</button>
+
+<div class="pessoas"><p class="ava-who">Adicionar perfil</p></div>
+<?php } ?>
+	<style>
+	.ger{
+		border: 1px solid grey;
+    color: grey;
+    text-transform: uppercase;
+    padding: .5em 1.5em;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-size: 1.2vw;
+	background: transparent;
+	position: relative;
+	top: 7vw;
+	}
+
+	.ger:hover{
+		color: #fff;
+		border: 1px solid #fff;
+	}
+	</style>	
+	<center><button class="ger">GERENCIAR PERFIS</button></center>
+
+	<style>
+	.addprofile{
+		width: 100%;
+		position: fixed;
+		height: 100%;
+		background: rgba(0,0,0,.50);
+		top: 0;
+		left: 0;
+	}
+
+	.tabadd{
+		position: relative;
+		margin: 0px auto;
+		width: 50%;
+		height: 30vw;
+		background: #141414;
+		top: 10vw;
+		border-radius: 0.2vw;
+	}
+
+	.close{
+		float: right;
+		right: 1vw;
+		top: 1vw;
+		position: relative;
+	 	width: 2.5vw;
+		height: 2.5vw;
+		cursor: pointer;
+		padding: 0.3vw;
+	}
+
+	.close:hover{
+		background: rgba(0,0,0,.50);
+	}
+
+	.close svg{
+		fill: #fff;
+	}
+
+	input[type="radio"]{
+		display:none;
+	 }
+	 #postadd{
+		 display: none;
+	 }
+	</style>
+	<div class="addprofile" id="postadd">
+
+	<div class="tabadd">
+	<div class="close" id="close">
+	<svg height="2.5vw"  width:"2.5vw" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+	</div>
+		<center>
+		<h1 style="color: #fff; font-size: 2vw;padding: 1vw;">Adicionar perfil</h1>
+
+		 <style>
+
+input[type="radio"] + label
+{
+    cursor:pointer;
+}
+
+input[type="radio"]:checked + label .avatar2 {
+    border: 3px solid #fff;
+}
+		 </style>
+		
+
+	  <form action="#" method="post">
+		<div id="radio">
+		<input type="radio" id="radio1" class="radios" name="radio" checked="checked" value="1">
+		<label for="radio1">
+		<div class="avatar2 people1"></div>
+		</label>
+	  </div>
+<input type="text" name="name" id="name" placeholder="Nome do perfil" style="font-size: 1vw; border: none;width: 90%; padding: 0.5vw; border-radius: 0.1vw; position: relative; top: 2vw; height: 2.5vw;"/>
+<button class="config-btn" id="concluido">Concluido</button>
+</form>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#concluido").click(function() {
+        var name = $("#name");
+        var namePost = name.val();
+		var radio = $(".radios");
+        var radioPost = radio.val();
+        $.post("configurando.php?addprofile=<?Php echo $user['idcry']; ?>", {name: namePost,radio: radioPost},
+        function(data){
+         $("#resposta").html(data);
+         }
+         , "html");
+         return false;
+    });
+});
+</script>
+
+<script>
+  $('#addpeople2').click(function(){
+	  $("#postadd").fadeIn(600);
+    });
+	$('#close').click(function(){
+	  $("#postadd").fadeOut(600);
+    });
+</script>
+
+<div id="resposta">
+
+</div>
+<style>
+#resposta{
+    width: 30vw;
+    color: red;
+    position: relative;
+    top: 6vw;
+    height: auto;
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 0.3vw;
+    font-size: 1.5vw;
+}
+</style>
+
+<style>
+.config-btn{
+                display: inline-block;
+                text-decoration: none;
+                line-height: 1rem;
+                vertical-align: middle;
+                cursor: pointer;
+                font-weight: 700;
+                letter-spacing: .025rem;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: none;
+                position: relative;
+                min-height: 3.6vw;
+                -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                -moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                color: #fff;
+                width: 30vw;
+                background: #e50914;
+                font-size: 1.5vw;
+				top: 5vw;
+            }
+</style>
+
+
+		</center>
+	</div>
+
+	</div>
+
 
 
 <!-- <button style="border:none; background: transparent;" name="people2"><div class="avatar1 people2"></div></button>
@@ -240,7 +472,6 @@ if (isset($_POST['people'])) {
 <button style="border:none; background: transparent;" name="kids"><div class="avatar1 kids"></div></button>
 <div class="pessoas"><p class="ava-who">Kids</p></div>
 </div> -->
-</form>
 
 
 </div>
@@ -417,13 +648,13 @@ body{
 <div class="right-user">
 
 <?php
-$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
+$peoples = DBRead( 'profiles', "WHERE id = '".$_COOKIE['usuario']."' and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 1" );
 if (!$peoples)
 echo '';	
 else  
 	foreach ($peoples as $people):	 
 ?>
-<div class="avatar people1"></div>
+<div class="avatar people<?Php echo $people['foto'] ?>"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;"><?Php echo $people['nome']; ?>	<span class="seta"></span></p>
 	</div>
