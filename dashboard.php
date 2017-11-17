@@ -765,7 +765,7 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 }
 .video-a{
 	position: relative;
-	height: 10.5vw;
+	height: auto;
 	overflow: hidden;
 	display: flex;
 	-webkit-transition: all 1s; /* Safari */
@@ -778,8 +778,11 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 	position: relative;
 	cursor: pointer;
 	box-sizing: border-box;
-	-webkit-transition: all 2s; /* Safari */
-    transition: all 2s;
+	webkit-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+	opacity: 0.7;
 }
 
 .video .focus{
@@ -789,14 +792,14 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 }
 
 .video:hover{
-	-ms-transform: scale(1.2, 1.2); /* IE 9 */
-    -webkit-transform: scale(1.2, 1.2); /* Safari */
-    transform: scale(1.2, 1.2);
+	-ms-transform: scale(1.3, 1.3); /* IE 9 */
+    -webkit-transform: scale(1.3, 1.3); /* Safari */
+    transform: scale(1.3, 1.3);
 	position: relative;
 	z-index: 2500;
-	height: 10vw;
-	top: 0.2vw;
+	opacity: 1;
 }
+
 
 .left-i{
 	float: left;
@@ -899,6 +902,127 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 </div>
 
 </div>
+
+<style>
+
+.conteudo-info{
+	width: 100%;
+	position: relative;
+	height: 26vw;
+	background: #000;
+	top: 1vw;
+	color: #fff;
+}
+
+.informa h1{
+	padding: 2vw;
+	font-size: 2.2vw;
+}
+
+.informa .desct{
+	width: 35vw;
+	padding-left: 2vw;
+	z-index: 50;
+}
+
+.baixo-desc{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 3vw;
+	background: rgba(0,0,0,.50);
+	z-index: 50;
+}
+
+.feels{
+	width: 9vw;
+	position: relative;
+	top: 1.3vw;
+	text-align: center;
+	display: inline-block;
+	margin-left: 2vw;
+	cursor: pointer;
+	z-index: 50;
+}
+
+.feels:hover{
+	border-bottom: 0.2vw solid red;
+}
+
+.feels-ativo{
+	border-bottom: 0.2vw solid red;
+}
+
+.close{
+		float: right;
+		right: 1vw;
+		top: 1vw;
+		position: relative;
+	 	width: 2vw;
+		height: 2vw;
+		cursor: pointer;
+		padding: 0.3vw;
+		z-index: 50;
+	}
+
+	.close:hover{
+		background: rgba(0,0,0,.50);
+	}
+
+	.close svg{
+		fill: #fff;
+	}
+</style>
+
+<div class="conteudo-info">
+
+<div class="informa">
+
+
+<div class="close" id="close">
+	<svg height="2vw"  width:"2vw" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+</div>
+
+<div class="left-de">
+</div>
+<h1>Stranger Things</h1>
+<p class="desct">Long Island, 1983. Um garoto de 12 anos desaparece misteriosamente. A família e a polícia procuram respostas, mas acabam se deparando com um experimento secreto do governo. Enquanto isso, os amigos do menino iniciam suas próprias investigações, o que os levam a um extraordinário mistério envolvendo forças sobrenaturais e uma garotinha muito, muito estranha.</p>
+
+
+<style>
+.over-back{
+	width: 55%;
+	background-size: cover;
+	height: 100%;
+	background-image: url(/static/videos/back.jpg);
+	position: absolute;
+	display: flex;
+	top: 0;
+	float: right;
+	right: 0;
+	z-index: 2;
+}
+</style>
+
+<div class="over-back">
+
+</div>
+
+<div class="baixo-desc">
+
+<center>
+<p class="feels feels-ativo">VISÃO GERAL</p>
+<p class="feels">EPISÓDIOS</p>
+</center>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div style="padding-bottom: 3vw;"></div>
 
 </div>
 
