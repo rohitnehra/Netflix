@@ -18,7 +18,7 @@ require 'static/php/system/config.php';
 <div class="left-de">
 </div>
 <?php
-$animels2 = DBRead( 'series', "WHERE id ORDER BY id ASC LIMIT 20" );
+$animels2 = DBRead( 'series', "WHERE id ORDER BY id = '{$_GET['serie']}' DESC LIMIT 1" );
  if (!$animels2)
 	echo "";
 else 

@@ -596,7 +596,6 @@ body{
 		z-index: 1000000000;
 		top: 17vw;
 		left: 5vw;
-		background-size: cover;
 	}
 
 	.apresent-info{
@@ -750,21 +749,18 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 
 
 <div class="apresent">
-
-<div class="logo-serie"></div>
-<div class="aaa"></div>
-<div class="apresent-info">
 <?php
-$animels2 = DBRead( 'series', "WHERE id ORDER BY id ASC LIMIT 1" );
+$animels2 = DBRead( 'series', "WHERE id ORDER BY id DESC LIMIT 1" );
  if (!$animels2)
 	echo "";
 else 
 	foreach ($animels2 as $animel):
  ?>
+<img src="<?php echo $animel['logo']; ?>" class="logo-serie"></img>
+<div class="aaa"></div>
+<div class="apresent-info">
+
 <style>
-.logo-serie{
-		background-image: url(<?php echo $animel['logo']; ?>);
-}
 
 .apresent{
 	background-image: url(<?php echo $animel['fotoback']; ?>);
@@ -872,6 +868,12 @@ else
   transform: translate3d(40px, 0, 0);
 }
 </style>
+<?php
+require 'db.php';
+$totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id ");
+$totaldepost = mysql_num_rows($totaldepost);
+if($totaldepost >= 6){
+?>
 <div class="left-i" onclick="ScrollByRight()">
 <svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
 </div>
@@ -879,6 +881,9 @@ else
 <div class="right-i" onclick="ScrollByLeft()">
 <svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M24.291,14.276L14.705,4.69c-0.878-0.878-2.317-0.878-3.195,0l-0.8,0.8c-0.878,0.877-0.878,2.316,0,3.194  L18.024,16l-7.315,7.315c-0.878,0.878-0.878,2.317,0,3.194l0.8,0.8c0.878,0.879,2.317,0.879,3.195,0l9.586-9.587  c0.472-0.471,0.682-1.103,0.647-1.723C24.973,15.38,24.763,14.748,24.291,14.276z" fill="#fff"/></svg>
 </div>
+
+<?php } ?>
+
 <div class="video-a" id="scroll">
 
 <?php
@@ -899,7 +904,7 @@ else
 <script>
   $('#click<?php echo $animel['id']; ?>').click(function(){
 	$("#infor").fadeIn(600);
-				$.post('request.php?serie=1>', function (html) {
+				$.post('request.php?serie=<?php echo $animel['id']; ?>>', function (html) {
 				$('#infor').html(html);
 				});
     });
