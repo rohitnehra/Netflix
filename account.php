@@ -181,6 +181,7 @@ Entrar
             <?php } ?> 
 
 <?php
+ if(isset($_GET['ActionFree'])){
             if($_GET['ActionFree'] == 1){
 ?>
             <style>
@@ -347,7 +348,7 @@ $(document).ready(function() {
 </center>
 </div>
 </div>
-            <?php } else{?>
+            <?php } }else{?>
 
 <div class="center">
 <div class="card-login">
