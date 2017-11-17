@@ -231,6 +231,7 @@ body{
 </style>
 <body>
 
+
 <div class="header">
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 81.387"><g fill="#b81d24"><path d="M256.09 76.212c4.178.405 8.354.84 12.52 1.29l9.198-22.712 8.743 24.807c4.486.562 8.97 1.152 13.44 1.768l-15.328-43.501L299.996 0H287.01l-.135.186-8.283 20.455L271.32.003h-12.822l13.237 37.565-15.644 38.644zM246.393 75.322V0h-12.817v74.265c4.275.33 8.552.684 12.817 1.056M150.113 71.11c3.46 0 6.916.026 10.366.054V43.492h15.397V31.708H160.48v-19.91h17.733V0h-30.6v71.12c.831 0 1.666-.013 2.5-.01M110.319 71.83c4.27-.152 8.544-.28 12.824-.384V11.8h11.98V.003H98.339V11.8h11.982v60.03h-.002zM12.295 79.772V34.897L27.471 77.96c4.667-.524 9.341-1.017 14.028-1.483V.001H29.201v46.483L12.825.001H0v81.384h.077c4.063-.562 8.14-1.096 12.218-1.613M85.98 11.797V.001H55.377V75.202a1100.584 1100.584 0 0 1 30.578-2.211V61.184c-5.916.344-11.82.74-17.71 1.181V43.497h15.397V31.706H68.245V11.797H85.98zM203.614 60.62V-.003h-12.873v71.876c10.24.376 20.44.9 30.606 1.56V61.619c-5.9-.381-11.81-.712-17.733-1"/></g></svg>
@@ -277,7 +278,7 @@ if($totaldepost < 4){
 <?php } ?>
 	<style>
 	.ger{
-		border: 1px solid grey;
+	border: 1px solid grey;
     color: grey;
     text-transform: uppercase;
     padding: .5em 1.5em;
@@ -486,8 +487,8 @@ body{
 .header{
 	width: 100%;
 	height: 3.8vw;
-	background: rgba(0,0,0,.80);
-	position: fixed;
+	background: rgba(0, 0, 0, 0.7);
+	position: relative;
 	left: 0;
 	top: 0;
 	z-index: 10000;
@@ -641,7 +642,77 @@ body{
 	</style>
 <body class="logado">
 
-<div class="header">
+<?php 
+$inicio = $user['datec'];
+$expirado = date('Y-m-d', strtotime('+43700 min'));
+if (strtotime($inicio) >= strtotime($expirado)) {
+	?>
+
+<style>
+.error-msg{
+	width: 100%;
+	background: #000;
+	height: 12.5vw;
+	position: relative;
+	top: 0;
+	left: 0;
+	border-bottom: 0.1vw solid #444;
+	color: #fff;
+}
+
+.error-h1{
+	color: #fff;
+    position: relative;
+    vertical-align: middle;
+    font-size: 1.5vw;
+    font-weight: 400;
+	top: 2.5vw;
+	left: 2vw;
+}
+
+.error-msg p{
+	position: relative;
+	top: 3vw;
+	left: 2vw;
+}
+
+.pagar{
+	float: left;
+	position: relative;
+	width: 15vw;
+	height: 2.5vw;
+	top: 4vw;
+	left: 2vw;
+	border: none;
+	cursor: pointer;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+    box-shadow: 0 1px 1px rgba(0,0,0,.25);
+	color: #fff;
+    background: #e50914;
+	font-size: 1.2vw;
+}
+
+.center-error{
+	max-width: 50vw;
+	height: inherit;
+	margin: 0px auto;
+}
+</style>
+
+<div class="error-msg">
+
+<div class="center-error">
+<h1 class="error-h1">Parece que seu mês grátis acabou.</h1>
+<p>Para efetuar efetuar pagamento, clique no botão abaixo!</p>
+
+<button class="pagar">Efetuar pagamento</button>
+</div>
+</div>
+
+<?php } ?>
+
+<div class="header" id="headera">
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 81.387"><g fill="#b81d24"><path d="M256.09 76.212c4.178.405 8.354.84 12.52 1.29l9.198-22.712 8.743 24.807c4.486.562 8.97 1.152 13.44 1.768l-15.328-43.501L299.996 0H287.01l-.135.186-8.283 20.455L271.32.003h-12.822l13.237 37.565-15.644 38.644zM246.393 75.322V0h-12.817v74.265c4.275.33 8.552.684 12.817 1.056M150.113 71.11c3.46 0 6.916.026 10.366.054V43.492h15.397V31.708H160.48v-19.91h17.733V0h-30.6v71.12c.831 0 1.666-.013 2.5-.01M110.319 71.83c4.27-.152 8.544-.28 12.824-.384V11.8h11.98V.003H98.339V11.8h11.982v60.03h-.002zM12.295 79.772V34.897L27.471 77.96c4.667-.524 9.341-1.017 14.028-1.483V.001H29.201v46.483L12.825.001H0v81.384h.077c4.063-.562 8.14-1.096 12.218-1.613M85.98 11.797V.001H55.377V75.202a1100.584 1100.584 0 0 1 30.578-2.211V61.184c-5.916.344-11.82.74-17.71 1.181V43.497h15.397V31.706H68.245V11.797H85.98zM203.614 60.62V-.003h-12.873v71.876c10.24.376 20.44.9 30.606 1.56V61.619c-5.9-.381-11.81-.712-17.733-1"/></g></svg>
 
@@ -654,7 +725,7 @@ echo '';
 else  
 	foreach ($peoples as $people):	 
 ?>
-<div class="avatar people<?Php echo $people['foto'] ?>"></div>
+<div class="avatar people<?php echo $people['foto'] ?>"></div>
 	<div class="people">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;"><?Php echo $people['nome']; ?>	<span class="seta"></span></p>
 	</div>
@@ -663,6 +734,18 @@ else
 </div>
 
 </div>
+
+<script>
+var headerstyle = document.getElementById('headera');
+window.onscroll = function(){
+var top = window.pageYOffset || document.documentElement.scrollTop
+if( top > 100 ) {
+headerstyle.style = 'background: rgba(0, 0, 0, 0.7); position: fixed;';
+}else{
+headerstyle.style = 'position: relative; background-image: linear-gradient(#000 0%, transparent 100%);';
+}
+}
+</script>
 
 
 <div class="apresent">
@@ -682,17 +765,21 @@ else
 }
 .video-a{
 	position: relative;
-	height: 10vw;
+	height: 10.5vw;
 	overflow: hidden;
 	display: flex;
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
 }
 .video{
-	margin-left: 0.4vw;
+	margin-left: 0.8vw;
 	display: inline-block;
 	left: 2.5vw;
 	position: relative;
 	cursor: pointer;
 	box-sizing: border-box;
+	-webkit-transition: all 2s; /* Safari */
+    transition: all 2s;
 }
 
 .video .focus{
@@ -700,10 +787,82 @@ else
     width: 16vw;
 	position: relative;
 }
+
+.video:hover{
+	-ms-transform: scale(1.2, 1.2); /* IE 9 */
+    -webkit-transform: scale(1.2, 1.2); /* Safari */
+    transform: scale(1.2, 1.2);
+	position: relative;
+	z-index: 2500;
+	height: 10vw;
+	top: 0.2vw;
+}
+
+.left-i{
+	float: left;
+	height: 9vw;
+	width: 2.5vw;
+	left: 0.2vw;
+	background: rgba(0,0,0,.50);
+	position: absolute;
+	cursor: pointer;
+	z-index: 3000;
+}
+
+.left-i svg{
+	fill: #fff;
+	position: absolute;
+	top: 3vw;
+}
+
+.right-i{
+	float: right;
+	height: 9vw;
+	width: 2.5vw;
+	right: 0vw;
+	background: rgba(0,0,0,.50);
+	position: absolute;
+	z-index: 3000;
+	cursor: pointer;
+}
+
+.right-i svg{
+	fill: #fff;
+	position: absolute;
+	top: 3vw;
+}
+
+.shiftLeft { 
+  transform: translate3d(-40px, 0, 0);
+}
+
+.shiftRight { 
+  transform: translate3d(40px, 0, 0);
+}
 </style>
-<div class="video-a">
+<div class="left-i" onclick="ScrollByRight()">
+<svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
+</div>
+
+<div class="right-i" onclick="ScrollByLeft()">
+<svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M24.291,14.276L14.705,4.69c-0.878-0.878-2.317-0.878-3.195,0l-0.8,0.8c-0.878,0.877-0.878,2.316,0,3.194  L18.024,16l-7.315,7.315c-0.878,0.878-0.878,2.317,0,3.194l0.8,0.8c0.878,0.879,2.317,0.879,3.195,0l9.586-9.587  c0.472-0.471,0.682-1.103,0.647-1.723C24.973,15.38,24.763,14.748,24.291,14.276z" fill="#fff"/></svg>
+</div>
+<div class="video-a" id="scroll">
+
 <div class="video">
 <img src="/static/videos/stranger.jpg" class="focus"/>
+</div>
+<div class="video">
+<img src="https://occ-0-1547-1740.1.nflxso.net/art/4b832/1edc3ec0b8692e93860ef4d4798bd507b894b832.webp" class="focus"/>
+</div>
+<div class="video">
+<img src="https://occ-0-1547-1740.1.nflxso.net/art/bc8cc/30b96ec53726f5edaf2e0506cfd238224dabc8cc.webp" class="focus"/>
+</div>
+<div class="video">
+<img src="https://occ-0-1547-1740.1.nflxso.net/art/0bb9e/a3597d9baf11c94ea023855054a3c51df9b0bb9e.webp" class="focus"/>
+</div>
+<div class="video">
+<img src="https://occ-0-1547-1740.1.nflxso.net/art/ab879/23796174de393ac8d9cd95043c6f3e1dbeeab879.jpg" class="focus"/>
 </div>
 <div class="video">
 <img src="/static/videos/stranger.jpg" class="focus"/>
@@ -718,7 +877,16 @@ else
 <img src="/static/videos/stranger.jpg" class="focus"/>
 </div>
 <div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
+<img src="https://occ-0-1547-1740.1.nflxso.net/art/4b832/1edc3ec0b8692e93860ef4d4798bd507b894b832.webp" class="focus"/>
+</div>
+<div class="video">
+<img src="https://occ-0-1547-1740.1.nflxso.net/art/bc8cc/30b96ec53726f5edaf2e0506cfd238224dabc8cc.webp" class="focus"/>
+</div>
+<div class="video">
+<img src="https://occ-0-1547-1740.1.nflxso.net/art/0bb9e/a3597d9baf11c94ea023855054a3c51df9b0bb9e.webp" class="focus"/>
+</div>
+<div class="video">
+<img src="https://occ-0-1547-1740.1.nflxso.net/art/ab879/23796174de393ac8d9cd95043c6f3e1dbeeab879.jpg" class="focus"/>
 </div>
 <div class="video">
 <img src="/static/videos/stranger.jpg" class="focus"/>
@@ -726,11 +894,31 @@ else
 <div class="video">
 <img src="/static/videos/stranger.jpg" class="focus"/>
 </div>
+<div class="video">
+<img src="/static/videos/stranger.jpg" class="focus"/>
 </div>
 
 </div>
 
+</div>
 
+<script>
+ function ScrollByLeft() {
+	document.getElementById("scroll").scrollBy(500, 0);
+}
+function ScrollByRight() {
+	document.getElementById("scroll").scrollBy(-500, 0);
+}
+
+function ScrollLeft() {
+	document.getElementById("scroll").scrollLeft=500;
+}
+function ScrollRight() {
+	document.getElementById("scroll").scrollLeft=-500;
+}
+
+
+</script>
 
 </body>
 
