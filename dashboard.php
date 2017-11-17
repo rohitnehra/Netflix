@@ -576,7 +576,6 @@ body{
 	.apresent{
 		width: 100%;
 		height: 50vw;
-		background-image: url(/static/videos/back.jpg);
 		top: 0vw;
 		background-size: cover;
 		position: relative;
@@ -591,7 +590,6 @@ body{
 	}
 
 	.logo-serie{
-		background-image: url(/static/videos/logo.webp);
 		height: 12vw;
 		width: 30vw;
 		position: relative;
@@ -613,6 +611,7 @@ body{
 		color: #fff;
 		font-size: 1.7vw;
 		font-weight: 700;
+		text-shadow: 1px 1px 1px #000;s
 	}
 
 	.apresent-info p2{
@@ -620,6 +619,7 @@ body{
 		font-size: 1.3vw;
 		font-weight: 700;
 		line-height: 1.2;
+		text-shadow: 1px 1px 1px #000;
 	}
 
 	.videos-tab{
@@ -748,12 +748,41 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 </script>
 
 
+
 <div class="apresent">
+
 <div class="logo-serie"></div>
 <div class="aaa"></div>
 <div class="apresent-info">
-<p>Assista à temporada 2 agora</p>
-<p2>Eles decifram a mente de assassinos em série nas prisões de segurança máxima. E cunharam um novo termo: serial killer.</p2>
+<?php
+$animels2 = DBRead( 'series', "WHERE id ORDER BY id ASC LIMIT 1" );
+ if (!$animels2)
+	echo "";
+else 
+	foreach ($animels2 as $animel):
+ ?>
+<style>
+.logo-serie{
+		background-image: url(<?php echo $animel['logo']; ?>);
+}
+
+.apresent{
+	background-image: url(<?php echo $animel['fotoback']; ?>);
+}
+
+</style>
+
+<p><?php echo $animel['name']; ?></p>
+<p2>
+<?php
+	$str2 = nl2br( $animel['desct'] );
+	$len2 = strlen( $str2 );
+	$max2 = 200;
+   if( $len2 <= $max2 )
+   echo $str2;
+	else    
+   echo substr( $str2, 0, $max2 ) . '...'?>
+</p2><?php endforeach; ?>
 </div>
 </div>
 
@@ -852,54 +881,37 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 </div>
 <div class="video-a" id="scroll">
 
-<div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
+<?php
+$animels2 = DBRead( 'series', "WHERE id ORDER BY id ASC LIMIT 20" );
+ if (!$animels2)
+	echo "";
+else 
+	foreach ($animels2 as $animel):
+ ?>
+
+<div class="video" id="click<?php echo $animel['id']; ?>">
+<img src="<?php echo $animel['foto']; ?>" class="focus"/>
 </div>
-<div class="video">
-<img src="https://occ-0-1547-1740.1.nflxso.net/art/4b832/1edc3ec0b8692e93860ef4d4798bd507b894b832.webp" class="focus"/>
-</div>
-<div class="video">
-<img src="https://occ-0-1547-1740.1.nflxso.net/art/bc8cc/30b96ec53726f5edaf2e0506cfd238224dabc8cc.webp" class="focus"/>
-</div>
-<div class="video">
-<img src="https://occ-0-1547-1740.1.nflxso.net/art/0bb9e/a3597d9baf11c94ea023855054a3c51df9b0bb9e.webp" class="focus"/>
-</div>
-<div class="video">
-<img src="https://occ-0-1547-1740.1.nflxso.net/art/ab879/23796174de393ac8d9cd95043c6f3e1dbeeab879.jpg" class="focus"/>
-</div>
-<div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
-</div>
-<div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
-</div>
-<div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
-</div>
-<div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
-</div>
-<div class="video">
-<img src="https://occ-0-1547-1740.1.nflxso.net/art/4b832/1edc3ec0b8692e93860ef4d4798bd507b894b832.webp" class="focus"/>
-</div>
-<div class="video">
-<img src="https://occ-0-1547-1740.1.nflxso.net/art/bc8cc/30b96ec53726f5edaf2e0506cfd238224dabc8cc.webp" class="focus"/>
-</div>
-<div class="video">
-<img src="https://occ-0-1547-1740.1.nflxso.net/art/0bb9e/a3597d9baf11c94ea023855054a3c51df9b0bb9e.webp" class="focus"/>
-</div>
-<div class="video">
-<img src="https://occ-0-1547-1740.1.nflxso.net/art/ab879/23796174de393ac8d9cd95043c6f3e1dbeeab879.jpg" class="focus"/>
-</div>
-<div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
-</div>
-<div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
-</div>
-<div class="video">
-<img src="/static/videos/stranger.jpg" class="focus"/>
-</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+  $('#click<?php echo $animel['id']; ?>').click(function(){
+	$("#infor").fadeIn(600);
+				$.post('request.php?serie=1>', function (html) {
+				$('#infor').html(html);
+				});
+    });
+</script>
+
+
+
+
+
+<?php endforeach;?>
+
+
 
 </div>
 
@@ -911,6 +923,7 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 	height: 26vw;
 	background: #000;
 	top: 1vw;
+	display: none;
 	color: #fff;
 }
 
@@ -974,52 +987,13 @@ headerstyle.style = 'position: relative; background-image: linear-gradient(#000 
 	}
 </style>
 
-<div class="conteudo-info">
 
-<div class="informa">
-
-
-<div class="close" id="close">
-	<svg height="2vw"  width:"2vw" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
-</div>
-
-<div class="left-de">
-</div>
-<h1>Stranger Things</h1>
-<p class="desct">Long Island, 1983. Um garoto de 12 anos desaparece misteriosamente. A família e a polícia procuram respostas, mas acabam se deparando com um experimento secreto do governo. Enquanto isso, os amigos do menino iniciam suas próprias investigações, o que os levam a um extraordinário mistério envolvendo forças sobrenaturais e uma garotinha muito, muito estranha.</p>
-
-
-<style>
-.over-back{
-	width: 55%;
-	background-size: cover;
-	height: 100%;
-	background-image: url(/static/videos/back.jpg);
-	position: absolute;
-	display: flex;
-	top: 0;
-	float: right;
-	right: 0;
-	z-index: 2;
-}
-</style>
-
-<div class="over-back">
+<div class="conteudo-info" id="infor">
 
 </div>
 
-<div class="baixo-desc">
-
-<center>
-<p class="feels feels-ativo">VISÃO GERAL</p>
-<p class="feels">EPISÓDIOS</p>
-</center>
-
-</div>
-
-</div>
-
-</div>
+<script type="text/javascript" src="assets/info/js/mod_xhr.js"></script>
+<script type="text/javascript" src="assets/info/js/info.js"></script>
 
 
 <div style="padding-bottom: 3vw;"></div>
