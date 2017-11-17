@@ -673,6 +673,7 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 	position: relative;
 	top: 3vw;
 	left: 2vw;
+	font-size: 1.1vw;
 }
 
 .pagar{

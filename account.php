@@ -377,9 +377,9 @@ $(document).ready(function() {
 <center>
 <div style="padding-top: 2vw;">
 <form action="#" method="post">
-<span style="float: left; position: absolute; top: 7.6vw; left: 2.6vw;">E-mail</span>
+<span style="float: left; position: absolute; top: 7.6vw; left: 2.6vw; font-size: 1.2vw;">E-mail</span>
 <input type="text" class="email-input" name="lemail" id="lemail"/>
-<span style="float: left; position: absolute; top: 13.6vw; left: 2.6vw;">Senha</span>
+<span style="float: left; position: absolute; top: 13.6vw; left: 2.6vw; font-size: 1.2vw;">Senha</span>
 <input type="password" class="pass-input" name="lsenha" id="lsenha"/>
 <button class="login-btn" id="login" name="cadastrar">Entrar</button>
 
