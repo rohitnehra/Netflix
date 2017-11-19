@@ -776,14 +776,14 @@ $animels2 = DBRead( 'series', "WHERE id ORDER BY id DESC LIMIT 1" );
 else 
 	foreach ($animels2 as $animel):
  ?>
-<img src="<?php echo $animel['logo']; ?>" class="logo-serie"></img>
+<img src="static/videos/<?php echo $animel['logo']; ?>" class="logo-serie"></img>
 <div class="aaa"></div>
 <div class="apresent-info">
 
 <style>
 
 .apresent{
-	background-image: url(<?php echo $animel['fotoback']; ?>);
+	background-image: url(static/videos/<?php echo $animel['fotoback']; ?>);
 }
 
 </style>
@@ -919,7 +919,7 @@ else
  ?>
 
 <div class="video" id="click<?php echo $animel['id']; ?>">
-<img src="<?php echo $animel['foto']; ?>" class="focus"/>
+<img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
 </div>
 
 
@@ -973,7 +973,7 @@ else
 	bottom: 0;
 	height: 3vw;
 	background: rgba(0,0,0,.50);
-	z-index: 50;
+	z-index: 1060;
 }
 
 .feels{
@@ -1004,7 +1004,7 @@ else
 		height: 2vw;
 		cursor: pointer;
 		padding: 0.3vw;
-		z-index: 50;
+		z-index: 1250;
 	}
 
 	.close:hover{
