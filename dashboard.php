@@ -813,7 +813,7 @@ else
 
 
 <?php
-$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 40" );
+$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 1" );
  if (!$animels52)
 	echo "
 		<p style='width: auto;color: #fff; font-size: 1.5vw; position: relative; left: 3.5vw; top: -3vw;'>Que pena você não assistiu nada ainda, assista algo para aparecer aqui</p>
