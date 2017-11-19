@@ -126,7 +126,7 @@ foreach ($resultsearchs2 as $resultsearch2):
 $idwatch = $resultsearch2['id'];
 $videoa = $video['id'];
 $animes = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
-$resultsearchs = DBRead( 'videos', "WHERE id <> '{$videoa}' and idserie = '{$idwatch}'  LIMIT 1" );
+$resultsearchs = DBRead( 'videos', "WHERE id > '{$videoa}' and idserie = '{$idwatch}'  LIMIT 1" );
  if (!$resultsearchs)
  echo '';
 else
@@ -161,14 +161,71 @@ foreach ($resultsearchs as $resultsearch):
    echo $str2;
 	else    
    echo substr( $str2, 0, $max2 ) . '...'?></p>
+
+</div>
+</div>
+<?php endforeach; endforeach; ?>
+
+
+
+<div class="todoesephover" id="todoesephover">
+<div>
+<?php
+$idwatch = $anime['id'];
+$resultsearchs2 = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
+ if (!$resultsearchs2)
+ echo '';
+else
+foreach ($resultsearchs2 as $resultsearch2):
+?>
+<?php
+$idwatch = $resultsearch2['id'];
+$videoa = $video['id'];
+$animes = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
+$resultsearchs = DBRead( 'videos', "WHERE idserie = '{$idwatch}'  LIMIT 9" );
+ if (!$resultsearchs)
+ echo '';
+else
+foreach ($resultsearchs as $resultsearch):
+?>
+<li class="li-todosep">
+<div id="img"></div>
+
+<style>
+#img{
+  background-image: url(static/videos/<?php echo $resultsearch2['foto']; ?>);
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  top: 10px;
+  left: 20px;
+}
+</style>
+
+<div id="right-ep" style="right: -20px; position: relative; top : 30px;">
+<h2 style="font-size: 18px;">Ep. <?php echo $resultsearch['ep']; ?> Episódio <?php echo $resultsearch['ep']; ?></h2>
+<p><?php
+	$str2 = nl2br( $resultsearch2['desct'] );
+	$len2 = strlen( $str2 );
+	$max2 = 30;
+   if( $len2 <= $max2 )
+   echo $str2;
+	else    
+   echo substr( $str2, 0, $max2 ) . '...'?></p>
+</div>
+</li>
 <?php endforeach; endforeach; ?>
 </div>
 </div>
-<img class="nextep" src="img/eps.png"/>
+
+
+<img class="nextep" src="img/eps.png" id="todosp"/>
 <img class="nextep" src="img/sub.png"/>
+
 <button id="fullscreenico">
 <img class="nextep" src="img/full.png"/>
 </button>
+
 <button id="fullscreenedico" style="display:none;">
 <img class="nextep" src="img/desfull.png"/>
 </button>
@@ -180,6 +237,7 @@ foreach ($resultsearchs as $resultsearch):
 <div id="progressBar">
 </div>
 </div>
+
 <div id="currtime">0:00</div>
 
 </div>
@@ -204,14 +262,45 @@ document.getElementById("fullscreenico").onclick = function() {goFullscreen()};
 document.getElementById("fullscreenedico").onclick = function() {goFullscreen()}
 document.getElementById("fullscreenedico").onclick = function() {goFullscreen()};
 document.getElementById("help").onmouseover = function() {help()};
+document.getElementById("todosp").onmouseover = function() {todosep()};
+
+<?php
+$idwatch = $anime['id'];
+$resultsearchs2 = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
+ if (!$resultsearchs2)
+ echo '';
+else
+foreach ($resultsearchs2 as $resultsearch2):
+?>
+<?php
+$idwatch = $resultsearch2['id'];
+$videoa = $video['id'];
+$animes = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
+$resultsearchs = DBRead( 'videos', "WHERE id > '{$videoa}' and idserie = '{$idwatch}'  LIMIT 1" );
+ if (!$resultsearchs)
+ echo '';
+else
+foreach ($resultsearchs as $resultsearch):
+?>
 document.getElementById("nextep").onmouseover = function() {ep()};
+<?php endforeach; endforeach; ?>
 
 function help(){
+document.getElementById("todoesephover").style.display = "none";
 document.getElementById("helphover").style.display = "block";
 document.getElementById("current").style.display = "none";
 document.getElementById("currtime").style.display = "none";
 document.getElementById("hoverep").style.display = "none";
 }
+
+function todosep(){
+document.getElementById("todoesephover").style.display = "block";
+document.getElementById("current").style.display = "none";
+document.getElementById("currtime").style.display = "none";
+document.getElementById("helphover").style.display = "none";
+document.getElementById("helphover").style.display = "none";
+}
+
 
 function ep(){
 document.getElementById("hoverep").style.display = "block";
@@ -361,6 +450,7 @@ document.getElementById("playerwatchpri").style.cursor = "auto";
 document.getElementById("player").style.opacity = "1";	
 document.getElementById("player2").style.opacity = "1"; 	
 document.getElementById("helphover").style.display = "none";
+document.getElementById("todoesephover").style.display = "none";
 document.getElementById("hoverep").style.display = "none";
 document.getElementById("current").style.display = "block";
 document.getElementById("currtime").style.display = "block";
@@ -368,6 +458,8 @@ document.getElementById("currtime").style.display = "block";
 function showplayer(){
 document.getElementById("player").style.opacity = "1";	 
 document.getElementById("player2").style.opacity = "1"; 	
+document.getElementById("current").style.display = "block";
+document.getElementById("currtime").style.display = "block";
 }
 </script>
 
