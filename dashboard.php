@@ -940,24 +940,16 @@ else
 	foreach ($animels52 as $animel5):
  ?>
 
-<?php
-$serieid = $animel5['idserie'];
-$animels572 = DBRead( 'videos', "WHERE id and idserie = $serieid ORDER BY id ASC LIMIT 1" );
- if (!$animels572)
-	echo "";
-else 
-	foreach ($animels572 as $animel57):
- ?>
 
 <?php
 $videoh = $animel5['idserie'];
-$animels2 = DBRead( 'series', "WHERE id = $videoh ORDER BY id ASC LIMIT 40" );
+$animels2 = DBRead( 'series', "WHERE id = $videoh ORDER BY id ASC LIMIT 1" );
  if (!$animels2)
 	echo "";
 else 
 	foreach ($animels2 as $animel):
  ?>
-<a href="watch.php?id=<?php echo $animel57['id'];?>">
+<a href="watch.php?id=<?php echo $animel5['idvideo'];?>">
 <div class="video">
 <img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
 </div>
@@ -968,7 +960,7 @@ else
 
 
 
-<?php endforeach; endforeach; endforeach?>
+<?php endforeach; endforeach;?>
 </div>
 
 
