@@ -42,6 +42,28 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 
 ?>
 
+<?php if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
+  if(isset($_COOKIE['usuario'])){
+  ?>
+
+<?php 
+$dbCheck = DBRead( 'history', "WHERE idvideo = '". $_GET['id'] ."' and perfil = '".  $_COOKIE['usuario'] ."' " );
+if( $dbCheck ){
+echo '';
+}
+else{
+	$form2['idpeople'] = $_COOKIE['iduser'];
+	$form2['idvideo'] = $_GET['id'];
+	$form2['perfil'] = $_COOKIE['usuario'];
+	$form2['idserie'] = $anime['id'];
+	if( DBCreate( 'history', $form2 ) ){	
+	echo '';
+	}
+}
+?>
+
+<?php } } ?>
+
 <head>
 <title>Netflix</title>
 <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
@@ -64,7 +86,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
   }
   ?>
   ">
-<div class="voltar">
+<div class="voltar" id="voltar">
 <img class="net_back" src="img/voltar.png"/>
 <img class="net_back2" src="img/voltar_ativo.png"/>
 
@@ -79,6 +101,82 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 </div>
 </div>
 
+
+
+<div class="todoesephover" id="todoesephover">
+<h1 style="left: 200px; position: absolute;color: #fff;">Todos os episodios de <?php echo $anime['name']; ?></h1>
+
+
+<div>
+<div class="bakaero">
+
+<style>
+.close{
+		float: right;
+		right: 2vw;
+		top: 1vw;
+		position: relative;
+	 	width: 2.5vw;
+		height: 2.5vw;
+		cursor: pointer;
+		padding: 0.3vw;
+    z-index: 11250;
+	}
+
+	.close:hover{
+		background: rgba(0,0,0,.50);
+	}
+
+	.close svg{
+		fill: #fff;
+	}
+</style>
+
+<div class="close" id="close" style="z-index: 51000;">
+	<svg height="2.5vw"  width:"2.5vw" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+</div>
+<script>
+	$('#close').click(function(){
+	  $("#todoesephover").fadeOut(600);
+    video.play();
+    });
+</script>
+</script>
+<?php
+$idwatch = $anime['id'];
+$resultsearchs2 = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
+ if (!$resultsearchs2)
+ echo '';
+else
+foreach ($resultsearchs2 as $resultsearch2):
+?>
+<?php
+$idwatch = $resultsearch2['id'];
+$videoa = $video['id'];
+$animes = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
+$resultsearchs = DBRead( 'videos', "WHERE idserie = '{$idwatch}'" );
+ if (!$resultsearchs)
+ echo '';
+else
+foreach ($resultsearchs as $resultsearch):
+?>
+<a href="watch.php?id=<?php echo $resultsearch['id'] ?>&href=watch.php?id=<?php echo $resultsearch2['id'] ?>">
+<div id="img" class="hover1">
+<h2 style="font-size: 18px;bottom: -15px;position: absolute; background:rgba(0,0,0,.50); color: #f5f5f5; text-shadow: 3px 3px 3px #000;">Ep. <?php echo $resultsearch['ep']; ?> Episódio <?php echo $resultsearch['ep']; ?></h2>
+</div>
+</a>
+
+<style>
+#img{
+  background-image: url(static/videos/<?php echo $resultsearch2['foto']; ?>);
+  background-size: cover;
+  width: 120px;
+  height: 120px;
+}
+</style><?php endforeach; endforeach; ?>
+</div>
+</div>
+</div>
 
 <div id="align">
 <div class="player" id="player">
@@ -142,17 +240,21 @@ foreach ($resultsearchs as $resultsearch):
 <div id="hoverep">
 <img src="img/baixo.png">
 <h1>Próximo episódio</h1>
-<div id="img"></div>
+<img src="static/videos/<?php echo $resultsearch2['foto']; ?>" id="baka"></img>
 
 <style>
-#img{
-  background-image: url(static/videos/<?php echo $resultsearch2['foto']; ?>);
-  background-size: cover;
+#baka{
+  top: -30px !important;
+  width: 100px;
+  height: 100px;
+  float: left;
+  right: 40px  !important;
+  position: absolute;
 }
 </style>
 
-<div id="right-ep">
-<h2>Ep. <?php echo $resultsearch['ep']; ?> Episódio <?php echo $resultsearch['ep']; ?></h2>
+<div id="right-ep" style="left: -50px !important; position: relative;">
+<h2 style="top: -30px; left: -40px; position: relative;">Ep. <?php echo $resultsearch['ep']; ?> Episódio <?php echo $resultsearch['ep']; ?></h2>
 <p><?php
 	$str2 = nl2br( $resultsearch2['desct'] );
 	$len2 = strlen( $str2 );
@@ -168,55 +270,6 @@ foreach ($resultsearchs as $resultsearch):
 
 
 
-<div class="todoesephover" id="todoesephover">
-<div>
-<?php
-$idwatch = $anime['id'];
-$resultsearchs2 = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
- if (!$resultsearchs2)
- echo '';
-else
-foreach ($resultsearchs2 as $resultsearch2):
-?>
-<?php
-$idwatch = $resultsearch2['id'];
-$videoa = $video['id'];
-$animes = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
-$resultsearchs = DBRead( 'videos', "WHERE idserie = '{$idwatch}'  LIMIT 9" );
- if (!$resultsearchs)
- echo '';
-else
-foreach ($resultsearchs as $resultsearch):
-?>
-<li class="li-todosep">
-<div id="img"></div>
-
-<style>
-#img{
-  background-image: url(static/videos/<?php echo $resultsearch2['foto']; ?>);
-  background-size: cover;
-  width: 60px;
-  height: 60px;
-  top: 10px;
-  left: 20px;
-}
-</style>
-
-<div id="right-ep" style="right: -20px; position: relative; top : 30px;">
-<h2 style="font-size: 18px;">Ep. <?php echo $resultsearch['ep']; ?> Episódio <?php echo $resultsearch['ep']; ?></h2>
-<p><?php
-	$str2 = nl2br( $resultsearch2['desct'] );
-	$len2 = strlen( $str2 );
-	$max2 = 30;
-   if( $len2 <= $max2 )
-   echo $str2;
-	else    
-   echo substr( $str2, 0, $max2 ) . '...'?></p>
-</div>
-</li>
-<?php endforeach; endforeach; ?>
-</div>
-</div>
 
 
 <img class="nextep" src="img/eps.png" id="todosp"/>
@@ -262,7 +315,7 @@ document.getElementById("fullscreenico").onclick = function() {goFullscreen()};
 document.getElementById("fullscreenedico").onclick = function() {goFullscreen()}
 document.getElementById("fullscreenedico").onclick = function() {goFullscreen()};
 document.getElementById("help").onmouseover = function() {help()};
-document.getElementById("todosp").onmouseover = function() {todosep()};
+document.getElementById("todosp").onclick = function() {todosep()};
 
 <?php
 $idwatch = $anime['id'];
@@ -299,6 +352,7 @@ document.getElementById("current").style.display = "none";
 document.getElementById("currtime").style.display = "none";
 document.getElementById("helphover").style.display = "none";
 document.getElementById("helphover").style.display = "none";
+video.pause();
 }
 
 
@@ -450,7 +504,6 @@ document.getElementById("playerwatchpri").style.cursor = "auto";
 document.getElementById("player").style.opacity = "1";	
 document.getElementById("player2").style.opacity = "1"; 	
 document.getElementById("helphover").style.display = "none";
-document.getElementById("todoesephover").style.display = "none";
 document.getElementById("hoverep").style.display = "none";
 document.getElementById("current").style.display = "block";
 document.getElementById("currtime").style.display = "block";

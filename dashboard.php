@@ -668,6 +668,12 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 	?>
 
 <style>
+
+.logado{
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 .error-msg{
 	width: 100%;
 	background: #000;
@@ -802,7 +808,167 @@ else
 </div>
 </div>
 
-<div class="videos-tab">
+
+
+
+
+
+
+
+
+<div class="videos-tab" style="top: -8vw; position: relative;">
+<cont>Continuar assistindo como <?php echo $perfil['nome'];  ?></cont>
+<style>
+.videos-tab{
+	width: 100%;
+}
+.video-a{
+	position: relative;
+	height: auto;
+	overflow: hidden;
+	display: flex;
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+}
+.video{
+	margin-left: 0.8vw;
+	display: inline-block;
+	left: 2.5vw;
+	position: relative;
+	cursor: pointer;
+	box-sizing: border-box;
+	webkit-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+	opacity: 0.7;
+}
+
+.video .focus{
+	height: 9vw;
+    width: 16vw;
+	position: relative;
+}
+
+.video:hover{
+	-ms-transform: scale(1.3, 1.3); /* IE 9 */
+    -webkit-transform: scale(1.3, 1.3); /* Safari */
+    transform: scale(1.3, 1.3);
+	position: relative;
+	z-index: 2500;
+	opacity: 1;
+}
+
+
+.left-i{
+	float: left;
+	height: 9vw;
+	width: 2.5vw;
+	left: 0.2vw;
+	background: rgba(0,0,0,.50);
+	position: absolute;
+	cursor: pointer;
+	z-index: 3000;
+}
+
+.left-i svg{
+	fill: #fff;
+	position: absolute;
+	top: 3vw;
+}
+
+.right-i{
+	float: right;
+	height: 9vw;
+	width: 2.5vw;
+	right: 0vw;
+	background: rgba(0,0,0,.50);
+	position: absolute;
+	z-index: 3000;
+	cursor: pointer;
+}
+
+.right-i svg{
+	fill: #fff;
+	position: absolute;
+	top: 3vw;
+}
+
+.shiftLeft { 
+  transform: translate3d(-40px, 0, 0);
+}
+
+.shiftRight { 
+  transform: translate3d(40px, 0, 0);
+}
+
+#scroll{
+	transition:all 0.3s ease;
+}
+</style>
+<?php
+require 'db.php';
+$totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id ");
+$totaldepost = mysql_num_rows($totaldepost);
+if($totaldepost >= 6){
+?>
+<div class="left-i" onclick="ScrollByRight()">
+<svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
+</div>
+
+<div class="right-i" onclick="ScrollByLeft()">
+<svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M24.291,14.276L14.705,4.69c-0.878-0.878-2.317-0.878-3.195,0l-0.8,0.8c-0.878,0.877-0.878,2.316,0,3.194  L18.024,16l-7.315,7.315c-0.878,0.878-0.878,2.317,0,3.194l0.8,0.8c0.878,0.879,2.317,0.879,3.195,0l9.586-9.587  c0.472-0.471,0.682-1.103,0.647-1.723C24.973,15.38,24.763,14.748,24.291,14.276z" fill="#fff"/></svg>
+</div>
+
+<?php } ?>
+
+<div class="video-a" id="scroll">
+
+<?php
+$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 40" );
+ if (!$animels52)
+	echo "";
+else 
+	foreach ($animels52 as $animel5):
+ ?>
+
+<?php
+$serieid = $animel5['idserie'];
+$animels572 = DBRead( 'videos', "WHERE id and idserie = $serieid ORDER BY id ASC LIMIT 1" );
+ if (!$animels572)
+	echo "";
+else 
+	foreach ($animels572 as $animel57):
+ ?>
+
+<?php
+$videoh = $animel5['idserie'];
+$animels2 = DBRead( 'series', "WHERE id = $videoh ORDER BY id ASC LIMIT 40" );
+ if (!$animels2)
+	echo "";
+else 
+	foreach ($animels2 as $animel):
+ ?>
+<a href="watch.php?id=<?php echo $animel57['id'];?>">
+<div class="video">
+<img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
+</div>
+</a>
+
+
+
+
+
+
+<?php endforeach; endforeach; endforeach?>
+</div>
+
+
+
+
+
+
+<div class="videos-tab" style="position: relative; top: 2vw;">
 <cont>Em alta</cont>
 <style>
 .videos-tab{
@@ -939,6 +1105,18 @@ else
 
 
 <?php endforeach;?>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -951,7 +1129,7 @@ else
 	position: relative;
 	height: 26vw;
 	background: #000;
-	top: 1vw;
+	top: 7vw;
 	display: none;
 	color: #fff;
 }
