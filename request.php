@@ -106,7 +106,7 @@ else
 foreach ($resultsearchs as $resultsearch):
 ?>
 
-<a href="watch.php?id=<?php echo $resultsearch['id'] ?>&href=dashboard?serieinfo=<?php echo $resultsearch['id'] ?>">
+<a href="watch.php?id=<?php echo $resultsearch['id'] ?>&href=dashboard.php?serieinfo=<?php echo $resultsearch2['id'] ?>">
 <div class="video" id="click<?php echo $resultsearch2['id']; ?>">
 <img src="static/videos/<?php echo $resultsearch2['foto']; ?>" class="focus"/>
 <p style="color: #fff; text-align: center; font-size: 1.3vw;">Ep <?php echo $resultsearch['ep']; ?></p>

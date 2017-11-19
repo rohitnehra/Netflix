@@ -54,14 +54,26 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 
 <div id="player2">
 <div class="header">
+  <a href="
+  <?php 
+  if(isset($_GET['href'])){
+    echo $_GET['href'];
+  }
+  else{
+    echo 'dashboard.php';
+  }
+  ?>
+  ">
 <div class="voltar">
 <img class="net_back" src="img/voltar.png"/>
 <img class="net_back2" src="img/voltar_ativo.png"/>
+
 
 <div class="hover-back">
 <img class="seta" src="img/v.png"/>
 <p>Voltar à navegação</p>
 </div>
+</a>
 
 </div>
 </div>
