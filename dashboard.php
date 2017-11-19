@@ -1024,17 +1024,17 @@ else
 
 <script>
  function ScrollByLeft() {
-	document.getElementById("scroll").scrollBy(500, 0);
+	document.getElementById("scroll").scrollBy(1500, 0);
 }
 function ScrollByRight() {
-	document.getElementById("scroll").scrollBy(-500, 0);
+	document.getElementById("scroll").scrollBy(-1500, 0);
 }
 
 function ScrollLeft() {
-	document.getElementById("scroll").scrollLeft=500;
+	document.getElementById("scroll").scrollLeft=1500;
 }
 function ScrollRight() {
-	document.getElementById("scroll").scrollLeft=-500;
+	document.getElementById("scroll").scrollLeft=-1500;
 }
 
 
