@@ -7,4 +7,3 @@ error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
   define ( 'DB_CHARSET', 'utf8' );
   define ( 'DB_PREFIX', 'netflix' );
   date_default_timezone_set('America/Sao_Paulo');
-?> 

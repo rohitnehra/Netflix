@@ -364,12 +364,29 @@ input[type="radio"]:checked + label .avatar2 {
 }
 		 </style>
 		
-
+<?php
+		$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
+		$totaldeperfil2 = mysql_query("SELECT * FROM netflix_profiles WHERE iduser = $iduser ");
+		$totaldeperfil = mysql_num_rows($totaldeperfil2);
+?>
 	  <form action="#" method="post">
 		<div id="radio">
 		<input type="radio" id="radio1" class="radios" name="radio" checked="checked" value="1">
 		<label for="radio1">
-		<div class="avatar2 people1"></div>
+		<div class="avatar2 people<?php
+		if($totaldeperfil == 0){
+			echo '1';
+		}
+		else if($totaldeperfil == 1){
+			echo '2';
+		}
+		else if($totaldeperfil == 2){
+			echo '3';
+		}
+		else if($totaldeperfil == 3){
+			echo '4';
+		}
+		?>"></div>
 		</label>
 	  </div>
 <input type="text" name="name" id="name" placeholder="Nome do perfil" style="font-size: 1vw; border: none;width: 90%; padding: 0.5vw; border-radius: 0.1vw; position: relative; top: 2vw; height: 2.5vw;"/>
@@ -655,7 +672,6 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 	position: relative;
 	top: 0;
 	left: 0;
-	border-bottom: 0.1vw solid #444;
 	color: #fff;
 }
 
@@ -888,7 +904,7 @@ if($totaldepost >= 6){
 <div class="video-a" id="scroll">
 
 <?php
-$animels2 = DBRead( 'series', "WHERE id ORDER BY id ASC LIMIT 20" );
+$animels2 = DBRead( 'series', "WHERE id ORDER BY id ASC LIMIT 40" );
  if (!$animels2)
 	echo "";
 else 

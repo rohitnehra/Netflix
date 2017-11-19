@@ -22,7 +22,25 @@ $num1 = rand(15, 50);
 $num2 = rand(121235321, 20);
 $antispam5 = $num1 * $num2;
 $antispam = DBEscape(strip_tags(trim(sha1($antispam5))));
-$foto = 1;
+require 'db.php';
+$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
+$totaldeperfil5 = mysql_query("SELECT * FROM netflix_profiles WHERE iduser = $iduser ");
+$totaldeperfil = mysql_num_rows($totaldeperfil5);
+if($totaldeperfil == 0){
+    $foto = 1;
+}
+else if($totaldeperfil == 1){
+    $foto = 2;
+}
+else if($totaldeperfil == 2){
+    $foto = 3;
+}
+else if($totaldeperfil == 3){
+    $foto = 4;
+}
+else{
+    $foto = 1;
+}
 $ip=mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
 mysql_query("SET NAMES 'utf8'");
 mysql_query('SET character_set_connection=utf8');
