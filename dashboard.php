@@ -242,7 +242,7 @@ body{
 <div class="who alc">Quem está assistindo?</div>
 <div class="what center">
 <?php
-$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 4" );
+$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
 if (!$peoples)
 echo '';	
 else  
@@ -268,7 +268,7 @@ else
 require 'db.php';
 $totaldepost = mysql_query("SELECT * FROM netflix_profiles WHERE iduser = $iduser ");
 $totaldepost = mysql_num_rows($totaldepost);
-if($totaldepost < 4){
+if($totaldepost < 5){
 ?>
 	<button style="border:none; background: transparent;" name="people">
 <div class="avatar1 peopleplus" id="addpeople2"></div>
@@ -385,6 +385,9 @@ input[type="radio"]:checked + label .avatar2 {
 		}
 		else if($totaldeperfil == 3){
 			echo '4';
+		}
+		else if($totaldeperfil == 4){
+			echo '2';
 		}
 		?>"></div>
 		</label>
@@ -883,6 +886,10 @@ else
 
 .shiftRight { 
   transform: translate3d(40px, 0, 0);
+}
+
+#scroll{
+	transition:all 0.3s ease;
 }
 </style>
 <?php
