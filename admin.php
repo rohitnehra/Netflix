@@ -180,6 +180,14 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
     background: #fff;
     color: #000;
 }
+
+.editar-p{
+    color: blue;
+}
+
+.editar-p:hover{
+    color: red;
+}
 </style>
 
     
@@ -196,7 +204,7 @@ else
 	foreach ($peoples as $people):	 
 ?>
     <li class="baka">
-        <p> <?php echo $people['email'];?> | <?php if($people['admin'] == 1){ echo 'Admin'; } else{ echo 'Membro'; } ?></p>
+        <p> <?php echo $people['email'];?> | <?php if($people['admin'] == 1){ echo 'Admin'; } else{ echo 'Membro'; } ?></p> <a class="editar-p"href="admin.php?action=uts&iduser=<?php echo $user['idcry'] ?>&usuarios=<?php echo $people['id']; ?>"><p style="float: right; position: absolute; top: 0; right: 2vw;">Editar</p></a>
     </li>
     <?php endforeach; ?>
 
@@ -208,7 +216,79 @@ else
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
     Configuração do site
     </h1>
-    <?php } else{?>
+    <?php }  else  if($_GET['action'] == uts){?>
+        <?php
+$useredit = $_GET['usuarios'];
+$peoples = DBRead( 'user', "WHERE id = '".$useredit."' ORDER BY id DESC LIMIT 100" );
+if (!$peoples)
+echo '';	
+else  
+	foreach ($peoples as $people):	 
+?>
+    <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
+    Editando <?php echo $people['email']; ?>
+    </h1>
+        <style>
+        .baka-input{
+            width: 50%;
+            border: none;
+            height: 2.5vw;
+            margin-top: 2vw;
+            padding-left: 1vw;
+        }
+
+        .config-btn{
+                display: inline-block;
+                text-decoration: none;
+                line-height: 1rem;
+                vertical-align: middle;
+                cursor: pointer;
+                font-weight: 700;
+                letter-spacing: .025rem;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: none;
+                position: relative;
+                min-height: 3.6vw;
+                -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                -moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                color: #fff;
+                width: 30vw;
+                background: #e50914;
+                font-size: 1.5vw;
+				top: 5vw;
+            }
+        </style>
+    <center>
+    <input class="baka-input" type="text" placeholder="Email" value="<?php echo $people['email']; ?>"/>
+    <input class="baka-input" type="text" placeholder="Senha nova" value=""/>
+
+    <select name="listue" class="baka-input">
+  <option value="0">Usuario</option>
+  <option value="1">Administrador</option>
+</select>
+
+<select name="banidolist" class="baka-input">
+  <option value="0">Desbanido</option>
+  <option value="1">Banido</option>
+</select>
+
+<button class="config-btn" id="concluido">Concluido</button>
+    
+    </center>
+
+    <?php endforeach; ?>
+    <?php } else{ ?>
 
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
         Clone Neflix feito por Alexandre Silva
