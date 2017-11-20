@@ -297,10 +297,20 @@ foreach ($resultsearchs as $resultsearch):
 
 </div>
 </div>
-<video id="playerwatchpri" muted src="<?php echo $video['video']; ?>" preload="metadata" autoplay>
+<video id="playerwatchpri" muted src="<?php echo $video['video']; ?><?php
+	$userideq = $_COOKIE['iduser'];
+	$animels = DBRead( 'videos', "WHERE idserie = '{$anime['id']}' ORDER BY id DESC LIMIT 1" );
+$resultsearchs = DBRead( 'history', "WHERE id and idpeople = '".$userideq."' and idvideo = '".$video['id']."' and perfil = '".$_COOKIE['usuario']."' ORDER BY id DESC" );
+ if (!$resultsearchs)
+ echo '';
+else 
+foreach ($resultsearchs as $resultsearch):
+?>
+<?php echo '#t=';?><?php echo $resultsearch['atualprogress'];?>
+<?php endforeach;?>" preload="metadata" autoplay>
 
 </video>
-
+<script type="text/javascript" src="assets/js/mod_xhr.js"></script>
 <script type="text/javascript">
 document.getElementById("playerwatchpri").onclick = function() {vidplay()};
 document.getElementById("buttonpp").onclick = function() {vidplay()};
@@ -352,6 +362,8 @@ document.getElementById("current").style.display = "none";
 document.getElementById("currtime").style.display = "none";
 document.getElementById("helphover").style.display = "none";
 document.getElementById("helphover").style.display = "none";
+document.getElementById("hoverep").style.display = "none";
+document.getElementById("hoverep").style.display = "none";
 video.pause();
 }
 
@@ -393,8 +405,25 @@ document.getElementById('progressBar').style.width = ((video.currentTime / durat
 var videotimer = document.getElementById('defaultBar').style.width = ((bufferedEnd / duration)*100) + "%";
 video.ontimeupdate = function() {myFunction()};
 
-}
-});	
+function myFunction() {
+  // Display the current position of the video in a <p> element with id="demo"
+      document.getElementById("currtime").innerHTML = video.currentTime;
+  }
+  <?php
+  if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
+    $animels = DBRead( 'videos', "WHERE idserie = '{$anime['id']}' ORDER BY id DESC LIMIT 1" );
+   if (!$animels)
+    echo "";
+  else 
+    foreach ($animels as $animel):
+    ?>
+      window.setInterval(function(){	
+      xhr.get('historytime.php?timer='+videotimer+'&video=<?php echo $video['id'];?>&currenttime='+video.currentTime+'&profile=<?php echo $_COOKIE['usuario'];?>&anime=<?php echo $anime['id']; ?>', function(nots){
+           });
+         }, 6000);
+  <?php endforeach;}?>
+  }
+  });	
 
 function vidplay() {	
 if (video.paused) {

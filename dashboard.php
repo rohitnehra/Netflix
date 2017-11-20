@@ -252,7 +252,14 @@ else
 <a style="color: transparent" href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
 <div class="avatar1 people<?Php echo $people['foto'] ?>"></div></a>
 </button>
-<div class="pessoas"><p class="ava-who"><?php echo $people['nome']; ?></p></div>
+<div class="pessoas"><p class="ava-who"><?php
+	$str2 = nl2br( $people['nome'] );
+	$len2 = strlen( $str2 );
+	$max2 = 13;
+   if( $len2 <= $max2 )
+   echo $str2;
+	else    
+   echo substr( $str2, 0, $max2 ) . '...'?></p></div>
 
 
 
@@ -816,7 +823,7 @@ else
 $animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 1" );
  if (!$animels52)
 	echo "
-		<p style='width: auto;color: #fff; font-size: 1.5vw; position: relative; left: 3.5vw; top: -3vw;'>Que pena você não assistiu nada ainda, assista algo para aparecer aqui</p>
+		<p style='width: auto;color: #fff; font-size: 1.5vw; position: relative; left: 3.5vw; top: -2.8vw;'>Que pena você não assistiu nada ainda, assista algo para aparecer aqui.</p>
 	";
 else 
 	foreach ($animels52 as $animel5):
@@ -932,6 +939,8 @@ if($totaldepost >= 6){
 
 <div class="video-a" id="scroll">
 
+
+
 <?php
 $animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 40" );
  if (!$animels52)
@@ -952,6 +961,9 @@ else
 <a href="watch.php?id=<?php echo $animel5['idvideo'];?>">
 <div class="video">
 <img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
+<div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
+<div style="width: <?php echo $animel5['progress'];?>; height: inherit; background: red;"></div>
+</div>
 </div>
 </a>
 
