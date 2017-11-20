@@ -758,14 +758,131 @@ else
 	foreach ($peoples as $people):	 
 ?>
 <div class="avatar people<?php echo $people['foto'] ?>"></div>
-	<div class="people">
+	<div class="people" id="bakaero">
 	<p style="color: #fff; position: relative; float: left;left: 0.5vw;margin-top:0.5vw;font-size: 0.8vw;"><?Php echo $people['nome']; ?>	<span class="seta"></span></p>
 	</div>
 
 	<?php endforeach;?>
+
+<style>
+.menu-right{
+	background: #141414;
+	width: 13vw;
+	position: absolute;
+	float: right;
+	right: -2vw;
+	top: 3.8vw;
+	height: 14vw;
+	display: none;
+}
+.people1{
+		background-image: url(/static/avatar/user1.png);
+	}
+
+
+	.peopleplus{
+		background-image: url(/static/avatar/plus.png);
+	}
+
+	.people2{
+		background-image: url(/static/avatar/user2.png);
+	}
+
+	.people3{
+		background-image: url(/static/avatar/user3.png);
+	}
+
+	.people4{
+		background-image: url(/static/avatar/user4.png);
+	}
+
+	.kids{
+		background-image: url(/static/avatar/kids.png);
+	}
+
+	.avatar1{
+		height: 2.9vw;
+		width: 2.9vw;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		position: relative;
+		text-decoration: none;
+		border: 0.1vw solid rgba(0,0,0,.4);
+		background-repeat: no-repeat;
+		-moz-background-size: cover;
+		background-size: cover;
+		background-color: #333;
+		margin-left: 1vw;
+		margin-top: 0.5vw;
+		cursor: pointer;
+		left: 0vw;
+	}
+
+	.avatar1:hover{
+		border: 0.1vw solid #fff;
+	}
+
+	.li-perfil{
+		background: #141414;
+		cursor: pointer;
+	}
+
+	.li-perfil:hover{
+		background: #000;
+	}
+
+</style>
+
+<div class="menu-right" id="menuzinho">
+<p style="color: #fff; padding: 0.5vw;">Menu</p>
+<hr>
+<?php
+$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
+if (!$peoples)
+echo '';	
+else  
+	foreach ($peoples as $people):	 
+?>
+<a href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
+<li class="li-perfil">
+<button style="border:none; background: transparent;" name="people">
+<div class="avatar1 people<?Php echo $people['foto'] ?>"></div>
+<p style="color: #fff; position: relative; top: -2vw; left: 5vw;"><?php
+	$str2 = nl2br( $people['nome'] );
+	$len2 = strlen( $str2 );
+	$max2 = 10;
+   if( $len2 <= $max2 )
+   echo $str2;
+	else    
+   echo substr( $str2, 0, $max2 ) . '...'?></p>
+</button>
+</li>	
+</a>
+
+	<?php endforeach;?>
+
+<a href="logout.php" style="color: transparent;">
+<li class="li-perfil">
+<p style="text-align: center; color: #fff;">Sair</li>
+</li>
+</a>
 </div>
 
 </div>
+
+</div>
+
+<script>
+    var option2 = document.getElementById('menuzinho');
+document.getElementById("bakaero").onmouseover = function() {animacaomenupos()};
+function animacaomenupos(){
+document.getElementById("menuzinho").style.display = "block";
+}
+document.addEventListener('click', function(){
+	option2.style.display = 'none';
+});
+</script>
 
 <script>
 var headerstyle = document.getElementById('headera');
