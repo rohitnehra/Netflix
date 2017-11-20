@@ -875,6 +875,16 @@ else
 </li>
 </a>
 
+<?php  if($user['admin'] == 1){ ?>
+
+	<a href="admin.php?href=dashboard.php" style="color: transparent;">
+<li class="li-perfil">
+<p style="text-align: center; color: #fff;">Adminstrador</li>
+</li>
+</a>
+
+<?php } ?>
+
 <a href="logout.php" style="color: transparent;">
 <li class="li-perfil">
 <p style="text-align: center; color: #fff;">Sair</li>
