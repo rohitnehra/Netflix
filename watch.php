@@ -306,7 +306,7 @@ $resultsearchs = DBRead( 'history', "WHERE id and idpeople = '".$userideq."' and
 else 
 foreach ($resultsearchs as $resultsearch):
 ?>
-<?php echo '#=';?><?php echo $resultsearch['atualprogress'];?>
+<?php echo '#=t';?><?php echo $resultsearch['atualprogress'];?>
 <?php endforeach;?>" preload="metadata" autoplay>
 
 </video>
