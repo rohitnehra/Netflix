@@ -1104,13 +1104,12 @@ else
 <img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
 <div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
 <div style="width:<?php
-$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 40" );
+$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 1" );
  if (!$animels52)
-	echo "";
+	echo "0";
 else 
 	foreach ($animels52 as $animel5):
- ?><?php echo $animel5['progress'];?>
- ; height: inherit; background: red;"></div>
+ ?><?php echo $animel5['progress'];?>; height: inherit; background: red;"></div>
 </div>
 </div>
 </a>
