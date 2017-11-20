@@ -952,7 +952,7 @@ else
 
 <?php
 $videoh = $animel5['idserie'];
-$animels2 = DBRead( 'series', "WHERE id = $videoh ORDER BY id ASC LIMIT 1" );
+$animels2 = DBRead( 'series', "WHERE id = '". $videoh ."' ORDER BY id ASC LIMIT 1" );
  if (!$animels2)
 	echo "";
 else 
@@ -962,17 +962,18 @@ else
 <div class="video">
 <img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
 <div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
-<div style="width: <?php echo $animel5['progress'];?>; height: inherit; background: red;"></div>
+<div style="width:<?php
+$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 40" );
+ if (!$animels52)
+	echo "";
+else 
+	foreach ($animels52 as $animel5):
+ ?><?php echo $animel5['progress'];?>
+ ; height: inherit; background: red;"></div>
 </div>
 </div>
 </a>
-
-
-
-
-
-
-<?php endforeach; endforeach;?>
+<?php endforeach; endforeach; endforeach;?>
 </div>
 
 
