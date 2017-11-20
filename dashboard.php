@@ -772,8 +772,12 @@ else
 	float: right;
 	right: -2vw;
 	top: 3.8vw;
-	height: 14vw;
+	height: auto;
 	display: none;
+}
+
+.menu-right p{
+	font-size: 1.1vw;
 }
 .people1{
 		background-image: url(/static/avatar/user1.png);
@@ -826,11 +830,14 @@ else
 	.li-perfil{
 		background: #141414;
 		cursor: pointer;
+		margin-top: 0.5vw;
 	}
 
 	.li-perfil:hover{
 		background: #000;
 	}
+
+
 
 </style>
 
@@ -862,11 +869,18 @@ else
 
 	<?php endforeach;?>
 
+	<a href="logoutp.php" style="color: transparent;">
+<li class="li-perfil">
+<p style="text-align: center; color: #fff;">Gerenciar perfil</li>
+</li>
+</a>
+
 <a href="logout.php" style="color: transparent;">
 <li class="li-perfil">
 <p style="text-align: center; color: #fff;">Sair</li>
 </li>
 </a>
+
 </div>
 
 </div>

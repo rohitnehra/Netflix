@@ -1,6 +1,6 @@
 <?php
 setcookie("iduser" , "");
 setcookie("inisession" , "");
-setcookie("perfil" , "");
+setcookie("usuario" , "");
 header("location: /");
 ?>
