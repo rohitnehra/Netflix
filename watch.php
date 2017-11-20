@@ -306,7 +306,7 @@ $resultsearchs = DBRead( 'history', "WHERE id and idpeople = '".$userideq."' and
 else 
 foreach ($resultsearchs as $resultsearch):
 ?>
-<?php echo '#t=';?><?php echo $resultsearch['atualprogress'];?>
+<?php echo '#=';?><?php echo $resultsearch['atualprogress'];?>
 <?php endforeach;?>" preload="metadata" autoplay>
 
 </video>
@@ -326,6 +326,29 @@ document.getElementById("fullscreenedico").onclick = function() {goFullscreen()}
 document.getElementById("fullscreenedico").onclick = function() {goFullscreen()};
 document.getElementById("help").onmouseover = function() {help()};
 document.getElementById("todosp").onclick = function() {todosep()};
+
+
+var video = document.getElementById('playerwatchpri');
+
+var videoStartTime = 0;
+var durationTime = 0;
+
+video.addEventListener('loadedmetadata', function() {
+  videoStartTime = <?php
+	$userideq = $_COOKIE['iduser'];
+	$animels = DBRead( 'videos', "WHERE idserie = '{$anime['id']}' ORDER BY id DESC LIMIT 1" );
+$resultsearchs = DBRead( 'history', "WHERE id and idpeople = '".$userideq."' and idvideo = '".$video['id']."' and perfil = '".$_COOKIE['usuario']."' ORDER BY id DESC" );
+ if (!$resultsearchs)
+ echo '';
+else 
+foreach ($resultsearchs as $resultsearch):
+?>
+<?php echo $resultsearch['atualprogress'];?>
+<?php endforeach;?>;
+  durationTime = 4;
+  this.currentTime = videoStartTime;
+}, false);
+
 
 <?php
 $idwatch = $anime['id'];
