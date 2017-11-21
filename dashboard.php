@@ -1102,22 +1102,16 @@ $animels2 = DBRead( 'series', "WHERE id = '". $videoh ."' ORDER BY id ASC LIMIT 
 else 
 	foreach ($animels2 as $animel):
  ?>
-<a href="watch.php?id=<?php echo $animel5['idvideo'];?>">
+<a href="watch.php?id=<?php echo $animel5['idvideo'];?>&chalala=<?php echo $animel5['progress']; ?>">
 <div class="video">
 <p style="color: #fff; font-size: 1.2vw; background: #000; width: 100%;">Episodio <?php echo $animel5['ep']; ?></p>
 <img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
 <div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
-<div style="width:<?php
-$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 1" );
- if (!$animels52)
-	echo "0";
-else 
-	foreach ($animels52 as $animel5):
- ?><?php echo $animel5['progress'];?>; height: inherit; background: red;"></div>
+<div style="width:<?php echo $animel5['progress'];?> <?php if(empty($animel5['progress'])){ echo '0'; }?>; height: inherit; background: red;"></div>
 </div>
 </div>
 </a>
-<?php endforeach; endforeach; endforeach;?>
+<?php endforeach; endforeach;?>
 </div>
 
 

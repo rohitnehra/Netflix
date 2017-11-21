@@ -345,7 +345,7 @@ else
 foreach ($resultsearchs as $resultsearch):
 ?>
 <?php echo $resultsearch['atualprogress'];?>
-<?php if(isset($_COOKIE['usuario'])){ echo '0'; }?>
+<?php if(empty($resultsearch['atualprogress'])){ echo '0'; }?>
 <?php endforeach;?>;
   durationTime = 4;
   this.currentTime = videoStartTime;
