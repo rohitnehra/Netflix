@@ -845,7 +845,7 @@ else
 <p style="color: #fff; padding: 0.5vw;">Menu</p>
 <hr>
 <?php
-$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
+$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 3" );
 if (!$peoples)
 echo '';	
 else  
