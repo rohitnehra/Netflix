@@ -1082,6 +1082,7 @@ if($totaldepost >= 6){
 
 
 
+
 <?php
 $animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 40" );
  if (!$animels52)
@@ -1089,6 +1090,8 @@ $animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and
 else 
 	foreach ($animels52 as $animel5):
  ?>
+
+
 
 
 <?php
@@ -1101,6 +1104,7 @@ else
  ?>
 <a href="watch.php?id=<?php echo $animel5['idvideo'];?>">
 <div class="video">
+<p style="color: #fff; font-size: 1.2vw; background: #000; width: 100%;">Episodio <?php echo $animel5['ep']; ?></p>
 <img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
 <div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
 <div style="width:<?php

@@ -55,7 +55,8 @@ else{
 	$form2['idpeople'] = $_COOKIE['iduser'];
 	$form2['idvideo'] = $_GET['id'];
 	$form2['perfil'] = $_COOKIE['usuario'];
-	$form2['idserie'] = $anime['id'];
+  $form2['idserie'] = $anime['id'];
+  $form2['ep'] = $video['ep'];
 	if( DBCreate( 'history', $form2 ) ){	
 	echo '';
 	}

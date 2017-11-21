@@ -5,6 +5,7 @@ if(isset($_GET['timer'])){
 $progress = $_GET['timer'];
 $profile = $_GET['profile'];
 $videoid = $_GET['video'];
+
 $currenttime = $_GET['currenttime'];
 $idserie = $_GET['anime'];
 
@@ -25,4 +26,5 @@ DBUpDate( 'history', $upRate3, "idvideo = '{$videoid}' and perfil = '{$profile}'
 $upRate3 = array('idvideo' => $videoid);
 DBUpDate( 'history', $upRate3, "idvideo = '{$videoid}' and perfil = '{$profile}'" );
 }
+
 		?>
