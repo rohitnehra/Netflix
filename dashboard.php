@@ -166,13 +166,14 @@ body{
 		<?Php 
 		if($_GET['action'] == gerenciar){
 			echo 'margin-left: -10.2vw;';
+			echo 'left: 10vw;';
 		}
 		else{
 			echo 'margin-left: -8vw;';
+			echo 'left: 8.6vw;';
 		}
 		?>
 		cursor: pointer;
-		left: 8.6vw;
 	}
 
 	.avatar1:hover{
@@ -213,7 +214,15 @@ body{
 		font-size: 1.3vw;
 		position: relative;
 		text-align: center;
-		left: -5vw;
+		
+		<?Php 
+		if($_GET['action'] == gerenciar){
+			echo 'left: -3.5vw;';
+		}
+		else{
+			echo 'left: -5vw;';
+		}
+		?>
 	}
 
 	button:hover + .pessoas .ava-who{
@@ -296,7 +305,7 @@ if($_GET['action'] == gerenciar){
 	height: 1.5vw;
 	font-size: 1.2vw;
 	top: -8.3vw;
-	right: 3.8vw;
+	right: 2.5vw;
 	background: rgba(0,0,0,.50);
 	color: #fff;
 	cursor: pointer;
