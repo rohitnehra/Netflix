@@ -135,7 +135,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
         <hr>
 
         <a href="admin.php?action=user&iduser=<?php echo $user['idcry'] ?>">
-        <li class="opa <?php if($_GET['action'] == user){ echo "ativo"; }else{ echo ''; } ?>">
+        <li class="opa <?php if($_GET['action'] == user){ echo "ativo"; }else if($_GET['action'] == uts ){ echo "ativo";}else{ echo ''; } ?>">
         Usuarios
         </li>
         </a>
@@ -210,8 +210,26 @@ else
 
     <?php } else  if($_GET['action'] == filme){ ?>
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
-    Filmes do site  
+    Filmes/Séries/Animes do site  
     </h1>
+
+<style>
+.adds{
+    width: 13vw;
+    position: relative;
+    height: 2.5vw;
+    border: none;
+    background: red;
+    color: #fff;
+    top: 2vw;
+    font-size: 1vw;
+    cursor: pointer;
+}
+</style>
+<center>
+    <button class="adds">Adicionar filme/Série/Anime</button>
+    <button class="adds">Adicionar episodio</button>
+</center>
     <?php } else  if($_GET['action'] == configw){?>
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
     Configuração do site
@@ -281,6 +299,11 @@ else
 <select name="banidolist" class="baka-input">
   <option value="0">Desbanido</option>
   <option value="1">Banido</option>
+</select>
+
+<select name="banidolist" class="baka-input">
+  <option value="<?php echo $people['expirado'] ?>"><?PHP echo date('Y-m-d H:i:s', strtotime('+43800 min')); ?> (Acrescentar mais 1 mês)</option>
+  <option value="1"><?PHP echo date('Y-m-d H:i:s', strtotime('-43800 min')); ?> (Expirar licensa)</option>
 </select>
 
 <button class="config-btn" id="concluido">Concluido</button>

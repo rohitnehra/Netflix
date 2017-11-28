@@ -1,3 +1,5 @@
+<?php
+if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){?>
 <head>
 <title>
 Netflix Brasil
@@ -327,4 +329,8 @@ Assista onde quiser, quanto quiser</p>
 
 
 </body>
+<?php } else{
+    include 'dashboard.php';
+}
+    ?>
 </html>

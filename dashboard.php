@@ -5,7 +5,8 @@ require 'static/php/system/config.php';
 <?php
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 	
-	
+
+
 			$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
 			$user = DBRead('user', "WHERE id = '{$iduser}' LIMIT 1 ");
 		
@@ -13,6 +14,10 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 			$user = $user[0];
 			}else{
 			echo '<script>location.href="dashboard.php";</script>';	
+			}
+
+			if($user['configurado'] == 0){
+				echo '<script>location.href="configure.php";</script>';
 			}
 			
 			
@@ -38,18 +43,6 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 	}
 	}
 
-	if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){
-		echo '<script>location.href="account.php";</script>';
-	}
-	if(empty($_COOKIE['inisession'])){
-		echo '<script>location.href="account.php";</script>';
-	}
-	if(empty($_COOKIE['iduser'])){
-		echo '<script>location.href="account.php";</script>';
-	}
-	if($user['configurado'] == 0){
-		echo '<script>location.href="configure.php";</script>';
-	}
 
 	?>
 <head>
@@ -77,7 +70,8 @@ else{
     list-style:none;
 }
 </style>
-
+<?php
+if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){?>
 <html>
 <?php 
 if(empty($_COOKIE['usuario'])){
@@ -879,7 +873,7 @@ else
 
 	<a href="admin.php?href=dashboard.php" style="color: transparent;">
 <li class="li-perfil">
-<p style="text-align: center; color: #fff;">Adminstrador</li>
+<p style="text-align: center; color: #fff;">Administrador</li>
 </li>
 </a>
 
@@ -1379,6 +1373,74 @@ function ScrollRight() {
 </script>
 
 </body>
-
 <?php } ?>
+
+
+<?php } else {?>
+
+        <html>
+        <style>
+body {
+    background: #081421;
+    color: #d3d7de;
+    font-family: "Courier new";
+    font-size: 18px;
+    line-height: 1.5em;
+	cursor: default;
+}
+
+.code-area {
+    position: absolute;
+    width: 320px;
+	min-width: 320px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.code-area > span {
+    display: block;
+}
+
+@media screen and (max-width: 320px) {
+    .code-area {
+		font-size: 5vw;
+		min-width: auto;
+        width: 95%;
+		margin: auto;
+		padding: 5px;
+		padding-left: 10px;
+		line-height: 6.5vw;
+    }
+}
+
+        </style>
+        <body>
+        <div class="code-area">
+  <span style="color: #777;font-style:italic;">
+    // 404 page not found.
+  </span>
+  <span>
+    <span style="color:#d65562;">
+      if
+    </span>
+	  (<span style="color:#4ca8ef;">!</span><span style="font-style: italic;color:#bdbdbd;">found</span>)
+    {
+  </span>
+  <span>
+    <span style="padding-left: 15px;color:#2796ec">
+       <i style="width: 10px;display:inline-block"></i>throw
+    </span>
+    <span>
+      (<span style="color: #a6a61f">"(╯°□°)╯︵ ┻━┻"</span>);
+    </span>
+	  <span style="display:block">}</span>
+  </span>
+</div>
+        </body>
+
+        </html>
+
+     <?php } ?>
 </html>
