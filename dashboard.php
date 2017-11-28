@@ -937,7 +937,7 @@ else
 	foreach ($peoples as $people):	 
 ?>
 
-<a href="/swift.php<?php echo $people['id'] ?>">
+<a href="/swift.php?id=<?php echo $people['id'] ?>">
 <li class="li-perfil">
 <button style="border:none; background: transparent;" name="people">
 <div class="avatar1 people<?Php echo $people['foto'] ?>"></div>
