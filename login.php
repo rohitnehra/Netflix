@@ -1,8 +1,8 @@
 <?php
     require 'static/php/system/database.php';
     require 'static/php/system/config.php';
-  mysql_connect('localhost', 'root','')or die();	//Conecta com o MySQL
-  mysql_select_db('netflix');						//Seleciona banco de dados
+  mysql_connect($hostp, $userp, $passwrdp)or die();	//Conecta com o MySQL
+  mysql_select_db($dbp);						//Seleciona banco de dados
   
   $login=$_POST['lemail'];	//Pegando dados passados por AJAX
   $senha=$_POST['lsenha'];

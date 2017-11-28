@@ -33,7 +33,7 @@ Netflix
 </head>
 
 <?php 
-if($user['configurado'] == 0){
+if($user2['configurado'] == 1){
 ?>
  <html>
         <style>
@@ -99,7 +99,7 @@ body {
 
         </html>
 
-<?php } else { ?>
+<?php } else if($user2['configurado'] == 0) { ?>
 
 <style>
 *{

@@ -254,7 +254,7 @@ Entrar
                 <div class="check"></div>
                 <p>Escolha seu plano.</p>
                 <p class="text-f">Escolha qualquer plano; você só paga quando seu mês grátis terminar.</p>
-                <a href="/account/registerf"><button class="free-btn">Continuar</button></a>
+                <a href="/account.php?ActionFree=registerf"><button class="free-btn">Continuar</button></a>
             </div>
 
 

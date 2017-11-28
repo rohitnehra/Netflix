@@ -1,6 +1,6 @@
 <?php
-require 'static/php/system/database.php';
-require 'static/php/system/config.php';
+require '/static/php/system/database.php';
+require '/static/php/system/config.php';
 $email = $_POST['email'];
 $senha = DBEscape(strip_tags(trim(sha1($_POST['senha']))));
 $user = $_POST['user'];
@@ -29,8 +29,8 @@ if( $dbCheck ){
 }
 else{
 //Abrindo Conexao com o banco de dados
-$conexao = mysql_pconnect("localhost","root","") or die (mysql_error());
-$banco = mysql_select_db("netflix");
+$conexao = mysql_pconnect($hostp,$userp,$passwrdp) or die (mysql_error());
+$banco = mysql_select_db($dbp);
 
 //Utilizando o  mysql_real_escape_string voce se protege o seu código contra SQL Injection.
 $email5 = mysql_real_escape_string($email);
