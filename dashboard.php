@@ -54,9 +54,12 @@ if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){
 }
 
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
-	echo 'Netflix';
+	
 	if(empty($_COOKIE['usuario'])){
 		echo 'Change Profile';
+	}
+	else{
+		echo 'Netflix';
 	}
 }
 ?>
