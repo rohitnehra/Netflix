@@ -36,7 +36,7 @@
         if( DBUpdate( 'user', $userUP, "id = '{$iduser}'" ) ){
         echo '';
         }
-        echo '<script>location.href="dashboard.php";</script>';
+        echo '<script>location.href="dashboard";</script>';
 		exit;	
 }
 ?>

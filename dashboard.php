@@ -167,7 +167,7 @@ body{
 		margin-top: 2vw;
 		display: inline-block;
 		<?Php 
-		if($_GET['action'] == gerenciar){
+		if($_GET['action'] == 1){
 			echo 'margin-left: -10.2vw;';
 			echo 'left: 10vw;';
 		}
@@ -219,7 +219,7 @@ body{
 		text-align: center;
 		
 		<?Php 
-		if($_GET['action'] == gerenciar){
+		if($_GET['action'] == 1){
 			echo 'left: -3.5vw;';
 		}
 		else{
@@ -258,7 +258,7 @@ body{
 <center>
 <div class="who alc">
 <?Php 
-if($_GET['action'] == gerenciar){
+if($_GET['action'] == 1){
 	echo "Gerenciando perfil's";
 }
 else{
@@ -275,7 +275,7 @@ else
 ?>
 <button style="border:none; background: transparent;" name="people">
 <?Php 
-if($_GET['action'] == gerenciar){?>
+if($_GET['action'] == 1){?>
  <?php echo ''; ?>
 <?php }else{?>
 	<a href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
@@ -294,7 +294,7 @@ if($_GET['action'] == gerenciar){?>
 
 
 <?Php 
-if($_GET['action'] == gerenciar){
+if($_GET['action'] == 1){
 ?>
 
 
@@ -358,17 +358,17 @@ if($totaldepost < 5){
 	}
 	</style>
 	<?Php 
-if($_GET['action'] == gerenciar){?>
-	<center><a href="dashboard.php?action=concluir"><button class="ger">Concluir</button>
+if($_GET['action'] == 1){?>
+	<center><a href="/dashboard/2"><button class="ger">Concluir</button>
 	<?Php 
-if($_GET['action'] == gerenciar){?>
+if($_GET['action'] == 1){?>
  <?php echo ''; ?>
 <?php }else{?>
 	</a>
 <?php } ?>
 	</center>
 <?php }else{?>
-	<center><a href="dashboard.php?action=gerenciar"><button class="ger">GERENCIAR PERFIS</button></a></center>
+	<center><a href="/dashboard/1"><button class="ger">GERENCIAR PERFIS</button></a></center>
 <?php } ?>
 	<style>
 	.addprofile{

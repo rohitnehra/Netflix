@@ -14,16 +14,16 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
             $user = DBRead('user', "WHERE id = '{$iduser}' LIMIT 1 ");
 }
 	if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){
-		echo '<script>location.href="account.php";</script>';
+		echo '<script>location.href="account";</script>';
 	}
 	if(empty($_COOKIE['inisession'])){
-		echo '<script>location.href="account.php";</script>';
+		echo '<script>location.href="account";</script>';
 	}
 	if(empty($_COOKIE['iduser'])){
-		echo '<script>location.href="account.php";</script>';
+		echo '<script>location.href="account";</script>';
 	}
 	if($user['configurado'] == 1){
-		echo '<script>location.href="dashboard.php";</script>';
+		echo '<script>location.href="dashboard";</script>';
 	}
 ?>
 

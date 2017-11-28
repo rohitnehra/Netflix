@@ -1,1 +1,8 @@
 ErrorDocument 404 /404.php
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+RewriteRule ^watch/(.*)$ /watch.php?id=$1 [L]
+RewriteRule ^dashboard/(.*)$ /dashboard.php?action=$1 [L]
+RewriteRule ^account/?$ /account.php [NC,L]
+RewriteRule ^dashboard/?$ /dashboard.php [NC,L]
+</IfModule>

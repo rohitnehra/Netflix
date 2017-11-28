@@ -69,7 +69,7 @@ else{
 
 <head>
 <title>Netflix</title>
-<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
 <meta charset="utf-8">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"/>
@@ -90,12 +90,12 @@ else{
   ?>
   ">
 <div class="voltar" id="voltar">
-<img class="net_back" src="img/voltar.png"/>
-<img class="net_back2" src="img/voltar_ativo.png"/>
+<img class="net_back" src="/img/voltar.png"/>
+<img class="net_back2" src="/img/voltar_ativo.png"/>
 
 
 <div class="hover-back">
-<img class="seta" src="img/v.png"/>
+<img class="seta" src="/img/v.png"/>
 <p>Voltar à navegação</p>
 </div>
 </a>
@@ -187,28 +187,28 @@ foreach ($resultsearchs as $resultsearch):
 
 <div id="baixo">
 <div class="playbtn">
-<button id="buttonpp" style="display:none;"><img class="play" src="img/play.png"/></button>
-<button id="buttonpmp"><img class="play" src="img/pause.png"/></button>
+<button id="buttonpp" style="display:none;"><img class="play" src="/img/play.png"/></button>
+<button id="buttonpmp"><img class="play" src="/img/pause.png"/></button>
 
 </div>
 <div id="line-left"></div>
 <div class="volume">
 <button id="mute">
-<img class="volume" src="img/volume.png"/>
+<img class="volume" src="/img/volume.png"/>
 </button>
 <button id="muted" style="display:none;">
-<img class="volume" src="img/mute.png"
+<img class="volume" src="/img/mute.png"
 </button>
 </div>
 <div id="line-left2"></div>
 <h1><?php echo $anime['name'];?></h1>
 <div class="right">
 <button id="help">
-<img class="nextep" src="img/ajuda.png"/>
+<img class="nextep" src="/img/ajuda.png"/>
 </button>
 
 <div id="helphover">
-<img src="img/baixo.png">
+<img src="/img/baixo.png">
 <a>Encontrou alguma coisa errada? Relate aqui:</a>
 </div>
 
@@ -235,15 +235,15 @@ foreach ($resultsearchs as $resultsearch):
 ?>
 <a href="watch.php?id=<?php echo $resultsearch['id']; ?>" style="color:transparent;">
 <button id="nextep">
-<img class="nextep" src="img/ep.png"/>
+<img class="nextep" src="/img/ep.png"/>
 </button>
 </a>
 
 
 <div id="hoverep">
-<img src="img/baixo.png">
+<img src="/img/baixo.png">
 <h1>Próximo episódio</h1>
-<img src="static/videos/<?php echo $resultsearch2['foto']; ?>" id="baka"></img>
+<img src="/static/videos/<?php echo $resultsearch2['foto']; ?>" id="baka"></img>
 
 <style>
 #baka{
@@ -275,15 +275,15 @@ foreach ($resultsearchs as $resultsearch):
 
 
 
-<img class="nextep" src="img/eps.png" id="todosp"/>
-<img class="nextep" src="img/sub.png"/>
+<img class="nextep" src="/img/eps.png" id="todosp"/>
+<img class="nextep" src="/img/sub.png"/>
 
 <button id="fullscreenico">
-<img class="nextep" src="img/full.png"/>
+<img class="nextep" src="/img/full.png"/>
 </button>
 
 <button id="fullscreenedico" style="display:none;">
-<img class="nextep" src="img/desfull.png"/>
+<img class="nextep" src="/img/desfull.png"/>
 </button>
 </div>
 

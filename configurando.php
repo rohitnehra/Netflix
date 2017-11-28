@@ -59,7 +59,7 @@ if($insert) {
         echo '';
     } 
 	print "Perfil criado com sucesso";
-    echo '<script>location.href="dashboard.php";</script>';
+    echo '<script>location.href="dashboard";</script>';
     echo '<script> $("#postadd").fadeOut(1200);</script>';
 
 }else {
