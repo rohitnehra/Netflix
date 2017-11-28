@@ -160,7 +160,14 @@ body{
 		background-color: #333;
 		margin-top: 2vw;
 		display: inline-block;
-		margin-left: -8vw;
+		<?Php 
+		if($_GET['action'] == gerenciar){
+			echo 'margin-left: -10.2vw;';
+		}
+		else{
+			echo 'margin-left: -8vw;';
+		}
+		?>
 		cursor: pointer;
 		left: 8.6vw;
 	}
