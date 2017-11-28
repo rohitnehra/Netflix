@@ -15,8 +15,7 @@ Apresentação
 
 Como instalar?
 
-Edite as conexão de banco de dados nos seguinte arquivos:
+Edite as conexão no config.php
+Edite as seguintes linhas!
 
-1º) /static/php/system/config.php 2º) configurando.php 3º) register.php 4º) db.php 5º) login.php
-
-Agora você tem que importar o .sql no banco de dados :) e pronto
+Linha 3, 4, 5, 6, 10, 11, 12 , 13
