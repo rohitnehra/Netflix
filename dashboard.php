@@ -252,7 +252,12 @@ else
 	foreach ($peoples as $people):	 
 ?>
 <button style="border:none; background: transparent;" name="people">
-<a style="color: transparent" href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
+<?Php 
+if($_GET['action'] == gerenciar){?>
+ <?php echo ''; ?>
+<?php }else{?>
+	<a href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
+<?php } ?>
 <div class="avatar1 people<?Php echo $people['foto'] ?>"></div></a>
 </button>
 <div class="pessoas"><p class="ava-who"><?php
@@ -332,7 +337,14 @@ if($totaldepost < 5){
 	</style>
 	<?Php 
 if($_GET['action'] == gerenciar){?>
-	<center><a href="dashboard.php?action=concluir"><button class="ger">Concluir</button></a></center>
+	<center><a href="dashboard.php?action=concluir"><button class="ger">Concluir</button>
+	<?Php 
+if($_GET['action'] == gerenciar){?>
+ <?php echo ''; ?>
+<?php }else{?>
+	</a>
+<?php } ?>
+	</center>
 <?php }else{?>
 	<center><a href="dashboard.php?action=gerenciar"><button class="ger">GERENCIAR PERFIS</button></a></center>
 <?php } ?>
@@ -883,6 +895,7 @@ echo '';
 else  
 	foreach ($peoples as $people):	 
 ?>
+
 <a href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
 <li class="li-perfil">
 <button style="border:none; background: transparent;" name="people">
