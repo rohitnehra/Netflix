@@ -162,7 +162,7 @@ body{
 		display: inline-block;
 		margin-left: -8vw;
 		cursor: pointer;
-		left: 13.6vw;
+		left: 8.6vw;
 	}
 
 	.avatar1:hover{
@@ -203,6 +203,7 @@ body{
 		font-size: 1.3vw;
 		position: relative;
 		text-align: center;
+		left: -5vw;
 	}
 
 	button:hover + .pessoas .ava-who{
@@ -219,7 +220,7 @@ body{
 	}
 
 	.what{
-		width: 70vw;
+		width: 100%;
 	}
 
 </style>
@@ -232,8 +233,16 @@ body{
 </div>
 
 <div class="change-profile center">
-
-<div class="who alc">Quem está assistindo?</div>
+<center>
+<div class="who alc">
+<?Php 
+if($_GET['action'] == gerenciar){
+	echo "Gerenciando perfil's";
+}
+else{
+	echo "Quem está assistindo?";
+}
+	?></div>
 <div class="what center">
 <?php
 $peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
@@ -257,7 +266,32 @@ else
 
 
 
+<?Php 
+if($_GET['action'] == gerenciar){
+?>
 
+
+<button class="closef">X</button>
+<style>
+.closef{
+	position:relative;
+	border-radius: 50%;
+	border: none;
+	width: 1.5vw;
+	height: 1.5vw;
+	font-size: 1.2vw;
+	top: -8.3vw;
+	right: 3.8vw;
+	background: rgba(0,0,0,.50);
+	color: #fff;
+	cursor: pointer;
+}
+
+.closef:hover{
+	background: rgba(0,0,0,.90);
+}
+</style>
+<?php } ?>
 	<?php endforeach;?>
 
 	<style>
@@ -295,9 +329,13 @@ if($totaldepost < 5){
 		color: #fff;
 		border: 1px solid #fff;
 	}
-	</style>	
-	<center><button class="ger">GERENCIAR PERFIS</button></center>
-
+	</style>
+	<?Php 
+if($_GET['action'] == gerenciar){?>
+	<center><a href="dashboard.php?action=concluir"><button class="ger">Concluir</button></a></center>
+<?php }else{?>
+	<center><a href="dashboard.php?action=gerenciar"><button class="ger">GERENCIAR PERFIS</button></a></center>
+<?php } ?>
 	<style>
 	.addprofile{
 		width: 100%;
