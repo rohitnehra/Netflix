@@ -495,7 +495,7 @@ $(document).ready(function() {
         var namePost = name.val();
 		var radio = $(".radios");
         var radioPost = radio.val();
-        $.post("configurando.php?addprofile=<?Php echo $user['idcry']; ?>", {name: namePost,radio: radioPost},
+        $.post("/configurando.php?addprofile=<?Php echo $user['idcry']; ?>", {name: namePost,radio: radioPost},
         function(data){
          $("#resposta").html(data);
          }
