@@ -350,7 +350,7 @@ else
                 width: 30vw;
                 background: #e50914;
                 font-size: 1.5vw;
-				top: 5vw;
+				top: 2vw;
             }
         </style>
         <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
@@ -363,6 +363,11 @@ else
           <option value="3">Anime</option>
         </select>
         <input class="baka-input" type="text" placeholder="Nome" value=""/>
+
+        <input class="baka-input" type="text" placeholder="Capa" value=""/>
+
+        <input class="baka-input" type="text" placeholder="Background" value=""/>
+
         <textarea style="padding: 1vw; height: 8vw;resize: none;" class="baka-input" type="text" placeholder="Descrição" value=""/></textarea>
         
         <button class="config-btn">
