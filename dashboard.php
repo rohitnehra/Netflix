@@ -49,13 +49,16 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 <title>
 <?php
 ob_start();
-if(empty($_COOKIE['usuario'])){
-    echo 'Change Profile';
-}
-else{
-	echo 'Netflix';
+if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){
+    echo '404 NOT FOUND';
 }
 
+if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
+	echo 'Netflix';
+	if(empty($_COOKIE['usuario'])){
+		echo 'Change Profile';
+	}
+}
 ?>
 </title>
 <link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"/>
