@@ -21,21 +21,21 @@ $user = $user[0];
 if($user){
     $user = $user[0];
     }else{
-    echo '<script>location.href="dashboard.php";</script>';	
+    echo '<script>location.href="/dashboard";</script>';	
     }
 
 
     if($perfil['iduser'] <> $user['id']){
        echo '';
-       setcookie("usuario" , $_GET['id']);
-       echo '<script>location.href="dashboard.php";</script>';
+       setcookie("usuario" , $perfil['id']);
+       echo '<script>location.href="/dashboard";</script>';
     }
     else{
         setcookie("iduser" , "");
         setcookie("inisession" , "");
         setcookie("perfil" , "");
         setcookie("usuario" , "");
-        header("location: account.php?error");
+        header("location: /account");
     }
     
 
@@ -45,7 +45,7 @@ else{
     setcookie("inisession" , "");
     setcookie("perfil" , "");
     setcookie("usuario" , "");
-    header("location: account.php?error");
+    header("location: account");
 }
 
 ?>

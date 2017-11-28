@@ -28,14 +28,14 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 		if($perfil){
 			$perfil = $perfil[0];
 			}else{
-			echo '<script>location.href="account.php?error";</script>';	
+			echo '<script>location.href="account";</script>';	
 			}
 			if($perfil['iduser'] <> $user['id']){
 				setcookie("iduser" , "");
 				setcookie("inisession" , "");
 				setcookie("perfil" , "");
 				setcookie("usuario" , "");
-				header("location: account.php?error");
+				header("location: account");
 			}
 
 		
@@ -278,11 +278,11 @@ else
 if($_GET['action'] == 1){?>
  <?php echo ''; ?>
 <?php }else{?>
-	<a href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
+	<a href="/swift.php?id=<?php echo $people['id'] ?>">
 <?php } ?>
-<div class="avatar1 people<?Php echo $people['foto'] ?>"></div></a>
+<div class="avatar1 people<?Php echo $people['foto'] ?>" id="d<?php echo $people['id']; ?>"></div></a>
 </button>
-<div class="pessoas"><p class="ava-who"><?php
+<div class="pessoas" id="e<?php echo $people['id']; ?>"><p class="ava-who"><?php
 	$str2 = nl2br( $people['nome'] );
 	$len2 = strlen( $str2 );
 	$max2 = 13;
@@ -298,7 +298,26 @@ if($_GET['action'] == 1){
 ?>
 
 
-<button class="closef">X</button>
+<button class="closef" id="<?php echo $people['id']; ?>">X</button>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $("#<?php echo $people['id']; ?>").click(function() {
+        var idPost = <?php echo $people['id']; ?>;
+        $.post("/dqs.php?id=<?php echo $people['id']; ?>", {id: idPost},
+        function(data){
+         $("#resposta").html(data);
+         }
+         , "html");
+		 $("#d<?php echo $people['id']; ?>").fadeOut(600);
+		 $("#e<?php echo $people['id']; ?>").fadeOut(600);
+		 $("#<?php echo $people['id']; ?>").fadeOut(600);
+         return false;
+    });
+});
+</script>
+
 <style>
 .closef{
 	position:relative;
@@ -918,7 +937,7 @@ else
 	foreach ($peoples as $people):	 
 ?>
 
-<a href="swift.php?id=<?php echo $people['id'] ?>&user=<?php echo $user['id']; ?>&what=<?Php echo $user['idcry']; ?>">
+<a href="/swift.php<?php echo $people['id'] ?>">
 <li class="li-perfil">
 <button style="border:none; background: transparent;" name="people">
 <div class="avatar1 people<?Php echo $people['foto'] ?>"></div>
@@ -936,7 +955,7 @@ else
 
 	<?php endforeach;?>
 
-	<a href="logoutp.php" style="color: transparent;">
+	<a href="/logoutp" style="color: transparent;">
 <li class="li-perfil">
 <p style="text-align: center; color: #fff;">Gerenciar perfil</li>
 </li>
@@ -997,14 +1016,14 @@ $animels2 = DBRead( 'series', "WHERE id ORDER BY id DESC LIMIT 1" );
 else 
 	foreach ($animels2 as $animel):
  ?>
-<img src="static/videos/<?php echo $animel['logo']; ?>" class="logo-serie"></img>
+<img src="/static/videos/<?php echo $animel['logo']; ?>" class="logo-serie"></img>
 <div class="aaa"></div>
 <div class="apresent-info">
 
 <style>
 
 .apresent{
-	background-image: url(static/videos/<?php echo $animel['fotoback']; ?>);
+	background-image: url(/static/videos/<?php echo $animel['fotoback']; ?>);
 }
 
 </style>
@@ -1172,7 +1191,7 @@ else
 <a href="watch.php?id=<?php echo $animel5['idvideo'];?>&chalala=<?php echo $animel5['progress']; ?>">
 <div class="video">
 <p style="color: #fff; font-size: 1.2vw; background: #000; width: 100%;">Episodio <?php echo $animel5['ep']; ?></p>
-<img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
+<img src="/static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
 <div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
 <div style="width:<?php if($animel5['progress'] < 1){ echo '3%;'; }?> <?php echo $animel5['progress'];?> <?php if(empty($animel5['progress'])){ echo '0'; }?>; height: inherit; background: red;"></div>
 </div>
@@ -1305,7 +1324,7 @@ else
  ?>
 
 <div class="video" id="click<?php echo $animel['id']; ?>">
-<img src="static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
+<img src="/static/videos/<?php echo $animel['foto']; ?>" class="focus"/>
 </div>
 
 
@@ -1314,7 +1333,7 @@ else
 <script>
   $('#click<?php echo $animel['id']; ?>').click(function(){
 	$("#infor").fadeIn(600);
-				$.post('request.php?serie=<?php echo $animel['id']; ?>>', function (html) {
+				$.post('/request.php?serie=<?php echo $animel['id']; ?>>', function (html) {
 				$('#infor').html(html);
 				});
     });
