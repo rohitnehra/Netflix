@@ -64,7 +64,7 @@ setcookie("thecry", $idcry, time()+3600 * 24 * 365);
 mysql_close($conexao);
 if($insert) {
 	print "Cadastrado com sucesso!";
-    echo '<script>location.href="dashboard.php";</script>';
+    echo '<script>location.href="dashboard";</script>';
 }else {
     print "Ocorreu um erro!";
 }
