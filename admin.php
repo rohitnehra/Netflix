@@ -300,8 +300,7 @@ else
   <option value="0">Desbanido</option>
   <option value="1">Banido</option>
 </select>
-
-<select name="banidolist" class="baka-input">
+<select name="expirado" class="baka-input">
   <option value="<?php echo $people['expirado'] ?>"><?PHP echo date('Y-m-d H:i:s', strtotime('+43800 min')); ?> (Acrescentar mais 1 mês)</option>
   <option value="1"><?PHP echo date('Y-m-d H:i:s', strtotime('-43800 min')); ?> (Expirar licensa)</option>
 </select>
