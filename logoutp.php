@@ -1,4 +1,4 @@
 <?php
 setcookie("usuario" , "");
-header("location: dashboard.php?action=gerenciar");
+header("location: /dashboard/1");
 ?>
