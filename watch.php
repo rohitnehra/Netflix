@@ -447,7 +447,7 @@ function myFunction() {
       window.setInterval(function(){	
       xhr.get('historytime.php?timer='+videotimer+'&video=<?php echo $video['id'];?>&currenttime='+video.currentTime+'&profile=<?php echo $_COOKIE['usuario'];?>&anime=<?php echo $anime['id']; ?>', function(nots){
            });
-         }, 6000);
+         }, 100);
   <?php endforeach;}?>
   }
   });	
