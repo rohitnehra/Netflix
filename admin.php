@@ -364,6 +364,11 @@ else
         </select>
         <input class="baka-input" type="text" placeholder="Nome" value=""/>
         <textarea style="padding: 1vw; height: 8vw;resize: none;" class="baka-input" type="text" placeholder="Descrição" value=""/></textarea>
+        
+        <button class="config-btn">
+        Adicionar
+        </button>
+
         </center>
 
     <?php } else{ ?>
