@@ -19,3 +19,5 @@ Edite as conexão no config.php
 Edite as seguintes linhas!
 
 Linha 3, 4, 5, 6, 10, 11, 12 , 13
+
+E adicione a .sql na db
