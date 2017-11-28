@@ -33,12 +33,12 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 		$user = $user[0];
 		
 		if($user['configurado'] == 0){
-			echo '<script>location.href="configure.php?error";</script>';
+			echo '<script>location.href="configure";</script>';
 		}
 		
 	
 	if(empty($_COOKIE['usuario'])){
-	echo '<script>location.href="dashboard.php?error";</script>';
+	echo '<script>location.href="dashboard/error";</script>';
 }
 }
 

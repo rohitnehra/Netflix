@@ -13,11 +13,11 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 		if($user){
 			$user = $user[0];
 			}else{
-			echo '<script>location.href="dashboard.php";</script>';	
+			echo '<script>location.href="dashboard";</script>';	
 			}
 
 			if($user['configurado'] == 0){
-				echo '<script>location.href="configure.php";</script>';
+				echo '<script>location.href="configure";</script>';
 			}
 			
 			

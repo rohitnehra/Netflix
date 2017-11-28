@@ -4,5 +4,7 @@ ErrorDocument 404 /404.php
 RewriteRule ^watch/(.*)$ /watch.php?id=$1 [L]
 RewriteRule ^dashboard/(.*)$ /dashboard.php?action=$1 [L]
 RewriteRule ^account/?$ /account.php [NC,L]
+RewriteRule ^account/(.*)$ /account.php?ActionFree=$1 [L]
 RewriteRule ^dashboard/?$ /dashboard.php [NC,L]
+RewriteRule ^configure/?$ /configure.php [NC,L]
 </IfModule>

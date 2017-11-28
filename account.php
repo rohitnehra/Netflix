@@ -75,7 +75,7 @@ body{
             if(isset($_GET['ActionFree'])){
 
 ?>
-    	<a href="account.php">
+    	<a href="/account">
 <button class="login-b">
 Entrar
 </button>
@@ -254,7 +254,7 @@ Entrar
                 <div class="check"></div>
                 <p>Escolha seu plano.</p>
                 <p class="text-f">Escolha qualquer plano; você só paga quando seu mês grátis terminar.</p>
-                <a href="account.php?ActionFree=registerf"><button class="free-btn">Continuar</button></a>
+                <a href="/account/registerf"><button class="free-btn">Continuar</button></a>
             </div>
 
 
@@ -372,7 +372,7 @@ $(document).ready(function() {
 
 </style>
 
-<p class="tens">Não tens uma conta, <a href="account.php?ActionFree=1">registre-se agora</a></p>
+<p class="tens">Não tens uma conta, <a href="account/1">registre-se agora</a></p>
 
 <center>
 <div style="padding-top: 2vw;">
