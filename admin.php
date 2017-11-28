@@ -141,8 +141,8 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
         </a>
 
         <a href="admin.php?action=filme&iduser=<?php echo $user['idcry'] ?>">
-        <li class="opa <?php if($_GET['action'] == filme){ echo "ativo"; }else{ echo ''; } ?>">
-        Filmes/Séries
+        <li class="opa <?php if($_GET['action'] == filme){ echo "ativo"; }else if($_GET['action'] == adicionarf){ echo "ativo"; }else{ echo ''; } ?>">
+        Filmes/Séries/Anime
         </li>
         </a>
 
@@ -227,7 +227,7 @@ else
 }
 </style>
 <center>
-    <button class="adds">Adicionar filme/Série/Anime</button>
+<a href="admin.php?action=adicionarf"><button class="adds">Adicionar filme/Série/Anime</button></a>
     <button class="adds">Adicionar episodio</button>
 </center>
     <?php } else  if($_GET['action'] == configw){?>
@@ -311,6 +311,61 @@ else
     </center>
 
     <?php endforeach; ?>
+    <?php } else  if($_GET['action'] == adicionarf){ ?>
+        <style>
+        .baka-input{
+            width: 50%;
+            border: none;
+            height: 2.5vw;
+            margin-top: 2vw;
+            padding-left: 1vw;
+        }
+
+        .config-btn{
+                display: inline-block;
+                text-decoration: none;
+                line-height: 1rem;
+                vertical-align: middle;
+                cursor: pointer;
+                font-weight: 700;
+                letter-spacing: .025rem;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: none;
+                position: relative;
+                min-height: 3.6vw;
+                -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                -moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                color: #fff;
+                width: 30vw;
+                background: #e50914;
+                font-size: 1.5vw;
+				top: 5vw;
+            }
+        </style>
+        <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
+        Adicionando filme/Série/Anime
+        </h1>
+        <center>
+        <select name="banidolist" class="baka-input">
+         <option value="1">Série</option>
+          <option value="2">Filme</option>
+          <option value="3">Anime</option>
+        </select>
+        <input class="baka-input" type="text" placeholder="Nome" value=""/>
+        <textarea style="padding: 1vw; height: 8vw;resize: none;" class="baka-input" type="text" placeholder="Descrição" value=""/></textarea>
+        </center>
+
     <?php } else{ ?>
 
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
