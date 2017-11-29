@@ -1,6 +1,6 @@
 <?php
-require '/static/php/system/database.php';
-require '/static/php/system/config.php';
+require 'static/php/system/database.php';
+require 'static/php/system/config.php';
 $tiposa = $_POST['tiposa'];
 $ep = $_POST['ep'];
 $mp4 = $_POST['mp4'];
