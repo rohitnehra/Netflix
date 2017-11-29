@@ -20,6 +20,8 @@ Edite as seguintes linhas!
 
 Linha 3, 4, 5, 6, 10, 11, 12 , 13
 
+Depois edite o db.php e coloque suas conexão
+
 E adicione a .sql na db
 
 Para colocar um usuario admin vá até o phpmyadmin e altere o usuario que você deseja que vira admin para admin = 1
