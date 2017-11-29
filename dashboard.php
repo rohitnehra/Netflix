@@ -1164,7 +1164,7 @@ if($totaldepost >= 6){
 
 <?php } ?>
 
-<div class="video-a" id="scroll">
+<div class="video-a" id="scroll2">
 
 
 
@@ -1460,6 +1460,28 @@ function ScrollLeft() {
 function ScrollRight() {
 	document.getElementById("scroll").scrollLeft=-1500;
 }
+
+
+
+
+
+
+
+
+function ScrollByLeft() {
+	document.getElementById("scroll2").scrollBy(1500, 0);
+}
+function ScrollByRight() {
+	document.getElementById("scroll2").scrollBy(-1500, 0);
+}
+
+function ScrollLeft() {
+	document.getElementById("scroll2").scrollLeft=1500;
+}
+function ScrollRight() {
+	document.getElementById("scroll2").scrollLeft=-1500;
+}
+
 
 
 </script>

@@ -140,6 +140,21 @@ var ep = document.getElementById('infoc');
 	ep.style = 'border-bottom: 0.2vw solid transparent;';
     });
 
+	function ScrollByLeft() {
+	document.getElementById("scrollep").scrollBy(1500, 0);
+}
+function ScrollByRight() {
+	document.getElementById("scrollep").scrollBy(-1500, 0);
+}
+
+function ScrollLeft() {
+	document.getElementById("scrollep").scrollLeft=1500;
+}
+function ScrollRight() {
+	document.getElementById("scrollep").scrollLeft=-1500;
+}
+
+
 </script>
 
 </div>
