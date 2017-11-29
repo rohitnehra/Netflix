@@ -21,3 +21,7 @@ Edite as seguintes linhas!
 Linha 3, 4, 5, 6, 10, 11, 12 , 13
 
 E adicione a .sql na db
+
+Para colocar um usuario admin vá até o phpmyadmin e altere o usuario que você deseja que vira admin para admin = 1
+
+Para acessar o cpanel você precisa estar logado em uma conta, e navegador no site.com/admin.php
