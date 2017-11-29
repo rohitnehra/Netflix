@@ -84,6 +84,11 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
             position: relative;
             width: 70%;
             height: 80%;
+            <?php if($_GET['action'] == adicionarf){ ?>
+            height: 88%;
+            <?php }else{ ?>
+                height: 80%;
+            <?php } ?>
             margin: 0px auto;
             background: #fff;
             top: 10%;
@@ -141,7 +146,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
         </a>
 
         <a href="admin.php?action=filme&iduser=<?php echo $user['idcry'] ?>">
-        <li class="opa <?php if($_GET['action'] == filme){ echo "ativo"; }else if($_GET['action'] == adicionarf){ echo "ativo"; }else{ echo ''; } ?>">
+        <li class="opa <?php if($_GET['action'] == filme){ echo "ativo"; }else if($_GET['action'] == adicionarf){ echo "ativo"; }else if($_GET['action'] == adicionarep){ echo "ativo"; }else{ echo ''; } ?>">
         Filmes/Séries/Anime
         </li>
         </a>
@@ -228,7 +233,7 @@ else
 </style>
 <center>
 <a href="admin.php?action=adicionarf"><button class="adds">Adicionar filme/Série/Anime</button></a>
-    <button class="adds">Adicionar episodio</button>
+<a href="admin.php?action=adicionarep"><button class="adds">Adicionar episodio</button></a>
 </center>
     <?php } else  if($_GET['action'] == configw){?>
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
@@ -356,26 +361,183 @@ else
         Adicionando filme/Série/Anime
         </h1>
         <center>
-        <select name="banidolist" class="baka-input">
-         <option value="1">Série</option>
-          <option value="2">Filme</option>
+        <form method="post">
+        <select name="banidolist" id="tipo" class="baka-input">
+         <option value="1">Filme</option>
+          <option value="2">Série</option>
           <option value="3">Anime</option>
         </select>
-        <input class="baka-input" type="text" placeholder="Nome" value=""/>
+        <input class="baka-input" type="text" id="names" placeholder="Nome" value=""/>
 
-        <input class="baka-input" type="text" placeholder="Capa" value=""/>
+        <input class="baka-input" type="text" id="capa" placeholder="Capa" value=""/>
 
-        <input class="baka-input" type="text" placeholder="Background" value=""/>
+        <input class="baka-input" type="text" id="background" placeholder="Background" value=""/>
 
-        <textarea style="padding: 1vw; height: 8vw;resize: none;" class="baka-input" type="text" placeholder="Descrição" value=""/></textarea>
+        <input class="baka-input" type="text" id="logo" placeholder="Logo" value=""/>
+
+        <textarea id="descrpt" style="padding: 1vw; height: 8vw;resize: none;" class="baka-input" type="text" placeholder="Descrição" value=""/></textarea>
         
-        <button class="config-btn">
+        <button class="config-btn" id="addtp">
         Adicionar
         </button>
 
+        <div id="resposta">
+        </div>
+    
+        </form>
+<style>
+        #resposta{
+    width: 100%;
+    color: red;
+    position: fixed;
+    top: 0vw;
+    height: auto;
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 0.3vw;
+    font-size: 1.5vw;
+    left: 0;
+    background: #000;
+}
+
+</style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#addtp").click(function() {
+        var tipo = $("#tipo");
+        var tipoPost = tipo.val();
+        var names = $("#names");
+        var namesPost = names.val();
+        var capa = $("#capa");
+        var capaPost = capa.val();
+        var background = $("#background");
+        var backgroundPost = background.val();
+        var descrpt = $("#descrpt");
+        var descrptPost = descrpt.val();
+        var logo = $("#logo");
+        var logoPost = logo.val();
+        $.post("addsa.php", {tipo: tipoPost, names: namesPost, capa: capaPost, background: backgroundPost, descrpt: descrptPost, logo: logoPost},
+        function(data){
+         $("#resposta").html(data);
+         }
+         , "html");
+         return false;
+    });
+});
+</script>
+
         </center>
 
-    <?php } else{ ?>
+    <?php } else  if($_GET['action'] == adicionarep){  ?>
+        <style>
+        .baka-input{
+            width: 50%;
+            border: none;
+            height: 2.5vw;
+            margin-top: 2vw;
+            padding-left: 1vw;
+        }
+
+        .config-btn{
+                display: inline-block;
+                text-decoration: none;
+                line-height: 1rem;
+                vertical-align: middle;
+                cursor: pointer;
+                font-weight: 700;
+                letter-spacing: .025rem;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: none;
+                position: relative;
+                min-height: 3.6vw;
+                -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                -moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                color: #fff;
+                width: 30vw;
+                background: #e50914;
+                font-size: 1.5vw;
+				top: 2vw;
+            }
+        </style>
+        <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
+       Adicionando episodio
+        </h1>
+        <center>
+        <form method="post">
+        <select id="tiposa" class="baka-input">
+        <?php
+$animels2 = DBRead( 'series', "WHERE id and tipo > 1 ORDER BY id DESC" );
+ if (!$animels2)
+	echo "";
+else 
+	foreach ($animels2 as $animel):
+ ?>
+         <option value="<?php echo $animel['id']; ?>"><?php echo $animel['name']; ?></option>
+         <?php endforeach ; ?>
+        </select>
+        <input class="baka-input" type="text" id="ep" placeholder="Episodio" />
+
+        <input class="baka-input" type="text" id="mp4" placeholder="Vídeo MP4 link"/>
+
+
+        <button class="config-btn" id="addts">
+        Adicionar
+        </button>
+    </form> 
+    <div id="resposta">
+        </div>
+    
+<style>
+        #resposta{
+    width: 100%;
+    color: red;
+    position: fixed;
+    top: 0vw;
+    height: auto;
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 0.3vw;
+    font-size: 1.5vw;
+    left: 0;
+    background: #000;
+}
+
+</style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#addts").click(function() {
+        var tiposa = $("#tiposa");
+        var tiposaPost = tiposa.val();
+        var ep = $("#ep");
+        var epPost = ep.val();
+        var mp4 = $("#mp4");
+        var mp4Post = mp4.val();
+        $.post("addsb.php", {tiposa: tiposaPost,ep: epPost, mp4: mp4Post},
+        function(data){
+         $("#resposta").html(data);
+         }
+         , "html");
+         return false;
+    });
+});
+</script>
+
+
+        </center>
+    <?php } else{?>
 
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
         Clone Neflix feito por Alexandre Silva

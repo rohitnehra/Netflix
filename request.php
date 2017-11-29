@@ -59,7 +59,7 @@ else
 	width: 55%;
 	background-size: cover;
 	height: 100%;
-	background-image: url(/static/videos/<?php echo $animel['fotoback']; ?>);
+	background-image: url(<?php echo $animel['fotoback']; ?>);
 	position: absolute;
 	display: flex;
 	top: 0;
@@ -108,7 +108,7 @@ foreach ($resultsearchs as $resultsearch):
 
 <a href="watch.php?id=<?php echo $resultsearch['id'] ?>&href=dashboard.php?serieinfo=<?php echo $resultsearch2['id'] ?>">
 <div class="video" id="click<?php echo $resultsearch2['id']; ?>">
-<img src="/static/videos/<?php echo $resultsearch2['foto']; ?>" class="focus"/>
+<img src="<?php echo $resultsearch2['foto']; ?>" class="focus"/>
 <p style="color: #fff; text-align: center; font-size: 1.3vw;">Ep <?php echo $resultsearch['ep']; ?></p>
 </div>
 </a>
