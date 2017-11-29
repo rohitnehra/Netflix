@@ -234,6 +234,20 @@ else
 <center>
 <a href="admin.php?action=adicionarf"><button class="adds">Adicionar filme/Série/Anime</button></a>
 <a href="admin.php?action=adicionarep"><button class="adds">Adicionar episodio</button></a>
+
+
+<?php
+$peoples = DBRead( 'series', "WHERE id  ORDER BY id DESC LIMIT 100" );
+if (!$peoples)
+echo '';	
+else  
+	foreach ($peoples as $people):	 
+?>
+    <li class="baka" style="margin-top: 0.5vw; top: 3vw;">
+        <p> <?php echo $people['name'];?></p>
+    </li>
+    <?php endforeach; ?>
+
 </center>
     <?php } else  if($_GET['action'] == configw){?>
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
