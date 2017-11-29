@@ -1,6 +1,6 @@
 <?php
-require '/static/php/system/database.php';
-require '/static/php/system/config.php';
+require 'static/php/system/database.php';
+require 'static/php/system/config.php';
 
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
     $iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
