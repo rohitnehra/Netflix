@@ -171,7 +171,7 @@ foreach ($resultsearchs as $resultsearch):
 
 <style>
 #img{
-  background-image: url(static/videos/<?php echo $resultsearch2['foto']; ?>);
+  background-image: url(<?php echo $resultsearch2['foto']; ?>);
   background-size: cover;
   width: 120px;
   height: 120px;
@@ -243,7 +243,7 @@ foreach ($resultsearchs as $resultsearch):
 <div id="hoverep">
 <img src="/img/baixo.png">
 <h1>Próximo episódio</h1>
-<img src="/static/videos/<?php echo $resultsearch2['foto']; ?>" id="baka"></img>
+<img src="<?php echo $resultsearch2['foto']; ?>" id="baka"></img>
 
 <style>
 #baka{
