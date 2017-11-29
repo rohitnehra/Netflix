@@ -15,7 +15,7 @@ Apresentação
 
 Como instalar?
 
-Edite as conexão no config.php
+Edite as conexão no /static/php/system/config.php
 Edite as seguintes linhas!
 
 Linha 3, 4, 5, 6, 10, 11, 12 , 13
