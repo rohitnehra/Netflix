@@ -300,7 +300,7 @@ foreach ($resultsearchs as $resultsearch):
 
 </div>
 </div>
-<video id="playerwatchpri" muted src="<?php echo $video['video']; ?><?php
+<video id="playerwatchpri" src="<?php echo $video['video']; ?><?php
 	$userideq = $_COOKIE['iduser'];
 	$animels = DBRead( 'videos', "WHERE idserie = '{$anime['id']}' ORDER BY id DESC LIMIT 1" );
 $resultsearchs = DBRead( 'history', "WHERE id and idpeople = '".$userideq."' and idvideo = '".$video['id']."' and perfil = '".$_COOKIE['usuario']."' ORDER BY id DESC" );
