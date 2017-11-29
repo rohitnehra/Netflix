@@ -1,6 +1,13 @@
 <?php
 require 'static/php/system/database.php';
 require 'static/php/system/config.php';
+$idset = DBEscape( strip_tags(trim($_GET['serie']) ) );
+$idse = DBRead('series', "WHERE id = '{$idset}' LIMIT 1 ");
+if($idse){
+	$idse = $idse[0];
+	}else{
+	echo '<script>location.href="dashboard";</script>';	
+	}
 	if(isset($_GET['serie'])){
 		?>
 <div class="informa">
@@ -130,7 +137,11 @@ foreach ($resultsearchs as $resultsearch):
 
 <center>
 <p class="feels feels-ativo" id="infob">VISÃO GERAL</p>
+<?php
+     if($idse['tipo'] > 1){
+    ?>
 <p class="feels" id="infoc">EPISÓDIOS</p>
+	 <?php } ?>
 </center>
 
 <script>
