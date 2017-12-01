@@ -9,7 +9,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 Netflix
 </title>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"/>
+<link rel="shortcut icon" href="/static/ico/default.ico"/>
 </head>
 <html>
 <style>
@@ -48,7 +48,7 @@ body{
 	}
 
     .login-b{
-    color: #e50914;
+    color: #5e09e5;
     background-color: transparent;
     line-height: normal;
     margin: 18px 3% 0;
@@ -82,11 +82,26 @@ Entrar
 </a>
             <?php } ?>
 </div>
-
+<?php
+require 'static/php/system/database.php';
+require 'static/php/system/config.php';
+?>
+<?php
+$resultsearchs = DBRead( 'back', "WHERE id ORDER BY rand() DESC LIMIT 1" );
+ if (!$resultsearchs)
+ echo '';
+else
+foreach ($resultsearchs as $resultsearch):
+?>
+<Style>
+.body-a{
+    background-image: url(/static/backgronds/<?php echo $resultsearch['img'];?>);
+}
+</style>
+<?php endforeach;?>
 
 <style>
 .body-a{
-    background-image: url(/static/back2.jpg);
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -246,7 +261,7 @@ Entrar
                 box-shadow: 0 1px 1px rgba(0,0,0,.25);
                 color: #fff;
                 width: 30vw;
-                background: #e50914;
+                background: #5e09e5;
                 font-size: 1.5vw;
             }
             </style>
@@ -288,7 +303,7 @@ Entrar
                 box-shadow: 0 1px 1px rgba(0,0,0,.25);
                 color: #fff;
                 width: 30vw;
-                background: #e50914;
+                background: #5e09e5;
                 font-size: 1.5vw;
             }
             </style>
@@ -362,7 +377,7 @@ $(document).ready(function() {
 }
 
 .tens a{
-    color: red;
+    color: #5e09e5;
     text-decoration: none;
 }
 
@@ -434,7 +449,7 @@ $(document).ready(function() {
                 box-shadow: 0 1px 1px rgba(0,0,0,.25);
                 color: #fff;
                 width: 30vw;
-                background: #e50914;
+                background: #5e09e5;
                 font-size: 1.5vw;
             }
 </style>

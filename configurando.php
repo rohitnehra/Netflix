@@ -39,7 +39,7 @@ else if($totaldeperfil == 3){
     $foto = 4;
 }
 else if($totaldeperfil == 4){
-    $foto = 2;
+    $foto = 5;
 }
 else{
     $foto = 1;

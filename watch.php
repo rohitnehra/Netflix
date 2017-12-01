@@ -27,15 +27,28 @@ $anime = $anime[0];
 }
 
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
-	
+  
+
+
 		$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
 		$user = DBRead('user', "WHERE id = '{$iduser}' LIMIT 1 ");
 		$user = $user[0];
 		
 		if($user['configurado'] == 0){
 			echo '<script>location.href="configure";</script>';
-		}
-		
+    }
+    
+    $inicio = $user['datec'];
+    $expirado = date('Y-m-d', strtotime('+43700 min'));
+    if (strtotime($inicio) >= strtotime($expirado)) {
+      setcookie("iduser" , "");
+      setcookie("inisession" , "");
+      setcookie("usuario" , "");
+      header("location: /");
+    }
+    
+    $viewsadd = array('views' => $anime['views'] + 1);
+    DBUpDate( 'series', $viewsadd, "id = '{$anime['id']}'" );
 	
 	if(empty($_COOKIE['usuario'])){
 	echo '<script>location.href="dashboard/error";</script>';
@@ -47,6 +60,9 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 <?php if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
   if(isset($_COOKIE['usuario'])){
   ?>
+
+
+
 
 <?php 
 $dbCheck = DBRead( 'history', "WHERE idvideo = '". $_GET['id'] ."' and perfil = '".  $_COOKIE['usuario'] ."' " );
@@ -68,14 +84,16 @@ else{
 <?php } } ?>
 
 <head>
-<title>Netflix</title>
+<title>Wooby</title>
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
 <meta charset="utf-8">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"/>
+<link rel="shortcut icon" href="/static/ico/default.ico"/>
 </head>
+
 <html>
 <body>
+
 
 <div id="player2">
 <div class="header">
@@ -201,7 +219,7 @@ foreach ($resultsearchs as $resultsearch):
 </button>
 </div>
 <div id="line-left2"></div>
-<h1><?php echo $anime['name'];?></h1>
+<h1><?php echo $anime['name'];?> - <span style="font-size: 1.7vw;">Ep <?php echo $video['ep']; ?> </span></h1>
 <div class="right">
 <button id="help">
 <img class="nextep" src="/img/ajuda.png"/>
@@ -377,17 +395,14 @@ document.getElementById("nextep").onmouseover = function() {ep()};
 
 function help(){
 document.getElementById("todoesephover").style.display = "none";
-document.getElementById("helphover").style.display = "block";
 document.getElementById("current").style.display = "none";
 document.getElementById("currtime").style.display = "none";
+document.getElementById("helphover").style.display = "block";
 document.getElementById("hoverep").style.display = "none";
 }
 
 function todosep(){
 document.getElementById("todoesephover").style.display = "block";
-document.getElementById("current").style.display = "none";
-document.getElementById("currtime").style.display = "none";
-document.getElementById("helphover").style.display = "none";
 document.getElementById("helphover").style.display = "none";
 document.getElementById("hoverep").style.display = "none";
 document.getElementById("hoverep").style.display = "none";
@@ -641,4 +656,5 @@ body {
         </html>
 
      <?php } ?>
+
 </html>

@@ -2,10 +2,10 @@
 if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){?>
 <head>
 <title>
-Netflix Brasil
+Wooby Brasil
 </title>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"/>
+<link rel="shortcut icon" href="/static/ico/default.ico"/>
 </head>
 <html>
 
@@ -68,7 +68,7 @@ body{
 
 .login-b{
     color: #fff;
-    background-color: #e50914;
+    background-color: #5e09e5;
     line-height: normal;
     margin: 18px 3% 0;
     padding: 7px 17px;
@@ -108,12 +108,12 @@ body{
 .apresentation .btn-free {
     color: #fff;
     font-size: 1.2vw;
-    background-color: #e50914;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#e50914),to(#db0510));
-    background-image: -webkit-linear-gradient(top,#e50914,#db0510);
-    background-image: -moz-linear-gradient(top,#e50914,#db0510);
-    background-image: -o-linear-gradient(top,#e50914,#db0510);
-    background-image: linear-gradient(to bottom,#e50914,#db0510);
+    background-color: #5e09e5;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#5e09e5),to(#055bdb));
+    background-image: -webkit-linear-gradient(top,#5e09e5,#055bdb);
+    background-image: -moz-linear-gradient(top,#5e09e5,#055bdb);
+    background-image: -o-linear-gradient(top,#5e09e5,#055bdb);
+    background-image: linear-gradient(to bottom,#5e09e5,#055bdb);
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.45);
     -moz-box-shadow: 0 1px 0 rgba(0,0,0,.45);
     box-shadow: 0 1px 0 rgba(0,0,0,.45);
@@ -190,7 +190,7 @@ Entrar
     width: 20%;
     height: inherit;
     display: inline-block;
-    left: 20%;
+    left: 40%;
     position: relative;
     margin-left: 0.5vw;
     top: 0;
@@ -221,7 +221,7 @@ Entrar
 }
 
 .ativo{
-    border-bottom: 0.2vw solid red;
+    border-bottom: 0.2vw solid #5e09e5;
     opacity: 1 !important;
 }
 
@@ -237,19 +237,6 @@ Cancele online quando quiser</p>
 </center>
 </li>
 
-<li>
-<center>
-<svg viewBox="0 0 145 48" id="icon-cross-device-screens-desktop">    <path d="M138.211 44.009c-.398 0-.697.349-.697.748 0 .398.3.698.697.698.4 0 .749-.3.749-.698 0-.4-.35-.748-.749-.748zm-4.19 2.593h8.682V28.191h-8.682v18.411zm-.05-19.807h8.732c.798 0 1.396.598 1.396 1.396v18.362c0 .798-.598 1.447-1.396 1.447h-8.732c-.749 0-1.397-.649-1.397-1.447V28.191c0-.798.648-1.396 1.397-1.396zM74.095 44.009h48.7V13.173h-48.7v30.836zm0-32.233h48.75c.748 0 1.396.648 1.396 1.446v30.787c0 .798-.648 1.396-1.397 1.396H74.095c-.797 0-1.396-.598-1.396-1.396V13.222c0-.798.599-1.446 1.396-1.446zm56.583 34.677v.649c0 .499-.799.898-1.747.898H67.66c-.998 0-1.746-.4-1.746-.898v-.649h64.764zm-111.567.898v-2.445c0-.798.648-1.446 1.396-1.446h29.688c.799 0 1.397.648 1.397 1.446v2.445h-1.397v-2.494H20.557v2.494H19.11zM1.397 41.065h68.208V1.397H1.397v39.668zM1.397 0h68.208c.799 0 1.447.599 1.447 1.397v39.668c0 .748-.648 1.396-1.447 1.396H1.397A1.394 1.394 0 0 1 0 41.065V1.397C0 .599.599 0 1.397 0z"></path></svg><p>Sem compromisso
-Assista onde quiser, quanto quiser</p>
-</center>
-</li>
-
-<li class="ta">
-<center>
-<svg viewBox="0 0 63 48" id="icon-price-tag"><g><path d="M35.752 7.65c-1.1 0-2.1.45-2.85 1.2a3.97 3.97 0 0 0 .1 5.651c.75.7 1.7 1.1 2.75 1.1a4.01 4.01 0 0 0 2.851-1.2c.75-.8 1.149-1.8 1.1-2.85 0-1.05-.451-2.05-1.201-2.8a4.072 4.072 0 0 0-2.75-1.1m-.002 9.15c-1.35 0-2.65-.5-3.6-1.45-2.05-1.95-2.101-5.25-.15-7.3 1-1.05 2.3-1.6 3.75-1.6 1.35 0 2.6.5 3.6 1.45.95.95 1.55 2.25 1.55 3.65.05 1.35-.5 2.65-1.45 3.65-.95 1.05-2.3 1.6-3.7 1.6m-2.148 9.701a.727.727 0 0 1-1.05 0l-5.3-5.05c-.3-.3-.3-.75 0-1.05.25-.3.75-.3 1.05-.05l5.25 5.1c.3.3.3.75.05 1.05m-5.95-10.05l-4.55.098v-1.799c0-.4-.35-.7-.75-.7-.401 0-.701.3-.701.7l.05 2.55c0 .3.2.55.45.65.101.05.15.05.25.05l5.301-.1c.4 0 .7-.3.7-.7 0-.4-.35-.75-.75-.75m.1 16.15a.723.723 0 0 1-1.05 0l-5.301-5.099c-.3-.25-.3-.75 0-1.05.25-.25.75-.3 1 0l5.301 5.1c.3.25.3.75.05 1.05m-5.951-10.05l-4.55.1v-1.8c-.05-.4-.35-.75-.75-.75-.4.05-.75.35-.7.75v2.55c.05.3.2.55.5.65.05.05.15.05.25.05l5.25-.1c.4 0 .75-.35.75-.75s-.35-.7-.75-.7m.25 15.95c-.299.3-.75.3-1.049 0l-5.301-5.1c-.3-.25-.3-.75 0-1.05.3-.25.75-.3 1.05 0l5.251 5.1c.299.25.35.75.049 1.05m-5.95-10.05l-4.5.1-.05-1.8c0-.4-.35-.75-.75-.75-.401.05-.7.35-.7.75l.049 2.55c0 .3.201.55.451.65.1.05.2.05.3.05l5.25-.1c.4 0 .7-.35.7-.75s-.35-.7-.75-.7M43.903 4.9c0-.5-.122-.876-.35-1.1-.279-.274-.65-.3-.85-.3H42.402c-.799.05-1.85.05-3.049.05-5.551 0-13.151-.35-13.851-.35-.15 0-.3.05-.45.2L1.4 27.952c-.1.15-.2.3-.2.5s.1.35.25.5l18.301 17.65c.25.25.751.25 1.001-.05l23.651-24.55c.153-.197.198-.488.2-.7M20.252 48.002a1.937 1.937 0 0 1-1.351-.55L.6 29.801c-.35-.349-.6-.799-.6-1.299 0-.55.2-1 .55-1.4L24.202 2.548c.3-.299.699-.5 1.15-.549h.15c.1 0 8.1.35 13.851.35 1.149 0 2.149 0 3-.05h.35c.7 0 1.3.2 1.75.65.45.45.65 1.1.65 1.95.05.85.705 14.126.65 16.551-.011.502-.15 1-.5 1.4L21.602 47.403c-.35.35-.85.6-1.35.6"></path>        <path d="M62.004 0c-2.95 6.4-12.651 6.4-12.651 6.4-7.05.1-10.951 2.25-12.751 3.601-.7-.351-1.55-.2-2.1.35-.7.7-.65 1.85.05 2.549.7.651 1.85.651 2.5-.049.55-.55.65-1.3.4-1.951 5.05-3.5 11.9-3.299 11.9-3.299C60.105 7.601 62.855.6 62.855.6l-.85-.6z"></path>    </g></svg>
-<p class="time">Escolha seu plano</p>
-</center>
-</li>
 
 </div>
 
@@ -292,12 +279,12 @@ Assista onde quiser, quanto quiser</p>
 
 .red-free{
     color: #fff;
-    background-color: #e50914;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#e50914),to(#db0510));
-    background-image: -webkit-linear-gradient(top,#e50914,#db0510);
-    background-image: -moz-linear-gradient(top,#e50914,#db0510);
-    background-image: -o-linear-gradient(top,#e50914,#db0510);
-    background-image: linear-gradient(to bottom,#e50914,#db0510);
+    background-color: #5e09e5;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#5e09e5),to(#055bdb));
+    background-image: -webkit-linear-gradient(top,#5e09e5,#055bdb);
+    background-image: -moz-linear-gradient(top,#5e09e5,#055bdb);
+    background-image: -o-linear-gradient(top,#5e09e5,#055bdb);
+    background-image: linear-gradient(to bottom,#5e09e5,#055bdb);
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.45);
     -moz-box-shadow: 0 1px 0 rgba(0,0,0,.45);
     box-shadow: 0 1px 0 rgba(0,0,0,.45);

@@ -56,7 +56,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 	?>
     <head>
 <title><?php  if($user['admin'] == 1){ echo 'Administrator CPANEL'; } else{ echo '404 not found';}?></title>
-<link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"/>
+<link rel="shortcut icon" href="/static/ico/default.ico"/>
 </head>
     <?php
      if($user['admin'] == 1){
@@ -151,11 +151,6 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
         </li>
         </a>
 
-        <a href="admin.php?action=configw&iduser=<?php echo $user['idcry'] ?>">
-        <li class="opa <?php if($_GET['action'] == configw){ echo "ativo"; }else{ echo ''; } ?>">
-        Configuração do site
-        </li>
-        </a>
 
         <p style="bottom: 0.5vw; position: absolute;left: 2vw; font-size: 1.2vw;">Site criado por <a style="color: red;" href="https://facebook.com/imxandeco"> Alexandre </a></p>
 
@@ -215,7 +210,7 @@ else
 
     <?php } else  if($_GET['action'] == filme){ ?>
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
-    Filmes/Séries/Animes do site  
+    Animes do site  
     </h1>
 
 <style>
@@ -232,7 +227,7 @@ else
 }
 </style>
 <center>
-<a href="admin.php?action=adicionarf"><button class="adds">Adicionar filme/Série/Anime</button></a>
+<a href="admin.php?action=adicionarf"><button class="adds">Adicionar Anime</button></a>
 <a href="admin.php?action=adicionarep"><button class="adds">Adicionar episodio</button></a>
 
 
@@ -243,10 +238,31 @@ echo '';
 else  
 	foreach ($peoples as $people):	 
 ?>
-    <li class="baka" style="margin-top: 0.5vw; top: 3vw;">
-        <p> <?php echo $people['name'];?></p>
+    <li class="baka" id="baka<?php echo $people['id']; ?>" style="margin-top: 0.5vw; top: 3vw;">
+        <p> <?php echo $people['name'];?> 
+        <a style="color: blue;float: right; position: relative; right: 2vw;" id="deletar<?Php echo $people['id']; ?>">Deletar</a>
+        </p>
     </li>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script>
+$(document).ready(function() {
+    $("#deletar<?Php echo $people['id']; ?>").click(function() {
+        var idPost = <?php echo $people['id']; ?>;
+        $.post("/batata.php?id=<?php echo $people['id']; ?>", {id: idPost},
+        function(data){
+         $("#resposta").html(data);
+         }
+         , "html");
+		 $("#baka<?php echo $people['id']; ?>").fadeOut(600);
+         return false;
+    });
+});
+</script>
     <?php endforeach; ?>
+
+
+
 
 </center>
     <?php } else  if($_GET['action'] == configw){?>
@@ -372,13 +388,11 @@ else
             }
         </style>
         <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
-        Adicionando filme/Série/Anime
+        Adicionando Anime
         </h1>
         <center>
         <form method="post">
         <select name="banidolist" id="tipo" class="baka-input">
-         <option value="1">Filme</option>
-          <option value="2">Série</option>
           <option value="3">Anime</option>
         </select>
         <input class="baka-input" type="text" id="names" placeholder="Nome" value=""/>
@@ -554,7 +568,7 @@ $(document).ready(function() {
     <?php } else{?>
 
     <h1 style="color: #fff; font-size: 1.9vw; text-align: center; position: relative; top: 1vw;">
-        Clone Neflix feito por Alexandre Silva
+        Wooby Administrator
     </h1>
         <center>
     <img style="width: 10vw; width: 10vw; position: relative; top: 2vw; border-radius: 50%;" src="https://scontent.ffln4-1.fna.fbcdn.net/v/t1.0-9/23722498_304421860043610_2487643949019415175_n.jpg?oh=fe2e350ef8d58f90edeb1a1641c59ff0&oe=5A8DF606"/>
