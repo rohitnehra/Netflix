@@ -305,7 +305,6 @@ if($_GET['action'] == 1){
 
 
 <button class="closef" id="<?php echo $people['id']; ?>">X</button>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -1383,7 +1382,7 @@ if($totaldepost >= 6){
 <?php } ?>
 
 <div class="video-a" id="scroll">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <?php
 $animels2 = DBRead( 'series', "WHERE id ORDER BY id ASC LIMIT 40" );
  if (!$animels2)
@@ -1397,7 +1396,7 @@ else
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 <script>
   $('#click<?php echo $animel['id']; ?>').click(function(){
@@ -1548,7 +1547,7 @@ else
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 <script>
   $('#click2<?php echo $animel['id']; ?>').click(function(){
@@ -1714,7 +1713,7 @@ else
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 <script>
   $('#click6<?php echo $animel['views'] ?><?php echo $animel['id']; ?>').click(function(){
