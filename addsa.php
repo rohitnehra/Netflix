@@ -42,14 +42,23 @@ mysql_query("SET NAMES 'utf8'");
 mysql_query('SET character_set_connection=utf8');
 mysql_query('SET character_set_client=utf8');
 mysql_query('SET character_set_results=utf8');
-$insert = mysql_query("insert into netflix_series (tipo,name,desct,foto,fotoback,logo) values ('{$tipob}','{$nomeb}','{$descrtb}','{$fotob}','{$fotobackb}','{$logob}')");
-mysql_close($conexao);
-if($insert) {
+$form2['tipo'] = $tipob;
+	$form2['name'] = $nomeb;
+	$form2['desct'] = $descrtb;
+	$form2['foto'] = $fotob;
+	$form2['fotoback'] = $fotobackb;
+	$form2['logo'] = $logob;
+	$form2['views'] = '0';
+	$form2['gen1'] = '0';
+	$form2['gen2'] = '0';
+	$form2['gen3'] = '0';
+	if( DBCreate( 'series', $form2 ) ){	
 	print "Adicionado com sucesso";
     echo '<script>location.href="admin.php?action=filme";</script>';
-}else {
-    print "Ocorreu um erro!";
-}
+	}
+	else{
+		 print "Ocorreu um erro!";
+	}
 }
 }
 ?>
