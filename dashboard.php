@@ -304,7 +304,7 @@ if($_GET['action'] == 1){
 
 
 <button class="closef" id="<?php echo $people['id']; ?>">X</button>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
     $("#<?php echo $people['id']; ?>").click(function() {
