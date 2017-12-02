@@ -5,7 +5,7 @@ require 'static/php/system/database.php';
 require 'static/php/system/config.php';
 date_default_timezone_set("America/Sao_Paulo");
 if(!isset($_GET['id']) || empty($_GET['id']))
-echo '<script>location.href="http://localhost/";</script>';
+echo '<script>location.href="/";</script>';
 else{
 $id = DBEscape( strip_tags(trim($_GET['id']) ) );
 $video = DBRead('videos', "WHERE id = '{$id}' LIMIT 1 ");
@@ -75,6 +75,8 @@ else{
 	$form2['perfil'] = $_COOKIE['usuario'];
   $form2['idserie'] = $anime['id'];
   $form2['ep'] = $video['ep'];
+  $form2['progress'] = '0';
+  $form2['atualprogress'] = '0';
 	if( DBCreate( 'history', $form2 ) ){	
 	echo '';
 	}
