@@ -6,7 +6,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 
 <head>
 <title>
-Netflix
+Wooby
 </title>
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="/static/ico/default.ico"/>

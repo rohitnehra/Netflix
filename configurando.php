@@ -50,10 +50,14 @@ mysql_query('SET character_set_connection=utf8');
 mysql_query('SET character_set_client=utf8');
 mysql_query('SET character_set_results=utf8');
 $iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
-$insert = mysql_query("insert into netflix_profiles (nome,datec,iduser,foto) values ('{$nome}','{$datec}','{$iduser}','{$foto}')");
-mysql_close($conexao);
-if($insert) {
-    $iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
+
+	$form2['nome'] = $nome;
+	$form2['idcry'] = "0";
+	$form2['datec'] = $datec;
+	$form2['iduser'] = $iduser;
+  $form2['foto'] = $foto;
+	if( DBCreate( 'profiles', $form2 ) ){	
+	$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
     $userUP['configurado'] = 1;
     if( DBUpdate( 'user', $userUP, "id = '{$iduser}'" ) ){
         echo '';
@@ -61,9 +65,10 @@ if($insert) {
 	print "Perfil criado com sucesso";
     echo '<script>location.href="dashboard";</script>';
     echo '<script> $("#postadd").fadeOut(1200);</script>';
+	}
+	else{
+		echo 'Ocorreu um erro';
+	}
 
-}else {
-    print "Ocorreu um erro!";
-}
 }
 ?>

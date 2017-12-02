@@ -4,7 +4,6 @@ require 'static/php/system/config.php';
 $email = $_POST['email'];
 $senha = DBEscape(strip_tags(trim(sha1($_POST['senha']))));
 $user = $_POST['user'];
-$pinpost = $_POST['pin'];
 
 function validaEmail($email) {
 	$conta = "^[a-zA-Z0-9\._-]+@";
@@ -35,8 +34,8 @@ $banco = mysql_select_db($dbp);
 //Utilizando o  mysql_real_escape_string voce se protege o seu código contra SQL Injection.
 $email5 = mysql_real_escape_string($email);
 $senha = mysql_real_escape_string($senha);
-$inisession = date('Y-m-d H:i:s');
-$datec = date('Y-m-d H:i:s');
+$inisession = date('Y-m-d');
+$datec = date('Y-m-d');
 $lastlogin = date('Y-m-d H:i:s');
 $configurado = '0';
 $num1 = rand(15, 50);
@@ -49,24 +48,39 @@ mysql_query("SET NAMES 'utf8'");
 mysql_query('SET character_set_connection=utf8');
 mysql_query('SET character_set_client=utf8');
 mysql_query('SET character_set_results=utf8');
-$insert = mysql_query("insert into netflix_user (idcry,email,password,inisession,datec,lastlogin,configurado,ip,expirado) values ('{$antispam}','{$email5}','{$senha}','{$inisession}','{$datec}','{$lastlogin}','{$configurado}','{$ip}','{$limite}')");
-$busca  = "SELECT id FROM netflix_user WHERE email = '".$email."'";
-$identificacao = mysql_query($busca);
-$retorno = mysql_fetch_array($identificacao);
-$iduser = $retorno['id'];
-setcookie("iduser", $iduser);
-setcookie("inisession", $inisession);
-$busca2  = "SELECT idcry FROM netflix_user WHERE email = '".$email."'";
-$identificacao2 = mysql_query($busca2);
-$retorno2 = mysql_fetch_array($identificacao2);
-$idcry = $retorno2['idcry'];
-setcookie("thecry", $idcry, time()+3600 * 24 * 365);
-mysql_close($conexao);
-if($insert) {
+
+
+	$form2['idcry'] = $antispam;
+	$form2['email'] = $email5;
+	$form2['password'] = $senha;
+	$form2['inisession'] = $inisession;
+	$form2['datec'] = $datec;
+	$form2['lastlogin'] = $lastlogin;
+	$form2['configurado'] = $configurado;
+	$form2['ip'] = $ip;
+	$form2['expirado'] = $limite;
+	$form2['banned'] = '0';
+	$form2['admin'] = '0';
+	
+	if( DBCreate( 'user', $form2 ) ){	
 	print "Cadastrado com sucesso!";
-    echo '<script>location.href="dashboard";</script>';
-}else {
-    print "Ocorreu um erro!";
-}
+	$busca  = "SELECT id FROM netflix_user WHERE email = '".$email."'";
+	$identificacao = mysql_query($busca);
+	$retorno = mysql_fetch_array($identificacao);
+	$iduser = $retorno['id'];
+	setcookie("iduser", $iduser);
+	setcookie("inisession", $inisession);
+	$busca2  = "SELECT idcry FROM netflix_user WHERE email = '".$email."'";
+	$identificacao2 = mysql_query($busca2);
+	$retorno2 = mysql_fetch_array($identificacao2);
+	$idcry = $retorno2['idcry'];
+	setcookie("thecry", $idcry, time()+3600 * 24 * 365);
+	echo '<script>location.href="dashboard";</script>';
+	}
+	else{
+		echo 'Ocorreu um erro';
+	}
+
+
 }
 ?>
