@@ -2,7 +2,7 @@
 if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){?>
 <head>
 <title>
-Wooby Brasil
+Wooby Animes
 </title>
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="/static/ico/default.ico"/>
@@ -28,7 +28,7 @@ body{
     left: 0;
     top: 0;
     position: absolute;
-    z-index: 1000;
+    z-index: 5000;
 }
 
 .header-al-home-a .logo{
@@ -50,9 +50,9 @@ body{
     -ms-transform: translate(0,-50%);
     -o-transform: translate(0,-50%);
     transform: translate(0,-50%);
-    background-image: url(/static/back.jpg);
     width: 100%;
     height: 85vw;
+    top: 15vw;
     background-size: cover;
 }
 
@@ -64,6 +64,8 @@ body{
     background-image: linear-gradient(to right,rgba(0,0,0,.8) 20%,rgba(0,0,0,0) 85%);
     width: 80%;
     height: 100%;
+    position: absolute;
+    z-index: 1000;
 }
 
 .login-b{
@@ -87,7 +89,7 @@ body{
 .apresentation{
     position: absolute;
     color: #fff;
-    bottom: 10vw;
+    bottom: 15vw;
     width: 50vw;
     height: 20vw;
     left: 2vw;
@@ -137,13 +139,13 @@ Entrar
 </a>
 </div>
 
-<div class="body-oa-tod">
-<div class="eo">
-</div>
+<div class="eo"></div>
+<video src="http://woobyanimes.com/static/loop.mp4" class="body-oa-tod" autoplay muted loop>
+</video>
 
-<div class="apresentation">
-<h1>Sua próxima história, agora.</h1>
-<p>ASSISTA ONDE QUISER. CANCELE QUANDO QUISER.<p>
+<div class="apresentation" style="z-index: 10000;">
+<h1>Seu próximo anime, agora.</h1>
+<p>VEJA SEUS ANIMES FAVORITOS, QUANDO QUISER!<p>
 <a href="/account/1">
 <button class="btn-free">ASSISTA UM MÊS GRÁTIS</button>
 </a>
@@ -161,6 +163,7 @@ Entrar
     top: -43vw;
     border-bottom: 0.1vw solid #4c4545;
     padding-top: 0vw;
+	z-index: 1000000;
 }
 
 

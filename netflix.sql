@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Dez-2017 às 21:07
+-- Generation Time: 04-Dez-2017 às 19:44
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -97,7 +97,26 @@ INSERT INTO `netflix_history` (`id`, `idvideo`, `idserie`, `idpeople`, `progress
 (19, '12', '26', '12', '0.26984045464336087%', '3.707494', '54', '01'),
 (20, '1', '22', '13', '1.6462543537803989%', '2.903093', '56', '01'),
 (21, '12', '26', '13', '1.277414263855769%', '2.1571', '56', '01'),
-(22, '13', '27', '1', '68.15233961644947%', '943.991756', '53', '01');
+(22, '13', '27', '1', '66.72934412180464%', '945.254602', '53', '01'),
+(23, '13', '27', '10', '50.177176938699716%', '698.757704', '34', '01'),
+(24, '16', '27', '1', '3.4948007990026606%', '11.742857', '53', '03'),
+(25, '1', '22', '10', '4.4114351145281905%', '5.405252', '34', '01'),
+(26, '16', '27', '10', '51.560035602003865%', '701.121495', '34', '03');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `netflix_payments`
+--
+
+CREATE TABLE `netflix_payments` (
+  `id` int(6) NOT NULL,
+  `txnid` varchar(20) NOT NULL,
+  `payment_amount` decimal(7,2) NOT NULL,
+  `payment_status` varchar(25) NOT NULL,
+  `itemid` varchar(25) NOT NULL,
+  `createdtime` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -127,12 +146,14 @@ INSERT INTO `netflix_profiles` (`id`, `idcry`, `nome`, `datec`, `iduser`, `foto`
 (15, 0, 'Perfil 1', '2017-11-28 17:06:02', '7', '1'),
 (31, 0, 'Bruno', '2017-11-28 21:50:44', '8', '1'),
 (32, 0, 'Ericlys Syllas', '2017-11-28 21:51:23', '9', '1'),
-(34, 0, 'Wooby-Admin', '2017-11-30 15:25:48', '10', '1'),
 (49, 0, 'Locked', '2017-11-30 18:05:52', '11', '1'),
-(53, 0, 'Alexandre', '2017-12-01 09:22:57', '1', '5'),
 (54, 0, 'misterteste', '2017-12-01 12:20:32', '12', '1'),
 (55, 0, 'luisfeliperm', '2017-12-01 13:07:27', '13', '1'),
-(56, 0, 'luisfeliperm', '2017-12-01 13:07:27', '13', '2');
+(56, 0, 'luisfeliperm', '2017-12-01 13:07:27', '13', '2'),
+(57, 0, 'asd', '2017-12-01 19:04:24', '14', '1'),
+(59, 0, 'Alexandre', '2017-12-01 22:01:37', '1', '1'),
+(73, 0, 'Luiz', '2017-12-01 22:04:53', '10', '1'),
+(74, 0, 'Alexandre', '2017-12-04 16:09:17', '15', '1');
 
 -- --------------------------------------------------------
 
@@ -159,9 +180,9 @@ CREATE TABLE `netflix_series` (
 --
 
 INSERT INTO `netflix_series` (`id`, `name`, `desct`, `foto`, `fotoback`, `logo`, `tipo`, `views`, `gen1`, `gen2`, `gen3`) VALUES
-(22, 'Boku no Hero Academy', 'O que é um herói? Para Midoriya Izuku, a resposta dessa pergunta sempre foi simples: “Tudo que eu quero ser!” E quem é o maior herói? Bem, o lendário All Might (Todo Poderoso), é claro. All Might é o herói número um e também o “Símbolo da Paz” mundial. Nem mesmo em seus sonhos mais loucos Izuku poderia imaginar que logo seu caminho cruzaria o de seu herói de infância. Em Boku no Hero Academia o status é governado pelas “Individualidades”, superpoderes singulares que se desenvolvem na infância. Mas infelizmente, o viciado em heróis, Midoriya “Deku” Izuku nunca teve uma Individualidade. Isto é, até conhecer All Might, o maior herói de todos. A transformação de sonhador em herói de Izuku começa na Academia U.A., a melhor escola de treinamento de heróis do Japão. Izuku fica eufórico quando é aceito para essa academia de prestígio, especialmente quando descobre que All Might é um dos professores. Que surpresas essa academia poderosa aguarda? Izuku será capaz de acompanhar os colegas de classe de elite?', 'https://static.tumblr.com/a401d168e0ff7acf997726558e2e3725/h58van7/3a8nhof20/tumblr_static_tumblr_static_4lqsmcqwsjggcwwcs0gw4k84w_640.png', 'http://www.animalog.biz/wp-content/uploads/2017/09/maxresdefault-4-1.jpg?x26225', 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Boku_no_Hero_Academia_Logo.png', '3', '2', '', '', ''),
+(22, 'Boku no Hero Academy', 'O que é um herói? Para Midoriya Izuku, a resposta dessa pergunta sempre foi simples: “Tudo que eu quero ser!” E quem é o maior herói? Bem, o lendário All Might (Todo Poderoso), é claro. All Might é o herói número um e também o “Símbolo da Paz” mundial. Nem mesmo em seus sonhos mais loucos Izuku poderia imaginar que logo seu caminho cruzaria o de seu herói de infância. Em Boku no Hero Academia o status é governado pelas “Individualidades”, superpoderes singulares que se desenvolvem na infância. Mas infelizmente, o viciado em heróis, Midoriya “Deku” Izuku nunca teve uma Individualidade. Isto é, até conhecer All Might, o maior herói de todos. A transformação de sonhador em herói de Izuku começa na Academia U.A., a melhor escola de treinamento de heróis do Japão. Izuku fica eufórico quando é aceito para essa academia de prestígio, especialmente quando descobre que All Might é um dos professores. Que surpresas essa academia poderosa aguarda? Izuku será capaz de acompanhar os colegas de classe de elite?', 'https://static.tumblr.com/a401d168e0ff7acf997726558e2e3725/h58van7/3a8nhof20/tumblr_static_tumblr_static_4lqsmcqwsjggcwwcs0gw4k84w_640.png', 'http://www.animalog.biz/wp-content/uploads/2017/09/maxresdefault-4-1.jpg?x26225', 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Boku_no_Hero_Academia_Logo.png', '3', '3', '', '', ''),
 (26, 'Dungeon Ni Deai', 'Sinopse: honra, e as esperanças de romance com uma garota bonita. Nesta cidade de sonhos e desejos, novo aventureiro Sino Cranel tem o fatídico encontro com a pequena deusa Hestia.', 'https://honeysanime.com/wp-content/uploads/2017/08/DanMachi-capture-3-Sentai-560x335.png', 'https://images.alphacoders.com/638/thumb-1920-638271.jpg', 'https://img00.deviantart.net/d335/i/2015/103/c/a/logo_danmachi_by_nesmeth-d8plmp9.png', '3', '30', '', '', ''),
-(27, 'Mahoutsukai no Yome', 'Chise Hatori viveu uma vida repleta de maltratos e abusos, negada de todo tipo de amor. Longe do acalanto da família, ela passou por uma boa dose de problemas e obstáculos. Mas quando tudo parecia perdido, um encontro fatídico a esperava. Um homem com cabeça de fera, dotado de poderes mágicos, a compra em um leilão de escravos, e a vida de Chise nunca mais será a mesma. Esse homem é um Magus, um feiticeiro de grande poder, que decide libertar Chise de seu cativeiro e faz uma corajosa afirmação: Chise se tornará sua aprendiz… e sua noiva!\nCriado e dirigido por Yamazaki Kore e Naganuma Norihiro, Mahoutsukai no Yome (??????) foi ao ar em 2017 com animação do estúdio Wit Studio.', 'https://myanimeost.net/wp-content/uploads/2017/10/ancient-magus-bride-750x426.jpg', 'https://i.imgur.com/utkBlGY.png', 'http://www.anieclipse.net/animes/mahoutsukai-no-yome/Imagens/logo.png', '3', '3', '', '', '');
+(27, 'Mahoutsukai no Yome', 'Chise Hatori viveu uma vida repleta de maltratos e abusos, negada de todo tipo de amor. Longe do acalanto da família, ela passou por uma boa dose de problemas e obstáculos. Mas quando tudo parecia perdido, um encontro fatídico a esperava. Um homem com cabeça de fera, dotado de poderes mágicos, a compra em um leilão de escravos, e a vida de Chise nunca mais será a mesma. Esse homem é um Magus, um feiticeiro de grande poder, que decide libertar Chise de seu cativeiro e faz uma corajosa afirmação: Chise se tornará sua aprendiz… e sua noiva!\nCriado e dirigido por Yamazaki Kore e Naganuma Norihiro, Mahoutsukai no Yome (??????) foi ao ar em 2017 com animação do estúdio Wit Studio.', 'https://myanimeost.net/wp-content/uploads/2017/10/ancient-magus-bride-750x426.jpg', 'https://i.imgur.com/utkBlGY.png', 'http://www.anieclipse.net/animes/mahoutsukai-no-yome/Imagens/logo.png', '3', '22', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -210,7 +231,7 @@ CREATE TABLE `netflix_user` (
 --
 
 INSERT INTO `netflix_user` (`id`, `idcry`, `email`, `password`, `datec`, `lastlogin`, `configurado`, `ip`, `banned`, `inisession`, `expirado`, `admin`) VALUES
-(1, '645d900939e7702d6ce6a2ba7b109d702f7f2808', 'xande1231231@hotmail.com', 'a0b48bf6735b085374fa984535372a8025210e45', '2017-12-30', '2017-12-01 14:52:59', 1, '187.55.46.112', 0, '2017-11-20 18:22:27', '2017-12-31', 1),
+(1, '645d900939e7702d6ce6a2ba7b109d702f7f2808', 'xande1231231@hotmail.com', 'a0b48bf6735b085374fa984535372a8025210e45', '2017-12-30', '2017-12-04 16:06:01', 1, '187.55.46.112', 0, '2017-11-20 18:22:27', '2017-12-31', 1),
 (2, '645d900939e7702d6ce6a2ba7b109d702f7f2808', 'xande1231221@hotmail.com', 'a0b48bf6735b085374fa984535372a8025210e45', '2017-11-20', '2017-11-20 18:22:27', 1, '187.55.46.112', 0, '2017-11-20 18:22:27', '2017-12-21', 0),
 (3, '85e3ab197e46051afabbe3d6ee48cd37c7fc7bbd', 'anelisenaiara2006@hotmail.com', 'a873d476f684dd7a02e0ff310c060f547e3b1459', '2017-11-20', '2017-11-20 21:42:29', 1, '187.55.46.112', 0, '2017-11-20 21:42:29', '2017-12-21', 0),
 (4, '2e6389ee3b04ed50c65c8eaface6cd6735a4b94f', 'lucas-hartmann@outlook.com.br', '6b6f8a72af25766d73210394f729cccebe52ccd6', '2017-11-28', '2017-11-28 11:26:48', 1, '177.203.93.66', 0, '2017-11-28 11:26:48', '2017-12-28', 0),
@@ -219,10 +240,12 @@ INSERT INTO `netflix_user` (`id`, `idcry`, `email`, `password`, `datec`, `lastlo
 (7, '83f92d5b8a874984ed924081cb4c06d11f924be0', 'killerfell15@gmail.com', '8a49932c7d421d1a30c1e10a60fc1e3c75ffbe00', '2017-11-28', '2017-11-28 17:04:48', 1, '201.6.132.24', 0, '2017-11-28 17:04:48', '2017-12-29', 0),
 (8, 'd83d83e98896a00cd2084f42ed45d14fe5c9229a', 'dejavu@cuvox.de', 'a800c766b67c2363bf72f26f78aa1a312ee3de97', '2017-11-28', '2017-11-28 21:52:35', 1, '187.126.226.230', 0, '2017-11-28 21:50:40', '2017-12-29', 0),
 (9, '5b31cca7d85947da218e2b9464510b3d878b9fa0', 'ericlyssyllas@gmail.com', 'e81ea2873c1effaa2126fb89f5454f7248192a43', '2017-11-28', '2017-11-28 21:51:13', 1, '186.208.68.226', 0, '2017-11-28 21:51:13', '2017-12-29', 0),
-(10, '7d54455f1f39a20c253f975334260e7cc2f5437d', 'wooby.contato@gmail.com', 'e41aa374a6058fd1db65c1aec82e24014a1edc92', '2017-11-30', '2017-11-30 18:03:43', 1, '191.17.186.17', 0, '2017-11-30 15:25:37', '2017-12-31', 1),
+(10, '7d54455f1f39a20c253f975334260e7cc2f5437d', 'wooby.contato@gmail.com', 'e41aa374a6058fd1db65c1aec82e24014a1edc92', '2017-11-30', '2017-12-01 21:36:23', 1, '191.17.186.17', 0, '2017-11-30 15:25:37', '2017-12-31', 1),
 (11, '086be694f4d2a64e50003d5e069d1070aac5fbc6', 'enzomendes25@outlook.com', 'cd02bcdbb1fe762e7cadd346c7452fe04138bb1f', '2017-11-30', '2017-11-30 18:05:47', 1, '200.159.129.64', 0, '2017-11-30 18:05:47', '2017-12-31', 0),
 (12, '4f983abb2bb4efe924af525698564389a3d62751', 'gui2325_@hotmail.com', '20eabe5d64b0e216796e834f52d61fd0b70332fc', '2017-12-01', '2017-12-01 12:20:22', 1, '45.4.220.2', 0, '2017-12-01 12:20:22', '2017-12-31', 0),
-(13, 'e2ee5f4289f674543fcd36697afbd6f75adf308f', 'luisfelipepoint@gmail.com', 'a7785fb147423f4dd3e07e01a590ae7964873281', '2017-12-01', '2017-12-01 13:07:18', 1, '168.227.88.135', 0, '2017-12-01 13:07:18', '2017-12-31', 0);
+(13, 'e2ee5f4289f674543fcd36697afbd6f75adf308f', 'luisfelipepoint@gmail.com', 'a7785fb147423f4dd3e07e01a590ae7964873281', '2017-12-01', '2017-12-01 13:07:18', 1, '168.227.88.135', 0, '2017-12-01 13:07:18', '2017-12-31', 0),
+(14, '49122ab1159040e2c6492ea9af23053706e06120', 'asdkaid@gmail.com', 'f10e2821bbbea527ea02200352313bc059445190', '2017-12-01', '2017-12-01 19:04:19', 1, '201.69.191.203', 0, '2017-12-01 19:04:19', '2018-01-01', 0),
+(15, 'b0f5bf4f5a181ff8f269607a2e975d449e9e04ec', 'kaway@hotmail.com', 'bf235653dbd21fbe510e6bd8ce0535fead76131b', '2018-01-04', '2017-12-04 16:09:13', 1, '::1', 0, '2017-12-04 00:00:00', '2018-01-04', 0);
 
 -- --------------------------------------------------------
 
@@ -245,14 +268,14 @@ CREATE TABLE `netflix_videos` (
 --
 
 INSERT INTO `netflix_videos` (`id`, `idserie`, `views`, `nome`, `ep`, `desct`, `video`) VALUES
-(1, '22', '345', '', '01', '', 'https://r10---sn-bg07dnez.googlevideo.com/videoplayback?requiressl=yes&id=32adc2a1b188a740&itag=18&source=blogger&app=blogger&ip=0.0.0.0&ipbits=0&expire=1513242867&sparams=expire,id,ip,ipbits,itag,mip,mm,mn,ms,mv,pl,requiressl,sc,source&signature=5D16A41167588E334D772276BF9307BBEA3AA972.530DF20D1366D067E73D43AF51FCCE9C83819043&key=cms1&cms_redirect=yes&mip=187.55.27.109&mm=30&mn=sn-bg07dnez&ms=nxu&mt=1511095286&mv=m&pl=18&sc=yes'),
+(1, '22', '346', '', '01', '', 'https://r10---sn-bg07dnez.googlevideo.com/videoplayback?requiressl=yes&id=32adc2a1b188a740&itag=18&source=blogger&app=blogger&ip=0.0.0.0&ipbits=0&expire=1513242867&sparams=expire,id,ip,ipbits,itag,mip,mm,mn,ms,mv,pl,requiressl,sc,source&signature=5D16A41167588E334D772276BF9307BBEA3AA972.530DF20D1366D067E73D43AF51FCCE9C83819043&key=cms1&cms_redirect=yes&mip=187.55.27.109&mm=30&mn=sn-bg07dnez&ms=nxu&mt=1511095286&mv=m&pl=18&sc=yes'),
 (2, '22', '54', '', '02', '', 'https://r6---sn-bg07dnls.googlevideo.com/videoplayback?requiressl=yes&id=4d69e22a5953431d&itag=18&source=blogger&app=blogger&ip=0.0.0.0&ipbits=0&expire=1513247438&sparams=expire,id,ip,ipbits,itag,mip,mm,mn,ms,mv,pl,requiressl,sc,source&signature=0FE4C58EAE738DC4E117FA36C6539225D45C01F1.5C15E1E12C886BDB1653357CB31158D2E3B28716&key=cms1&cms_redirect=yes&mip=187.55.27.109&mm=30&mn=sn-bg07dnls&ms=nxu&mt=1511099873&mv=m&pl=18&sc=yes'),
 (3, '22', '254', '', '03', '', 'https://r6---sn-bg07dnls.googlevideo.com/videoplayback?requiressl=yes&id=4d69e22a5953431d&itag=18&source=blogger&app=blogger&ip=0.0.0.0&ipbits=0&expire=1513247438&sparams=expire,id,ip,ipbits,itag,mip,mm,mn,ms,mv,pl,requiressl,sc,source&signature=0FE4C58EAE738DC4E117FA36C6539225D45C01F1.5C15E1E12C886BDB1653357CB31158D2E3B28716&key=cms1&cms_redirect=yes&mip=187.55.27.109&mm=30&mn=sn-bg07dnls&ms=nxu&mt=1511099873&mv=m&pl=18&sc=yes'),
 (4, '24', '12', '', '01', '', 'https://r6---sn-bg07dnlz.googlevideo.com/videoplayback?requiressl=yes&id=e8d16780fecc983d&itag=18&source=blogger&app=blogger&ip=0.0.0.0&ipbits=0&expire=1514106148&sparams=expire,id,ip,ipbits,itag,mip,mm,mn,ms,mv,pl,requiressl,sc,source&signature=47C3F1E1A33E150548A9767E6EB4AD53DA58ED9E.7BA42050A1C05C7B89C461B02CFE48EA7C0F04&key=cms1&cms_redirect=yes&mip=187.55.10.228&mm=30&mn=sn-bg07dnlz&ms=nxu&mt=1511958014&mv=u&pl=18&sc=yes'),
 (12, '26', '252', '', '01', '', 'http://www.blogger.com/video-play.mp4?contentId=c5c14134cf6da894&autoplay=true'),
-(13, '27', '3', '', '01', '', 'http://www.blogger.com/video-play.mp4?contentId=92dd46a0e9d0d27c'),
+(13, '27', '15', '', '01', '', 'http://www.blogger.com/video-play.mp4?contentId=92dd46a0e9d0d27c'),
 (14, '27', '', '', '02', '', 'https://www.blogger.com/video-play.mp4?contentId=63cf1c97031a0b39'),
-(16, '27', '', '', '03', '', 'https://www.blogger.com/video-play.mp4?contentId=f9ea79f9b2a49227');
+(16, '27', '7', '', '03', '', 'https://www.blogger.com/video-play.mp4?contentId=f9ea79f9b2a49227');
 
 --
 -- Indexes for dumped tables
@@ -274,6 +297,12 @@ ALTER TABLE `netflix_comment`
 -- Indexes for table `netflix_history`
 --
 ALTER TABLE `netflix_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `netflix_payments`
+--
+ALTER TABLE `netflix_payments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -324,17 +353,22 @@ ALTER TABLE `netflix_comment`
 -- AUTO_INCREMENT for table `netflix_history`
 --
 ALTER TABLE `netflix_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `netflix_payments`
+--
+ALTER TABLE `netflix_payments`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `netflix_profiles`
 --
 ALTER TABLE `netflix_profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT for table `netflix_series`
 --
 ALTER TABLE `netflix_series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `netflix_swit_pro`
 --
@@ -344,7 +378,7 @@ ALTER TABLE `netflix_swit_pro`
 -- AUTO_INCREMENT for table `netflix_user`
 --
 ALTER TABLE `netflix_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `netflix_videos`
 --

@@ -847,13 +847,13 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 }
 </style>
 
-<div class="error-msg">
+<div class="error-msg" style="z-index: 10000;">
 
 <div class="center-error">
 <h1 class="error-h1">Parece que seu mês grátis acabou.</h1>
 <p>Para efetuar efetuar pagamento, clique no botão abaixo!</p>
 
-<button class="pagar">Efetuar pagamento</button>
+<a href="pagar.php?id=<?php echo $user['idcry']; ?>"><button class="pagar">Efetuar pagamento</button></a>
 </div>
 </div>
 

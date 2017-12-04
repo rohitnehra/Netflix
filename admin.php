@@ -163,6 +163,8 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
     height: 100%;
     background: #141414;
     right: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .baka{

@@ -11,3 +11,4 @@ error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
   $userp = "root";
   $dbp = "netflix";
   $passwrdp = "";
+  $paypalemail = ""; //Paypal email , para receber dinheiro
