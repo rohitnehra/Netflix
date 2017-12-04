@@ -861,6 +861,76 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 
 <div class="header" id="headera" style="z-index: 10000000;">
 
+
+<style>
+.buscaranime{
+	display: flex;
+	width: 12vw;
+	height: 2vw;
+	position: relative;
+	top: 1vw;
+	border: none;
+	padding: 1vw;
+	border-radius: 0.2vw;
+	font-size: 1vw;
+	float: right;
+	right: 1vw;
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+}
+
+.buscaranime:focus{
+	width: 20vw;
+}
+
+.src{
+	width: 19vw;
+	background: #fff;
+	height: auto;
+	position: absolute;
+	float: right;
+	right: 2vw;
+	top: 3.5vw;
+}
+
+.buscaright{
+	width: 100%;
+	height: 4vw;
+	margin-top: 0.5vw;
+}
+
+.eoq{
+	color: #000;
+	text-decoration: none;
+}
+
+.buscaright:hover{
+	background: #5e09e5;
+}
+
+.avatar6{
+	height: 3vw;
+	width: 3vw;
+	position: relative;
+	top: 0.5vw;
+	left: 0.5vw;
+}
+
+.name{
+	position: relative;
+	left: 4vw;
+	bottom: 1.5vw;
+}
+</style>
+
+<input type="text" class="buscaranime" placeholder="Busque animes" />
+<div id="box-s-h">
+		    <ul class="src">
+			</ul>
+		  </div>
+		  <script src="lib/js/jquery.js" type="text/javascript"></script>
+		<script src="lib/js/js-all.js" type="text/javascript"></script>
+
 <img src="/static/logo.png" class="logo"/>
 
 <div class="right-user">
@@ -1086,16 +1156,17 @@ else
 <style>
 .asssitirs{
 	width: 10vw;
-	height: 3vw;
-	border: none;
-	color: #fff;
-	font-size: 1.5vw;
-	padding: 0.2vw;
-	position: relative;
-	top: 0.5vw;
-	background: rgba(0,0,0,.30);
-	border: 0.1vw solid rgba(0,0,0,.30);
-	cursor: pointer;
+    height: 3vw;
+    border: none;
+    color: #fff;
+    font-size: 1.5vw;
+    padding: 0.2vw;
+    position: absolute;
+    top: 10.5vw;
+    background: rgba(0,0,0,.30);
+    border: 0.1vw solid rgba(0,0,0,.30);
+    cursor: pointer;
+    left: 0.5vw;
 }
 
 .asssitirs:hover{

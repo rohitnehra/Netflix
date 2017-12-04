@@ -1,22 +1,18 @@
 <?php
-require 'static/php/system/database.php';
-require 'static/php/system/config.php';
-?>
-<?php
 // Database variables
 $host = "localhost"; //database location
 $user = "root"; //database username
-$pass = ""; //database password
+$pass = "xande321321"; //database password
 $db_name = "netflix"; //database name
 
 // PayPal settings
-$paypal_email = $paypalemail;
+$paypal_email = 'wooby.contato@gmail.com'; // Email paypal
 $return_url = 'http://woobyanimes.com/payment-successful.html';
 $cancel_url = 'http://woobyanimes.com/payment-cancelled.html';
 $notify_url = 'http://woobyanimes.com/payments.php';
 
 $item_name = 'Assinatura Wooby Animes 1 mês';
-$item_amount = 12.50;
+$item_amount = 1;
 
 // Include Functions
 include("functions.php");
