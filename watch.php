@@ -44,7 +44,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
       setcookie("iduser" , "");
       setcookie("inisession" , "");
       setcookie("usuario" , "");
-      header("location: /");
+      header("location: account/5");
     }
     
     $viewsadd = array('views' => $anime['views'] + 1);
