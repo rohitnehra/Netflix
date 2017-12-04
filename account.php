@@ -369,7 +369,12 @@ $(document).ready(function() {
 <div class="center">
 <div class="card-login">
 
+<?php
+  if(isset($_GET['error'])){?>
+  <p class="entrar">Conta expirada.</p>
+  <?php } else{?>
 <p class="entrar">Entrar</p>
+  <?php } ?>
 
 <Style>
 .tens{
