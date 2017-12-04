@@ -1,4 +1,6 @@
 <?php
+require 'static/php/system/database.php';
+require 'static/php/system/config.php';
 // functions.php
 function check_txnid($tnxid){
 	global $link;
