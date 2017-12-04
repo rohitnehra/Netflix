@@ -368,15 +368,9 @@ $(document).ready(function() {
 
 <div class="center">
 <div class="card-login">
-<?php
- if(isset($_GET['ActionFree'])){
-            if($_GET['ActionFree'] == 5){
-?>
-<p class="entrar">Parece que expirou sua assinatura.</p>
-			<?php } else{?>
 
 <p class="entrar">Entrar</p>
- <?Php } } ?>
+
 <Style>
 .tens{
     position: absolute;
