@@ -461,10 +461,21 @@ function myFunction() {
   else 
     foreach ($animels as $animel):
     ?>
-      window.setInterval(function(){	
-      xhr.get('historytime.php?timer='+videotimer+'&video=<?php echo $video['id'];?>&currenttime='+video.currentTime+'&profile=<?php echo $_COOKIE['usuario'];?>&anime=<?php echo $anime['id']; ?>', function(nots){
+
+      var i = 1;
+var id = '#imagem'
+// Intervalo em milissegundos (1s == 1000ms)
+var milissegundos = 5000;
+
+// Executa a função a cada intervalo de tempo
+var interval = setInterval(function(){
+  i++;
+  // Seta o source da nova imagem
+  xhr.get('historytime.php?timer='+videotimer+'&video=<?php echo $video['id'];?>&currenttime='+video.currentTime+'&profile=<?php echo $_COOKIE['usuario'];?>&anime=<?php echo $anime['id']; ?>', function(nots){
            });
-         }, 100);
+
+}, milissegundos);
+
   <?php endforeach;}?>
   }
   });	
