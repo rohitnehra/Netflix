@@ -1767,7 +1767,7 @@ if($totaldepost >= 7){
 
 <?php
 $batata = $animelb['id'];
-$animels2 = DBRead( 'series', "WHERE id <> '". $batata ."' ORDER BY id ASC LIMIT 5" );
+$animels2 = DBRead( 'series', "WHERE id <> '". $batata ."' ORDER BY id ASC LIMIT 9" );
  if (!$animels2)
 	echo "";
 else 
