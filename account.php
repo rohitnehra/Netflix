@@ -1,6 +1,6 @@
 <?php
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
-    echo '<script>location.href="dashboard.php?session=1";</script>';
+    echo '<script>location.href="/dashboard";</script>';
 }
 ?>
 
