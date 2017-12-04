@@ -376,7 +376,7 @@ $(document).ready(function() {
 			<?php } else{?>
 
 <p class="entrar">Entrar</p>
-			<?Php } ?>
+ <?Php } } ?>
 <Style>
 .tens{
     position: absolute;
