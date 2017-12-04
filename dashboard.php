@@ -785,7 +785,7 @@ body{
 
 <?php 
 $inicio = $user['datec'];
-$expirado = date('Y-m-d', strtotime('+43700 min'));
+$expirado = $user['expirado'];
 if (strtotime($inicio) >= strtotime($expirado)) {
 	?>
 
@@ -902,6 +902,7 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 .eoq{
 	color: #000;
 	text-decoration: none;
+	font-size: 1vw;
 }
 
 .buscaright:hover{
@@ -1343,7 +1344,6 @@ else
 <style>
 .videos-tab{
 	width: 100%;
-	background: #0000ff4a;
 	height: 13vw;
 }
 .video-a{

@@ -39,7 +39,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
     }
     
     $inicio = $user['datec'];
-    $expirado = date('Y-m-d', strtotime('+43700 min'));
+    $expirado = $user['expirado'];);
     if (strtotime($inicio) >= strtotime($expirado)) {
       setcookie("iduser" , "");
       setcookie("inisession" , "");
