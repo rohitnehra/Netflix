@@ -1288,7 +1288,7 @@ else
 require 'db.php';
 $totaldepost = mysql_query("SELECT * FROM netflix_history WHERE id and perfil = '{$_COOKIE['usuario']}' ");
 $totaldepost = mysql_num_rows($totaldepost);
-if($totaldepost >= 6){
+if($totaldepost >= 7){
 ?>
 <div class="left-i" onclick="ScrollByRight2()" style="top: 3.5vw; height: 11vw;">
 <svg enable-background="new 0 0 32 32" height="32px" style="top: 4vw;" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
@@ -1435,7 +1435,7 @@ else
 require 'db.php';
 $totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id ");
 $totaldepost = mysql_num_rows($totaldepost);
-if($totaldepost >= 6){
+if($totaldepost >= 7){
 ?>
 <div class="left-i" onclick="ScrollByRight()">
 <svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
@@ -1586,7 +1586,7 @@ else
 require 'db.php';
 $totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id and views >= 1 ");
 $totaldepost = mysql_num_rows($totaldepost);
-if($totaldepost >= 6){
+if($totaldepost >= 7){
 ?>
 <div class="left-i" onclick="ScrollByRight7()">
 <svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
@@ -1751,7 +1751,7 @@ else
 require 'db.php';
 $totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id <> '". $batata ."' ");
 $totaldepost = mysql_num_rows($totaldepost);
-if($totaldepost >= 6){
+if($totaldepost >= 7){
 ?>
 <div class="left-i" onclick="ScrollByRight7()">
 <svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
