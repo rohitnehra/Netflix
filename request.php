@@ -36,7 +36,7 @@ if($idse){
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 1050;
+	z-index: 1052122210;
 }
 </style>
 
@@ -189,6 +189,12 @@ foreach ($resultsearchs as $resultsearch):
 </button>
 </a>
 <?php endforeach; endforeach;?>
+
+<style>
+.baixo-desc{
+	z-index: 121421874812783217831 !important;
+}
+</style>
 
 <div class="baixo-desc">
 
