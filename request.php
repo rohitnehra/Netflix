@@ -49,8 +49,15 @@ $animels2 = DBRead( 'series', "WHERE id ORDER BY id = '{$_GET['serie']}' DESC LI
 else 
 	foreach ($animels2 as $animel):
  ?>
-<h1><?php echo $animel['name']; ?></h1>
-<p class="desct">
+<h1 style="font-size: 1.4vw;"><?php
+	$str2 = nl2br( $animel['name'] );
+	$len2 = strlen( $str2 );
+	$max2 = 40;
+   if( $len2 <= $max2 )
+   echo $str2;
+	else    
+   echo substr( $str2, 0, $max2 ) . '...'?></h1>
+<p class="desct" style="font-size: 1.2vw;">
 <?php
 	$str2 = nl2br( $animel['desct'] );
 	$len2 = strlen( $str2 );
@@ -131,14 +138,66 @@ foreach ($resultsearchs as $resultsearch):
 </div>
 </div>
 
+<style>
+.assistirt{
+	height: 5vw;
+	width: 5vw;
+	position: absolute;
+	z-index: 100000;
+	float: right;
+	right: 20vw;
+	border: none;
+	top: 40%;
+	border-radius: 50%;
+	background: rgba(0,0,0,.50);
+	cursor: pointer;
+	border: 0.1vw solid #fff;
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+}
+
+.assistirt:hover{
+	ms-transform: scale(1.3, 1.3); /* IE 9 */
+    -webkit-transform: scale(1.3, 1.3); /* Safari */
+    transform: scale(1.3, 1.3);
+}
+</style>
+
+
+<?php
+$idwatch = $_GET['serie'];
+$resultsearchs2 = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 1" );
+ if (!$resultsearchs2)
+ echo '';
+else
+foreach ($resultsearchs2 as $resultsearch2):
+?>
+	<?php
+$idwatch = $resultsearch2['id'];
+$animes = DBRead( 'series', "WHERE id = '{$idwatch}' LIMIT 10" );
+$resultsearchs = DBRead( 'videos', "WHERE idserie = '{$idwatch}' LIMIT 1" );
+ if (!$resultsearchs)
+ echo '';
+else
+foreach ($resultsearchs as $resultsearch):
+?>
+
+
+<a href="watch.php?id=<?php echo $resultsearch['id']; ?>">
+<button class="assistirt">
+<svg height="3vw" fill="#fff" id="Layer_1" style="enable-background:new 0 0 16 16;" version="1.1" viewBox="0 0 16 16" width="3vw" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M1,14c0,0.547,0.461,1,1,1c0.336,0,0.672-0.227,1-0.375L14.258,9C14.531,8.867,15,8.594,15,8s-0.469-0.867-0.742-1L3,1.375  C2.672,1.227,2.336,1,2,1C1.461,1,1,1.453,1,2V14z"/></svg>
+</button>
+</a>
+<?php endforeach; endforeach;?>
+
 <div class="baixo-desc">
 
 <center>
-<p class="feels feels-ativo" id="infob">VISÃO GERAL</p>
+<p style="font-size: 1vw;" class="feels feels-ativo" id="infob">VISÃO GERAL</p>
 <?php
      if($idse['tipo'] > 1){
     ?>
-<p class="feels" id="infoc">EPISÓDIOS</p>
+<p style="font-size: 1vw;" class="feels" id="infoc">EPISÓDIOS</p>
 	 <?php } ?>
 </center>
 

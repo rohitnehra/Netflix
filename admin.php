@@ -147,7 +147,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 
         <a href="admin.php?action=filme&iduser=<?php echo $user['idcry'] ?>">
         <li class="opa <?php if($_GET['action'] == filme){ echo "ativo"; }else if($_GET['action'] == adicionarf){ echo "ativo"; }else if($_GET['action'] == adicionarep){ echo "ativo"; }else{ echo ''; } ?>">
-        Filmes/Séries/Anime
+        Filmes/Anime
         </li>
         </a>
 
@@ -395,7 +395,8 @@ else
         <center>
         <form method="post">
         <select name="banidolist" id="tipo" class="baka-input">
-          <option value="3">Anime</option>
+		<option value="1">Anime Filme</option>
+          <option value="2">Anime</option>
         </select>
         <input class="baka-input" type="text" id="names" placeholder="Nome" value=""/>
 
@@ -508,7 +509,7 @@ $(document).ready(function() {
         <form method="post">
         <select id="tiposa" class="baka-input">
         <?php
-$animels2 = DBRead( 'series', "WHERE id and tipo > 1 ORDER BY id DESC" );
+$animels2 = DBRead( 'series', "WHERE id and tipo > 0 ORDER BY id DESC" );
  if (!$animels2)
 	echo "";
 else 

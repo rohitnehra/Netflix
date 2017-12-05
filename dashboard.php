@@ -1433,7 +1433,7 @@ else
 </style>
 <?php
 require 'db.php';
-$totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id ");
+$totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id and tipo > 1 ");
 $totaldepost = mysql_num_rows($totaldepost);
 if($totaldepost >= 7){
 ?>
@@ -1450,7 +1450,7 @@ if($totaldepost >= 7){
 <div class="video-a" id="scroll">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <?php
-$animels2 = DBRead( 'series', "WHERE id ORDER BY id DESC LIMIT 40" );
+$animels2 = DBRead( 'series', "WHERE id and tipo > 1 ORDER BY id DESC LIMIT 40" );
  if (!$animels2)
 	echo "";
 else 
@@ -1486,6 +1486,146 @@ else
 
 
 
+<div class="videos-tab" style="position: relative; top: 2vw;">
+<cont>Filmes</cont>
+<style>
+.videos-tab{
+	width: 100%;
+	height: 13vw;
+}
+.video-a{
+	position: relative;
+	height: auto;
+	overflow: hidden;
+	display: flex;
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+}
+.video{
+	margin-left: 0.8vw;
+	display: inline-block;
+	left: 2.5vw;
+	position: relative;
+	cursor: pointer;
+	box-sizing: border-box;
+	webkit-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+	opacity: 0.7;
+	z-index: 1500;
+}
+
+.video .focus{
+	height: 9vw;
+    width: 16vw;
+	position: relative;
+}
+
+.video:hover{
+	-ms-transform: scale(1.3, 1.3); /* IE 9 */
+    -webkit-transform: scale(1.3, 1.3); /* Safari */
+    transform: scale(1.3, 1.3);
+	position: relative;
+	z-index: 2500;
+	opacity: 1;
+}
+
+
+.left-i{
+	float: left;
+	height: 9vw;
+	width: 2.5vw;
+	left: 0.2vw;
+	background: rgba(0,0,0,.50);
+	position: absolute;
+	cursor: pointer;
+	z-index: 3000;
+}
+
+.left-i svg{
+	fill: #fff;
+	position: absolute;
+	top: 3vw;
+}
+
+.right-i{
+	float: right;
+	height: 9vw;
+	width: 2.5vw;
+	right: 0vw;
+	background: rgba(0,0,0,.50);
+	position: absolute;
+	z-index: 3000;
+	cursor: pointer;
+}
+
+.right-i svg{
+	fill: #fff;
+	position: absolute;
+	top: 3vw;
+}
+
+.shiftLeft { 
+  transform: translate3d(-40px, 0, 0);
+}
+
+.shiftRight { 
+  transform: translate3d(40px, 0, 0);
+}
+
+#scroll{
+	transition:all 0.3s ease;
+}
+</style>
+<?php
+require 'db.php';
+$totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id and tipo = 1 ");
+$totaldepost = mysql_num_rows($totaldepost);
+if($totaldepost >= 7){
+?>
+<div class="left-i" onclick="ScrollByRight88()">
+<svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
+</div>
+
+<div class="right-i" onclick="ScrollByLeft88()">
+<svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M24.291,14.276L14.705,4.69c-0.878-0.878-2.317-0.878-3.195,0l-0.8,0.8c-0.878,0.877-0.878,2.316,0,3.194  L18.024,16l-7.315,7.315c-0.878,0.878-0.878,2.317,0,3.194l0.8,0.8c0.878,0.879,2.317,0.879,3.195,0l9.586-9.587  c0.472-0.471,0.682-1.103,0.647-1.723C24.973,15.38,24.763,14.748,24.291,14.276z" fill="#fff"/></svg>
+</div>
+
+<?php } ?>
+
+<div class="video-a" id="scroll88">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<?php
+$animels2 = DBRead( 'series', "WHERE id and tipo = 1 ORDER BY id DESC LIMIT 40" );
+ if (!$animels2)
+	echo "";
+else 
+	foreach ($animels2 as $animel):
+ ?>
+
+<div class="video" id="click0001<?php echo $animel['id']; ?>">
+<img src="<?php echo $animel['foto']; ?>" class="focus"/>
+</div>
+
+
+
+
+<script>
+  $('#click0001<?php echo $animel['id']; ?>').click(function(){
+	$("#infor").fadeIn(600);
+				$.post('/request.php?serie=<?php echo $animel['id']; ?>', function (html) {
+				$('#infor').html(html);
+				});
+    });
+</script>
+
+
+
+
+
+<?php endforeach;?>
+</div>
 
 
 
@@ -1584,7 +1724,7 @@ else
 </style>
 <?php
 require 'db.php';
-$totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id and views >= 1 ");
+$totaldepost = mysql_query("SELECT * FROM netflix_series WHERE id and views > 1 ");
 $totaldepost = mysql_num_rows($totaldepost);
 if($totaldepost >= 7){
 ?>
@@ -1601,7 +1741,7 @@ if($totaldepost >= 7){
 <div class="video-a" id="scroll5">
 
 <?php
-$animels2 = DBRead( 'series', "WHERE id and views >= 1 ORDER BY id DESC LIMIT 40" );
+$animels2 = DBRead( 'series', "WHERE id and views > 1 ORDER BY id DESC LIMIT 40" );
  if (!$animels2)
 	echo "";
 else 
@@ -1933,6 +2073,20 @@ function ScrollRight() {
 	document.getElementById("scroll2").scrollLeft=-1500;
 }
 
+
+function ScrollByLeft88() {
+	document.getElementById("scroll88").scrollBy(1500, 0);
+}
+function ScrollByRight88() {
+	document.getElementById("scroll88").scrollBy(-1500, 0);
+}
+
+function ScrollLeft() {
+	document.getElementById("scroll88").scrollLeft=1500;
+}
+function ScrollRight() {
+	document.getElementById("scroll88").scrollLeft=-1500;
+}
 
 
 function ScrollByLeft5() {
