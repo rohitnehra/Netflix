@@ -1143,7 +1143,7 @@ else
 <?php
 	$str2 = nl2br( $animel['desct'] );
 	$len2 = strlen( $str2 );
-	$max2 = 200;
+	$max2 = 180;
    if( $len2 <= $max2 )
    echo $str2;
 	else    
