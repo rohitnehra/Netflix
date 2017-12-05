@@ -1306,7 +1306,7 @@ if($totaldepost >= 7){
 
 
 <?php
-$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 40" );
+$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id DESC LIMIT 40" );
  if (!$animels52)
 	echo "";
 else 
@@ -1314,7 +1314,7 @@ else
  ?>
 <?php
 $videoh = $animel5['idserie'];
-$animels2 = DBRead( 'series', "WHERE id = '". $videoh ."' ORDER BY id ASC LIMIT 1" );
+$animels2 = DBRead( 'series', "WHERE id = '". $videoh ."' ORDER BY id DESC LIMIT 1" );
  if (!$animels2)
 	echo "";
 else 
