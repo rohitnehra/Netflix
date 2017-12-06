@@ -65,17 +65,9 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 
 
 <?php 
-$dbCheck = DBRead( 'history', "WHERE idserie = '". $anime['id'] ."' and perfil = '".  $_COOKIE['usuario'] ."' " );
+$dbCheck = DBRead( 'history', "WHERE id and idvideo = '". $video['id'] ."' and perfil = '".  $_COOKIE['usuario'] ."' " );
 if( $dbCheck ){
-  $form3['idpeople'] = $_COOKIE['iduser'];
-	$form3['idvideo'] = $_GET['id'];
-	$form3['perfil'] = $_COOKIE['usuario'];
-	$form3['ep'] = $video['ep'];
-	$form3['progress'] = '0';
-	$form3['atualprogress'] = '0';
-	if( DBUpdate( 'history', $form3 ) ){	
 	echo '';
-	}
 }
 else{
 	$form2['idpeople'] = $_COOKIE['iduser'];
