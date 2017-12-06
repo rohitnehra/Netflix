@@ -1119,7 +1119,7 @@ else
  ?>
  <?php
  $videoid = $animel['id'];
-$videols2 = DBRead( 'videos', "WHERE id and idserie = '". $videoid ."' ORDER BY id DESC LIMIT 1" );
+$videols2 = DBRead( 'videos', "WHERE id and idserie = '". $videoid ."' ORDER BY id ASC LIMIT 1" );
  if (!$videols2)
 	echo "";
 else 

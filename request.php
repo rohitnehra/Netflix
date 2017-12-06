@@ -119,7 +119,7 @@ foreach ($resultsearchs2 as $resultsearch2):
 	<?php
 $idwatch = $resultsearch2['id'];
 $animes = DBRead( 'series', "WHERE id = '{$idwatch}'  LIMIT 10" );
-$resultsearchs = DBRead( 'videos', "WHERE idserie = '{$idwatch}'  LIMIT 10" );
+$resultsearchs = DBRead( 'videos', "WHERE idserie = '{$idwatch}'  LIMIT 240" );
  if (!$resultsearchs)
  echo '';
 else
