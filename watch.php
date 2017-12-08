@@ -65,19 +65,25 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 
 
 <?php 
-$dbCheck = DBRead( 'history', "WHERE id and idvideo = '". $video['id'] ."' and perfil = '".  $_COOKIE['usuario'] ."' " );
+$dbCheck = DBRead( 'history', "WHERE idserie = '". $anime['id'] ."' and perfil = '".  $_COOKIE['usuario'] ."' " );
 if( $dbCheck ){
-	echo '';
+	$userUP['idvideo'] = $_GET['id'];
+  $userUP['progress'] = '0';
+  $userUP['atualprogress'] = '0';
+  $userUP['ep'] = $video['ep'];
+  $userUP['perfil'] = $_COOKIE['usuario'];
+    if( DBUpdate( 'history', $userUP, "idserie = '{$anime['id']}'" ) ){
+      echo '';
+    }
 }
 else{
 	$form2['idpeople'] = $_COOKIE['iduser'];
 	$form2['idvideo'] = $_GET['id'];
 	$form2['perfil'] = $_COOKIE['usuario'];
-	$form2['idserie'] = $anime['id'];
-	$form2['ep'] = $video['ep'];
-	$form2['progress'] = '0';
-	$form2['atualprogress'] = '0';
-  
+  $form2['idserie'] = $anime['id'];
+  $form2['ep'] = $video['ep'];
+  $form2['progress'] = '0';
+  $form2['atualprogress'] = '0';
 	if( DBCreate( 'history', $form2 ) ){	
 	echo '';
 	}
