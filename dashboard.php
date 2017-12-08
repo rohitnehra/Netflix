@@ -1158,6 +1158,12 @@ else
 
 <?php } ?>
 
+<a href="config.php" style="color: transparent;">
+<li class="li-perfil">
+<p style="text-align: center; color: #fff;">Configuração</li>
+</li>
+</a>
+
 <a href="logout.php" style="color: transparent;">
 <li class="li-perfil">
 <p style="text-align: center; color: #fff;">Sair</li>
