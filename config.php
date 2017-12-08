@@ -159,7 +159,9 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){?>
 </div>
 
 <div class="header-1">
+<a href="/">
 <img src="/static/logo.png" class="logo"/>
+</a>
 </div>
 
 <style>
