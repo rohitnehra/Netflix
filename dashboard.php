@@ -1,10 +1,11 @@
 <!--Obrigado por usar nossa plataforma <3 -->
 <!-- Criado por Luiz e Alexandre com todo carinho para vocês -->
+<!--Obrigado por usar nossa plataforma <3 -->
+<!-- Criado por Luiz e Alexandre com todo carinho para vocês -->
 <?php
 require 'static/php/system/database.php';
 require 'static/php/system/config.php';
-?>
-<?php
+?><?php
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 	
 
@@ -47,6 +48,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 
 
 	?>
+
 <head>
 <title>
 <?php
@@ -272,14 +274,14 @@ else{
 	?></div>
 <div class="what center">
 <?php
-$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
+$peoples = DBRead( 'profiles', "WHERE iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
 if (!$peoples)
-echo '';	
+echo '';
 else  
 	foreach ($peoples as $people):	 
 ?>
 <button style="border:none; background: transparent;" name="people">
-<?Php 
+<?Php
 if($_GET['action'] == 1){?>
  <?php echo ''; ?>
 <?php }else{?>
