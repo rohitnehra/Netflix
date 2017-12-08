@@ -229,8 +229,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){?>
     <input type="text" name="first_name" value="" placeholder="Nome"  />
     <input type="text" name="last_name" value="" placeholder="Sobrenome" />
     <input type="text" name="last_name" value="" placeholder="Nome de usuario" />
-    <center><input class="pagare" type="submit" name="submit" value="Comprar via PayPal"/></center>
-    <p style="color: #fff;position: relative; left: 0; top: 1vw; font-size: 1.2vw;">Não feche esta página</p>
+    <center><input class="pagare" type="submit" name="submit" value="Concluir"/></center>
 </form>
 </div>
 
