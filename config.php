@@ -225,13 +225,50 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){?>
 
 <div class="pagar">
 <h1>Editando perfil</h1>
-<form class="paypal" action="payments.php" method="post" id="paypal_form" target="_blank">
-    <input type="text" name="first_name" value="" placeholder="Nome"  />
-    <input type="text" name="last_name" value="" placeholder="Sobrenome" />
-    <input type="text" name="last_name" value="" placeholder="Nome de usuario" />
-    <center><input class="pagare" type="submit" name="submit" value="Concluir"/></center>
+<form class="editar" method="post">
+    <input type="text" name="first_name" value="" id="name" placeholder="Nome"  />
+    <input type="text" name="last_name" value="" id="sobname" placeholder="Sobrenome" />
+    <input type="text" name="last_name" value="" id="username" placeholder="Nome de usuario" />
+    <center><input class="pagare" type="submit" name="submit" value="Concluir" id="concluido"/></center>
 </form>
 </div>
+
+<div id="resposta">
+
+</div>
+<style>
+#resposta{
+    width: 45vw;
+    color: red;
+    position: relative;
+    top: 8vw;
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 0.3vw;
+    font-size: 1.5vw;
+    background: #000;
+    height: auto;
+}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#concluido").click(function() {
+        var name = $("#name");
+        var namePost = name.val();
+		var sobname = $("#sobname");
+        var sobnamePost = sobname.val();
+        var username = $("#username");
+        var usernamePost = username.val();
+        $.post("/configurandop.php?config1=<?Php echo $user['idcry']; ?>", {name: namePost,sobname: sobnamePost,username: usernamePost,},
+        function(data){
+         $("#resposta").html(data);
+         }
+         , "html");
+         return false;
+    });
+});
+</script>
 
 </body>
 
