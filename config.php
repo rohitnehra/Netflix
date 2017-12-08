@@ -162,6 +162,78 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){?>
 <img src="/static/logo.png" class="logo"/>
 </div>
 
+<style>
+.pagar{
+	background: #000;
+	width: 45vw;
+	height: 18vw;
+	z-index: 10000;
+	position: relative;
+	margin: 0px auto;
+	top: 8vw;
+	padding: 3vw;
+}
+
+.pagar input{
+	width: 100%;
+	height: 2vw;
+	border: none;
+	margin-top: 1vw;
+	padding-left: 0.5vw;
+	font-size: 1.3vw;
+}
+
+.pagar h1{
+	color: #fff;
+	padding: 1vw;
+	font-size: 1.8vw;
+}
+
+.pagar .pagare{
+	display: inline-block;
+                text-decoration: none;
+                line-height: 1rem;
+                vertical-align: middle;
+                cursor: pointer;
+                font-weight: 700;
+                letter-spacing: .025rem;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: none;
+                position: relative;
+                min-height: 3.6vw;
+                -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                -moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                box-shadow: 0 1px 1px rgba(0,0,0,.25);
+                color: #fff;
+                width: 30vw;
+                background: #5e09e5;
+                font-size: 1.5vw;
+}
+
+</style>
+
+
+<div class="pagar">
+<h1>Editando perfil</h1>
+<form class="paypal" action="payments.php" method="post" id="paypal_form" target="_blank">
+    <input type="text" name="first_name" value="" placeholder="Nome"  />
+    <input type="text" name="last_name" value="" placeholder="Sobrenome" />
+    <input type="text" name="last_name" value="" placeholder="Nome de usuario" />
+    <center><input class="pagare" type="submit" name="submit" value="Comprar via PayPal"/></center>
+    <p style="color: #fff;position: relative; left: 0; top: 1vw; font-size: 1.2vw;">Não feche esta página</p>
+</form>
+</div>
+
 </body>
 
 </html>
