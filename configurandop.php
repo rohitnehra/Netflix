@@ -29,6 +29,7 @@ else{
 	$userUP['username'] = $username;
     if( DBUpdate( 'user', $userUP, "id = '{$iduser}'" ) ){
         echo 'Sucesso';
+        echo '<script>location.href="/";</script>';
     }
 	else{
 		echo 'Ocorreu um erro';
