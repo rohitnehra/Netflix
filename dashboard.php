@@ -783,6 +783,90 @@ body{
 <div class="bakap"></div>
 <div class="bakae"></div>
 
+
+
+
+<?php 
+$inicio = $user['datec'];
+$expirado = $user['expirado'];
+if(empty($user['username'])) {
+	?>
+
+<style>
+
+.logado{
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.error-msg{
+	width: 100%;
+	background: #000;
+	height: 12.5vw;
+	position: relative;
+	top: 0;
+	left: 0;
+	color: #fff;
+}
+
+.error-h1{
+	color: #fff;
+    position: relative;
+    vertical-align: middle;
+    font-size: 1.5vw;
+    font-weight: 400;
+	top: 2.5vw;
+	left: 2vw;
+}
+
+.error-msg p{
+	position: relative;
+	top: 3vw;
+	left: 2vw;
+	font-size: 1.1vw;
+}
+
+.pagar{
+	float: left;
+	position: relative;
+	width: 15vw;
+	height: 2.5vw;
+	top: 4vw;
+	left: 2vw;
+	border: none;
+	cursor: pointer;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+    box-shadow: 0 1px 1px rgba(0,0,0,.25);
+	color: #fff;
+    background: #5e09e5;
+	font-size: 1.2vw;
+}
+
+.center-error{
+	max-width: 50vw;
+	height: inherit;
+	margin: 0px auto;
+}
+</style>
+
+<div class="error-msg" style="z-index: 10000;">
+
+<div class="center-error">
+<h1 class="error-h1">Parece que você ainda não configurou seu username!</h1>
+<p>Para configurar clique no botão abaixo!</p>
+
+<a href="config.php?id=<?php echo $user['idcry']; ?>"><button class="pagar">Configurar conta</button></a>
+</div>
+</div>
+
+<?php } ?>
+
+
+
+
+
+
 <?php 
 $inicio = $user['datec'];
 $expirado = $user['expirado'];
@@ -1119,7 +1203,7 @@ else
  ?>
  <?php
  $videoid = $animel['id'];
-$videols2 = DBRead( 'videos', "WHERE id and idserie = '". $videoid ."' ORDER BY id ASC LIMIT 1" );
+$videols2 = DBRead( 'videos', "WHERE id and idserie = '". $videoid ."' ORDER BY id DESC LIMIT 1" );
  if (!$videols2)
 	echo "";
 else 
