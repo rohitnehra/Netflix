@@ -68,8 +68,6 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 $dbCheck = DBRead( 'history', "WHERE idserie = '". $anime['id'] ."' and perfil = '".  $_COOKIE['usuario'] ."' " );
 if( $dbCheck ){
 	$userUP['idvideo'] = $_GET['id'];
-  $userUP['progress'] = '0';
-  $userUP['atualprogress'] = '0';
   $userUP['ep'] = $video['ep'];
   $userUP['perfil'] = $_COOKIE['usuario'];
     if( DBUpdate( 'history', $userUP, "idserie = '{$anime['id']}'" ) ){
@@ -340,6 +338,14 @@ foreach ($resultsearchs as $resultsearch):
 <?php endforeach;?>" preload="metadata" autoplay>
 
 </video>
+
+
+
+
+<script>
+
+</script>
+
 <script type="text/javascript" src="assets/js/mod_xhr.js"></script>
 <script type="text/javascript">
 document.getElementById("playerwatchpri").onclick = function() {vidplay()};
