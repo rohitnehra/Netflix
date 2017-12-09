@@ -54,6 +54,7 @@ body{
     height: 85vw;
     top: 15vw;
     background-size: cover;
+	background-image: url(/static/back.jpg);
 }
 
 .eo{
@@ -140,8 +141,10 @@ Entrar
 </div>
 
 <div class="eo"></div>
-<video src="http://woobyanimes.com/static/loop.mp4" class="body-oa-tod" autoplay muted loop>
+<video src="http://woobyanimes.com/static/loop.mp4" style="display: none;" class="body-oa-tod" autoplay muted loop>
 </video>
+
+<div class="body-oa-tod"></div>
 
 <div class="apresentation" style="z-index: 10000;">
 <h1>Seu próximo anime, agora.</h1>
@@ -160,7 +163,7 @@ Entrar
     width: 100%;
     height: 11vw;
     position: relative;
-    top: -43vw;
+    top: -42vw;
     border-bottom: 0.1vw solid #4c4545;
     padding-top: 0vw;
 	z-index: 1000000;
