@@ -1286,19 +1286,7 @@ else
     transition: all 1s;
 	z-index: 1500;
 }
-.video{
-	margin-left: 0.8vw;
-	display: inline-block;
-	left: 2.5vw;
-	position: relative;
-	cursor: pointer;
-	box-sizing: border-box;
-	webkit-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-	opacity: 0.7;
-}
+
 
 .video .focus{
 	height: 9vw;
@@ -1432,36 +1420,6 @@ else
 	-webkit-transition: all 1s; /* Safari */
     transition: all 1s;
 }
-.video{
-	margin-left: 0.8vw;
-	display: inline-block;
-	left: 2.5vw;
-	position: relative;
-	cursor: pointer;
-	box-sizing: border-box;
-	webkit-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-	opacity: 0.7;
-	z-index: 1500;
-}
-
-.video .focus{
-	height: 9vw;
-    width: 16vw;
-	position: relative;
-}
-
-.video:hover{
-	-ms-transform: scale(1.3, 1.3); /* IE 9 */
-    -webkit-transform: scale(1.3, 1.3); /* Safari */
-    transform: scale(1.3, 1.3);
-	position: relative;
-	z-index: 2500;
-	opacity: 1;
-}
-
 
 .left-i{
 	float: left;
@@ -1590,7 +1548,7 @@ else
     transition: all 1s;
 }
 .video{
-	margin-left: 0.8vw;
+	margin-left: 0.14vw;
 	display: inline-block;
 	left: 2.5vw;
 	position: relative;
@@ -1617,6 +1575,7 @@ else
 	position: relative;
 	z-index: 2500;
 	opacity: 1;
+	box-shadow: 0.4vw 0.3vw 0.5vw #000;
 }
 
 
@@ -1735,7 +1694,7 @@ else
     transition: all 1s;
 }
 .video{
-	margin-left: 0.8vw;
+	margin-left: 0.14vw;
 	display: inline-block;
 	left: 2.5vw;
 	position: relative;
@@ -1898,25 +1857,6 @@ else
 	display: flex;
 	-webkit-transition: all 1s; /* Safari */
     transition: all 1s;
-}
-.video{
-	margin-left: 0.8vw;
-	display: inline-block;
-	left: 2.5vw;
-	position: relative;
-	cursor: pointer;
-	box-sizing: border-box;
-	webkit-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-    transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-	opacity: 0.7;
-}
-
-.video .focus{
-	height: 9vw;
-    width: 16vw;
-	position: relative;
 }
 
 .video:hover{
