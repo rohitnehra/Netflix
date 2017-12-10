@@ -703,13 +703,6 @@ body{
 		position: relative;
 	}
 
-	.aaa{
-		background: linear-gradient(to bottom, #0000ff4a, #141414);
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-		height: 7vw;
-	}
 
 	.logo-serie{
 		height: 12vw;
@@ -751,7 +744,7 @@ body{
 	}
 
 	.videos-tab cont{
-	font-size: 1.4vw;
+	font-size: 1.6vw;
     color: #fff;
     font-weight: 700;
     margin: 0 4% .5em 4%;
@@ -765,25 +758,6 @@ body{
 	</style>
 <body class="logado" style="overflow-x: hidden; overflow-y: auto;">
 
-<style>
-.bakae{
-	background-image:url(/static/backgronds/4.png);
-	width: 100%;
-	height: 100%;
-	position: fixed;
-}
-
-.bakap{
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	background: rgba(0,0,0,.82);
-	z-index: 500;
-}
-</style>
-
-<div class="bakap"></div>
-<div class="bakae"></div>
 
 
 
@@ -1158,6 +1132,13 @@ else
 
 <?php } ?>
 
+<a href="profile.php?id=<?php echo $user['id']; ?>" style="color: transparent;">
+<li class="li-perfil">
+<p style="text-align: center; color: #fff;">Meu perfil</li>
+</li>
+</a>
+
+
 <a href="config.php" style="color: transparent;">
 <li class="li-perfil">
 <p style="text-align: center; color: #fff;">Configuração</li>
@@ -1218,7 +1199,6 @@ else
 	foreach ($videols2 as $videol):
  ?>
 <img src="<?php echo $animel['logo']; ?>" class="logo-serie"></img>
-<div class="aaa"></div>
 <div class="apresent-info">
 
 <style>
@@ -1270,15 +1250,21 @@ else
 </div>
 
 
-
+<style>
+.bakap{
+	width: 100%;
+	height: 2vw;
+	background: rgba(0,0,0,.90);
+}
+</style>
 
 
 <?php
 $animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id ASC LIMIT 1" );
  if (!$animels52)
-	echo "
-		<p style='z-index: 1300;width: auto;color: #fff; font-size: 1.5vw; position: relative; left: 3.5vw; top: -2.8vw;'>Que pena você não assistiu nada ainda, assista algo para aparecer aqui.</p>
-	";
+	echo "<div class='bakap'>
+		<p style='z-index: 1300;width: auto;color: #fff; font-size: 1.5vw; position: relative; left: 3.5vw; top: 0vw;'>Que pena você não assistiu nada ainda, assista algo para aparecer aqui.</p>
+	</div>";
 else 
 	foreach ($animels52 as $animel5):
  ?>
@@ -1486,6 +1472,11 @@ else
 	position: absolute;
 	cursor: pointer;
 	z-index: 3000;
+	opacity: 0.6;
+}
+
+.left-i:hover{
+	opacity: 1;
 }
 
 .left-i svg{
@@ -1503,6 +1494,11 @@ else
 	position: absolute;
 	z-index: 3000;
 	cursor: pointer;
+	opacity: 0.6;
+}
+
+.right-i:hover{
+	opacity: 1;
 }
 
 .right-i svg{
