@@ -13,13 +13,15 @@ $upRate = array('progress' => $progress);
 DBUpDate( 'history', $upRate, "idvideo = '{$videoid}' and perfil = '{$profile}' " );
 
 
-$upRate3 = array('atualprogress' => $currenttime);
-DBUpDate( 'history', $upRate3, "idvideo = '{$videoid}' and perfil = '{$profile}'" );
+$upRate2 = array('atualprogress' => $currenttime);
+DBUpDate( 'history', $upRate2, "idvideo = '{$videoid}' and perfil = '{$profile}'" );
 
 
 $upRate3 = array('perfil' => $profile);
 DBUpDate( 'history', $upRate3, "idvideo = '{$videoid}' and perfil = '{$profile}'" );
 
+$upRate3 = array('idserie' => $idserie);
+DBUpDate( 'history', $upRate3, "idvideo = '{$videoid}' and perfil = '{$profile}'" );
 
 $upRate3 = array('idvideo' => $videoid);
 DBUpDate( 'history', $upRate3, "idvideo = '{$videoid}' and perfil = '{$profile}'" );
