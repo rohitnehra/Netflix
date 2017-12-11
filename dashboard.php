@@ -1269,6 +1269,15 @@ else
 
 
 
+<script>
+  $('#click76<?php echo $animel['id']; ?>').click(function(){
+	$("#infor").fadeIn(600);
+				$.post('/request.php?serie=<?php echo $animel['id']; ?>', function (html) {
+				$('#infor').html(html);
+				});
+    });
+</script>
+
 
 
 
