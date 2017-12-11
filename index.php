@@ -6,6 +6,8 @@ Wooby Animes
 </title>
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="/static/ico/default.ico"/>
+<link rel="stylesheet" type="text/css" href="/css/pace.css"/>
+ <script type="text/javascript" src="/js/pace.min.js"></script>
 </head>
 <html>
 
@@ -320,6 +322,35 @@ Cancele online quando quiser</p>
 </center>
 </div>
 
+<style>
+footer{
+	background: #151515;
+	width: 100%;
+	height: auto;
+	position: relative;
+	bottom: 0vw;
+	color: #fff;
+	padding-bottom: 3vw;
+}
+
+footer a{
+	position: relative;
+	font-size: 1.7vw;
+	top: 1.5vw;
+	left: 8vw;
+	cursor: pointer;
+	color: #fff;
+	text-decoration: none:
+}
+
+footer a:hover{
+	text-decoration: underline;
+}
+</style>
+
+<footer>
+<a href="ads.php">Anúncios</a>
+</footer>
 
 </body>
 <?php } else{

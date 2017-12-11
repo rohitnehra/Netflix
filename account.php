@@ -9,6 +9,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 Wooby
 </title>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/pace.css"/>
 <link rel="shortcut icon" href="/static/ico/default.ico"/>
 </head>
 <html>
@@ -481,6 +482,37 @@ $(document).ready(function() {
 </center>
 </div>
 </div>
+
+<style>
+footer{
+	background: #151515;
+	width: 100%;
+	height: auto;
+	position: relative;
+	bottom: 0vw;
+	color: #fff;
+	padding-bottom: 3vw;
+	text-decoration: none:
+}
+
+footer a{
+	position: relative;
+	font-size: 1.7vw;
+	top: 1.5vw;
+	left: 8vw;
+	cursor: pointer;
+	color: #fff;
+}
+
+footer a:hover{
+	text-decoration: underline;
+}
+</style>
+
+<footer>
+<a href="ads.php">Anúncios</a>
+</footer>
+
             <?php } ?>
 
 
@@ -488,4 +520,5 @@ $(document).ready(function() {
 </div>
 
 </body>
+<script type="text/javascript" src="/js/pace.min.js"></script>
 </html>

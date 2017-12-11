@@ -28,7 +28,22 @@ $anime = $anime[0];
 
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
   
-
+$idcry = DBEscape( strip_tags(trim($_COOKIE['thecry']) ) );
+		$usercry = DBRead('user', "WHERE id and idcry = '{$idcry}' LIMIT 1 ");
+		
+		if($usercry){
+			$usercry = $usercry[0];
+			}else{
+			echo '<script>location.href="dashboard";</script>';	
+			}
+			
+			if($user['idcry'] == $usercry['idcry']){
+				echo '';
+			}
+			else{
+			setcookie("iduser" , $usercry['id']);
+			setcookie("thecry" , $usercry['idcry']);
+			}
 
 		$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
 		$user = DBRead('user', "WHERE id = '{$iduser}' LIMIT 1 ");
@@ -92,6 +107,7 @@ else{
 
 <head>
 <title>Wooby</title>
+<link rel="stylesheet" type="text/css" href="/css/pace.css"/>
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
 <meta charset="utf-8">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -682,5 +698,5 @@ body {
         </html>
 
      <?php } ?>
-
+<script type="text/javascript" src="/js/pace.min.js"></script>
 </html>

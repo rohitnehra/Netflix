@@ -5,9 +5,27 @@
 <?php
 require 'static/php/system/database.php';
 require 'static/php/system/config.php';
-?><?php
+?>
+<?php
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 	
+
+		$idcry = DBEscape( strip_tags(trim($_COOKIE['thecry']) ) );
+		$usercry = DBRead('user', "WHERE id and idcry = '{$idcry}' LIMIT 1 ");
+		
+		if($usercry){
+			$usercry = $usercry[0];
+			}else{
+			echo '<script>location.href="dashboard";</script>';	
+			}
+			
+			if($user['idcry'] == $usercry['idcry']){
+				echo '';
+			}
+			else{
+			setcookie("iduser" , $usercry['id']);
+			setcookie("thecry" , $usercry['idcry']);
+			}
 
 
 			$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
@@ -16,7 +34,11 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 		if($user){
 			$user = $user[0];
 			}else{
-			echo '<script>location.href="dashboard";</script>';	
+			header("location: account");
+			setcookie("iduser" , "");
+			setcookie("inisession" , "");
+			setcookie("perfil" , "");
+			setcookie("usuario" , "");
 			}
 
 			if($user['configurado'] == 0){
@@ -68,6 +90,8 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 }
 ?>
 </title>
+<link rel="stylesheet" type="text/css" href="/css/pace.css"/>
+<script type="text/javascript" src="/js/pace.min.js"></script>
 <link rel="shortcut icon" href="/static/ico/default.ico"/>
 </head>
 
@@ -982,6 +1006,36 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 	left: 4vw;
 	bottom: 1.5vw;
 }
+
+.left-t{
+	display: flex;
+	position: absolute;
+	height: inherit;
+	width: 25%;
+	top: 0;
+	left: 13%;
+}
+
+.left-t a{
+	color: #fff;
+	padding: 1vw;
+	font-size: 1.5vw;
+	cursor: pointer;
+	display: inline-block;
+	margin-left: 0.9vw;
+	text-decoration: none;
+}
+
+.left-t a:hover{
+	border-bottom: 0.2vw solid blue;
+	background: #515151;
+}
+
+.ativo{
+	border-bottom: 0.2vw solid blue;
+	background: #515151;
+}
+
 </style>
 
 <input type="text" class="buscaranime" placeholder="Busque animes" />
@@ -992,7 +1046,13 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 		  <script src="lib/js/jquery.js" type="text/javascript"></script>
 		<script src="lib/js/js-all.js" type="text/javascript"></script>
 
-<img src="/static/logo.png" class="logo"/>
+<a href="/"><img src="/static/logo.png" class="logo"/></a>
+
+<div class="left-t">
+<a href="/" <?php if($_GET['action'] == animesall){ echo '';} else if($_GET['action'] == mylist){ echo ''; }else if($_GET['action'] == history){  echo ''; } else{ echo 'class="ativo"'; } ?>>ÍNICIO</a>
+<a href="/dashboard.php?action=animesall" <?php if($_GET['action'] == animesall){ echo 'class="ativo"';} ?>>ANIMES</a>
+<a href="/dashboard.php?action=history" <?php if($_GET['action'] == animesall){ echo '';} else if($_GET['action'] == mylist){ echo ''; }else if($_GET['action'] == history){  echo 'class="ativo"'; } else{ echo ''; } ?>>HISTORICO</a>
+</div>
 
 <div class="right-user">
 
@@ -1132,11 +1192,6 @@ else
 
 <?php } ?>
 
-<a href="profile.php?id=<?php echo $user['id']; ?>" style="color: transparent;">
-<li class="li-perfil">
-<p style="text-align: center; color: #fff;">Meu perfil</li>
-</li>
-</a>
 
 
 <a href="config.php" style="color: transparent;">
@@ -1168,19 +1223,195 @@ document.addEventListener('click', function(){
 });
 </script>
 
-<script>
-var headerstyle = document.getElementById('headera');
-window.onscroll = function(){
-var top = window.pageYOffset || document.documentElement.scrollTop
-if( top > 100 ) {
-headerstyle.style = 'background: rgba(0, 0, 0, 0.7); position: fixed;';
-}else{
-headerstyle.style = 'position: relative; background-image: linear-gradient(#000 0%, transparent 100%);';
+
+<?php if($_GET['action'] == animesall){ ?>
+
+<style>
+.video{
+	width: 16vw;
+	height: 9vw;
+	display: inline-block;
+	margin-left: 0.5vw;
+	margin-top: 1vw;
+	cursor: pointer;
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
 }
+
+.video:hover{
+	-ms-transform: scale(1.3, 1.3); /* IE 9 */
+    -webkit-transform: scale(1.3, 1.3); /* Safari */
+    transform: scale(1.3, 1.3);
+	z-index: 100;
+	box-shadow: 0.3vw 0.5vw 0.6vw #000;
 }
-</script>
+
+.video .focus{
+	width: 16vw;
+	height: 9vw;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<center>
+
+<?php
+$animels2 = DBRead( 'series', "WHERE id and tipo > 1 ORDER BY id DESC LIMIT 40" );
+ if (!$animels2)
+	echo "";
+else 
+	foreach ($animels2 as $animel):
+ ?>
+
+<div class="video" id="click76<?php echo $animel['id']; ?>">
+<img src="<?php echo $animel['foto']; ?>" class="focus"/>
+</div>
 
 
+
+
+
+
+<?php endforeach;?>
+</center>
+
+<style>
+
+.conteudo-info{
+	width: 100%;
+	position: fixed;
+	height: 100%;
+	background: #000;
+	top: 0vw;
+	display: none;
+	color: #fff;
+	z-index: 10000000000;
+	margin: 0px auto;
+	left: 0;
+}
+
+.informa h1{
+	padding: 2vw;
+	font-size: 2.2vw;
+}
+
+.informa .desct{
+	width: 35vw;
+	padding-left: 2vw;
+	z-index: 50;
+}
+
+.baixo-desc{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 3vw;
+	background: rgba(0,0,0,.50);
+	z-index: 1060;
+}
+
+.feels{
+	width: 9vw;
+	position: relative;
+	top: 1.3vw;
+	text-align: center;
+	display: inline-block;
+	margin-left: 2vw;
+	cursor: pointer;
+	z-index: 50;
+}
+
+.feels:hover{
+	border-bottom: 0.2vw solid #5e09e5;
+}
+
+.feels-ativo{
+	border-bottom: 0.2vw solid #5e09e5;
+}
+
+.close{
+		float: right;
+		right: 1vw;
+		top: 1vw;
+		position: relative;
+	 	width: 2vw;
+		height: 2vw;
+		cursor: pointer;
+		padding: 0.3vw;
+		z-index: 1250;
+	}
+
+	.close:hover{
+		background: rgba(0,0,0,.50);
+	}
+
+	.close svg{
+		fill: #fff;
+	}
+
+</style>
+
+<div class="conteudo-info" id="infor">
+
+</div>
+
+
+<?php } else if($_GET['action'] == history){?>
+
+<style>
+.video{
+	width: 16vw;
+	height: 9vw;
+	display: inline-block;
+	margin-left: 0.5vw;
+	margin-top: 1vw;
+	cursor: pointer;
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+}
+
+.video:hover{
+	-ms-transform: scale(1.3, 1.3); /* IE 9 */
+    -webkit-transform: scale(1.3, 1.3); /* Safari */
+    transform: scale(1.3, 1.3);
+	z-index: 100;
+	box-shadow: 0.3vw 0.5vw 0.6vw #000;
+}
+
+.video .focus{
+	width: 16vw;
+	height: 9vw;
+}
+</style>
+<center>
+<?php
+$animels52 = DBRead( 'history', "WHERE id and idpeople = '". $user['id'] ."' and perfil = '". $perfil['id'] ."'ORDER BY id DESC LIMIT 40" );
+ if (!$animels52)
+	echo "";
+else 
+	foreach ($animels52 as $animel5):
+ ?>
+<?php
+$videoh = $animel5['idserie'];
+$animels2 = DBRead( 'series', "WHERE id = '". $videoh ."' ORDER BY id DESC LIMIT 1" );
+ if (!$animels2)
+	echo "";
+else 
+	foreach ($animels2 as $animel):
+ ?>
+<a href="watch.php?id=<?php echo $animel5['idvideo'];?>&chalala=<?php echo $animel5['progress']; ?>">
+<div class="video">
+<p style="color: #fff; font-size: 1.2vw; background: #000; width: 100%;">Episodio <?php echo $animel5['ep']; ?></p>
+<img src="<?php echo $animel['foto']; ?>" class="focus"/>
+<div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
+<div style="float: left;width:<?php if($animel5['progress'] < 1){ echo '3%;'; }?> <?php echo $animel5['progress'];?> <?php if(empty($animel5['progress'])){ echo '0'; }?>; height: inherit; background: #5e09e5;"></div>
+</div>
+</div>
+</a>
+<?php endforeach; endforeach;?>
+</div>
+</center>
+<?php } else{ ?>
 
 <div class="apresent">
 <?php
@@ -1192,7 +1423,7 @@ else
  ?>
  <?php
  $videoid = $animel['id'];
-$videols2 = DBRead( 'videos', "WHERE id and idserie = '". $videoid ."' ORDER BY id DESC LIMIT 1" );
+$videols2 = DBRead( 'videos', "WHERE id and idserie = '". $videoid ."' ORDER BY id ASC LIMIT 1" );
  if (!$videols2)
 	echo "";
 else 
@@ -1503,7 +1734,7 @@ else
 	foreach ($animels2 as $animel):
  ?>
 
-<div class="video" id="click<?php echo $animel['id']; ?>">
+<div class="video" id="click76<?php echo $animel['id']; ?>">
 <img src="<?php echo $animel['foto']; ?>" class="focus"/>
 </div>
 
@@ -1511,7 +1742,7 @@ else
 
 
 <script>
-  $('#click<?php echo $animel['id']; ?>').click(function(){
+  $('#click76<?php echo $animel['id']; ?>').click(function(){
 	$("#infor").fadeIn(600);
 				$.post('/request.php?serie=<?php echo $animel['id']; ?>', function (html) {
 				$('#infor').html(html);
@@ -1526,6 +1757,149 @@ else
 <?php endforeach;?>
 </div>
 
+
+
+
+
+
+
+<style>
+.video-r{
+	margin-left: 0.14vw;
+	display: inline-block;
+	left: 2.5vw;
+	position: relative;
+	cursor: pointer;
+	box-sizing: border-box;
+	webkit-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+    transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
+	opacity: 0.7;
+	z-index: 1500;
+}
+
+.video-r .focus{
+	height: 25vw;
+    width: 19vw;
+	position: relative;
+}
+
+.video-r:hover{
+	-ms-transform: scale(1.3, 1.3); /* IE 9 */
+    -webkit-transform: scale(1.3, 1.3); /* Safari */
+    transform: scale(1.3, 1.3);
+	position: relative;
+	z-index: 2500;
+	opacity: 1;
+	box-shadow: 0.4vw 0.3vw 0.5vw #000;
+}
+
+.left-i-r{
+	float: left;
+	height: 25vw;
+	width: 2.5vw;
+	left: 0.2vw;
+	background: rgba(0,0,0,.50);
+	position: absolute;
+	cursor: pointer;
+	z-index: 3000;
+	opacity: 0.6;
+}
+
+.left-i-r:hover{
+	opacity: 1;
+}
+
+.left-i-r svg{
+	fill: #fff;
+	position: absolute;
+	top: 10vw;
+}
+
+.right-i-r{
+	float: right;
+	height: 25vw;
+	width: 2.5vw;
+	right: 0vw;
+	background: rgba(0,0,0,.50);
+	position: absolute;
+	z-index: 3000;
+	cursor: pointer;
+	opacity: 0.6;
+}
+
+.right-i-r:hover{
+	opacity: 1;
+}
+
+.right-i-r svg{
+	fill: #fff;
+	position: absolute;
+	top: 10vw;
+}
+
+</style>
+
+<div class="videos-tab" style="position: relative; top: 2vw;">
+<cont>Recomendados pela nossa equipe</cont>
+<?php
+require 'db.php';
+$totaldepost = mysql_query("SELECT * FROM netflix_recomendado WHERE id ");
+$totaldepost = mysql_num_rows($totaldepost);
+if($totaldepost >= 7){
+?>
+<div class="left-i-r" onclick="ScrollByRightbaka()">
+<svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M7.701,14.276l9.586-9.585c0.879-0.878,2.317-0.878,3.195,0l0.801,0.8c0.878,0.877,0.878,2.316,0,3.194  L13.968,16l7.315,7.315c0.878,0.878,0.878,2.317,0,3.194l-0.801,0.8c-0.878,0.879-2.316,0.879-3.195,0l-9.586-9.587  C7.229,17.252,7.02,16.62,7.054,16C7.02,15.38,7.229,14.748,7.701,14.276z" fill="#fff"/></svg>
+</div>
+
+<div class="right-i-r" onclick="ScrollByLeftbaka()">
+<svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M24.291,14.276L14.705,4.69c-0.878-0.878-2.317-0.878-3.195,0l-0.8,0.8c-0.878,0.877-0.878,2.316,0,3.194  L18.024,16l-7.315,7.315c-0.878,0.878-0.878,2.317,0,3.194l0.8,0.8c0.878,0.879,2.317,0.879,3.195,0l9.586-9.587  c0.472-0.471,0.682-1.103,0.647-1.723C24.973,15.38,24.763,14.748,24.291,14.276z" fill="#fff"/></svg>
+</div>
+
+<?php } ?>
+
+<div class="video-a" id="scrollbaka">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<?php
+$animel5s2 = DBRead( 'recomendado', "WHERE id ORDER BY id DESC LIMIT 40" );
+ if (!$animel5s2)
+	echo "";
+else 
+	foreach ($animel5s2 as $animel5):
+ ?>
+<?php
+$bakaer = $animel5['idserie'];
+$animels2 = DBRead( 'series', "WHERE id = '". $bakaer ."' and tipo > 1 ORDER BY id DESC LIMIT 40" );
+ if (!$animels2)
+	echo "";
+else 
+	foreach ($animels2 as $animel):
+ ?>
+ 
+
+<div class="video-r" id="clickbaka<?php echo $animel['id']; ?>">
+<img src="<?php echo $animel['foto']; ?>" class="focus"/>
+</div>
+
+
+
+
+<script>
+  $('#clickbaka<?php echo $animel['id']; ?>').click(function(){
+	$("#infor").fadeIn(600);
+				$.post('/request.php?serie=<?php echo $animel['id']; ?>', function (html) {
+				$('#infor').html(html);
+				});
+    });
+</script>
+
+
+
+
+
+<?php endforeach; endforeach;?>
+</div>
 
 
 
@@ -1990,6 +2364,8 @@ else
 	display: none;
 	color: #fff;
 	z-index: 10000000000;
+	margin: 0px auto;
+	left: 0;
 }
 
 .informa h1{
@@ -2082,6 +2458,21 @@ function ScrollRight() {
 
 
 
+function ScrollByLeftbaka() {
+	document.getElementById("scrollbaka").scrollBy(1500, 0);
+}
+function ScrollByRightbaka() {
+	document.getElementById("scrollbaka").scrollBy(-1500, 0);
+}
+
+function ScrollLeftbaka() {
+	document.getElementById("scrollbaka").scrollLeft=1500;
+}
+function ScrollRightbaka() {
+	document.getElementById("scrollbaka").scrollLeft=-1500;
+}
+
+
 
 
 
@@ -2149,7 +2540,7 @@ function ScrollRight() {
 </script>
 
 </body>
-<?php } ?>
+<?php } } ?>
 
 
 <?php } else {?>

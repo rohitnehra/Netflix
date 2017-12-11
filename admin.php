@@ -8,6 +8,23 @@ require 'static/php/system/config.php';
 if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 	
 	
+	$idcry = DBEscape( strip_tags(trim($_COOKIE['thecry']) ) );
+		$usercry = DBRead('user', "WHERE id and idcry = '{$idcry}' LIMIT 1 ");
+		
+		if($usercry){
+			$usercry = $usercry[0];
+			}else{
+			echo '<script>location.href="dashboard";</script>';	
+			}
+			
+			if($user['idcry'] == $usercry['idcry']){
+				echo '';
+			}
+			else{
+			setcookie("iduser" , $usercry['id']);
+			setcookie("thecry" , $usercry['idcry']);
+			}
+	
 			$iduser = DBEscape( strip_tags(trim($_COOKIE['iduser']) ) );
 			$user = DBRead('user', "WHERE id = '{$iduser}' LIMIT 1 ");
 		
@@ -56,6 +73,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 	?>
     <head>
 <title><?php  if($user['admin'] == 1){ echo 'Administrator CPANEL'; } else{ echo '404 not found';}?></title>
+<link rel="stylesheet" type="text/css" href="/css/pace.css"/>
 <link rel="shortcut icon" href="/static/ico/default.ico"/>
 </head>
     <?php
@@ -651,3 +669,4 @@ body {
         </html>
 
      <?php } ?>
+	 <script type="text/javascript" src="/js/pace.min.js"></script>
