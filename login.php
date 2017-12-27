@@ -1,6 +1,6 @@
 <?php
-    require 'static/php/system/database.php';
-    require 'static/php/system/config.php';
+  require 'static/php/system/database.php';
+  require 'static/php/system/config.php';
   mysql_connect($hostp, $userp, $passwrdp)or die();	//Conecta com o MySQL
   mysql_select_db($dbp);						//Seleciona banco de dados
   
@@ -9,9 +9,26 @@
   $ip=mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
   
   //Consulta no banco de dados
-  $sql="select * from netflix_user where email='".$login."' and password='".sha1($senha)."'"; 
+  
+  function validaEmail($login) {
+	$conta = "^[a-zA-Z0-9\._-]+@";
+	$domino = "[a-zA-Z0-9\._-]+.";
+	$extensao = "([a-zA-Z]{2,4})$";
+	$pattern = $conta.$domino.$extensao;
+	if (ereg($pattern, $login))
+	return true;
+	else
+	return false;
+	}
+	
+	if(!validaEmail($login)){
+	print "E-mail invalido"; exit();
+	}
+
+  
+  $sql="select * from netflix_user where email= '".$login."' and password= '".sha1($senha)."'"; 
   $resultados = mysql_query($sql)or die (mysql_error());
-  $res=mysql_fetch_array($resultados); //
+  $res=mysql_fetch_array($resultados);
 	if (@mysql_num_rows($resultados) == 0){
         print "Email ou senha incorretos!"; exit();
   }
