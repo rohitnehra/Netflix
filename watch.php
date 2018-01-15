@@ -1,5 +1,5 @@
 <?php
-if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){?>
+if(isset($_COOKIE['iduser']) ){?>
 <?php
 require 'static/php/system/database.php';
 require 'static/php/system/config.php';
@@ -107,7 +107,7 @@ else{
 
 <head>
 <title>Wooby</title>
-<link rel="stylesheet" type="text/css" href="/css/pace.css"/>
+
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
 <meta charset="utf-8">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -156,14 +156,14 @@ else{
 
 <style>
 .close{
-		float: right;
-		right: 2vw;
-		top: 1vw;
-		position: relative;
-	 	width: 2.5vw;
-		height: 2.5vw;
-		cursor: pointer;
-		padding: 0.3vw;
+	float: right;
+    right: 2vw;
+    top: -9vw;
+    position: absolute;
+    width: 2.5vw;
+    height: 2.5vw;
+    cursor: pointer;
+    padding: 0.3vw;
     z-index: 11250;
 	}
 
@@ -698,5 +698,4 @@ body {
         </html>
 
      <?php } ?>
-<script type="text/javascript" src="/js/pace.min.js"></script>
 </html>
