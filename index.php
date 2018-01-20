@@ -1,5 +1,5 @@
 <?php
-if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){?>
+if(empty($_COOKIE['iduser']) ){?>
 <head>
 <title>
 Wooby Animes
@@ -92,7 +92,7 @@ body{
 .apresentation{
     position: absolute;
     color: #fff;
-    bottom: 15vw;
+    top: 15vw;
     width: 50vw;
     height: 20vw;
     left: 2vw;
@@ -106,7 +106,7 @@ body{
 
 .apresentation p{
     padding: 1.3vw;
-    font-size: 1.5vw;
+    font-size: 1.8vw;
     font-weight: bold;
 }
 
@@ -150,7 +150,7 @@ Entrar
 
 <div class="apresentation" style="z-index: 10000;">
 <h1>Seu próximo anime, agora.</h1>
-<p>VEJA SEUS ANIMES FAVORITOS, QUANDO QUISER!<p>
+<p>Veja seus animes favoritos, quando quiser!<p>
 <a href="/account/1">
 <button class="btn-free">ASSISTA UM MÊS GRÁTIS</button>
 </a>
@@ -239,9 +239,8 @@ Entrar
 
 <li class="ativo">
 <center>
-<svg viewBox="0 0 40 48" style="fill:#fff;" id="icon-cancel"><path d="M29.55 18.7v-4.6c-5.2.4-4.6 2.8-4.6 2.8.3 1.7 2.35 2.35 2.35 2.35.6-.35 2.25-.55 2.25-.55zm3.7 1L33 21.3c-9.15-.3-8.7-3.75-8.7-3.75l.15 5.2c1.1 4.05 8.35 4.2 8.2 4.2l-.2 1.5 6.9-3.8-6.1-4.95zm-20.3 6.25c-.5-.5-1.3-.45-1.8.05-.45.5-.45 1.25.05 1.75s1.3.45 1.75-.05c.5-.5.5-1.25 0-1.75zm2.35-15.9L1.5 1.45V38.9l2.6 1.45 11.2 6.2v-36.5zM1.5 40.35C.4 39.85 0 39.7 0 38.9l1.5 1.45zM28.05 28.1h1.45v10.8c0 .8-.65 1.45-1.45 1.45H16.8v6.15c0 .849-.65 1.5-1.45 1.5L1.5 40.35 0 38.9V1.45C0 .65.65 0 1.5 0h26.55c.8 0 1.45.65 1.45 1.45v11.2h-1.45V1.45H4.1L15.6 8.6c.95.35 1.2.65 1.2 1.45V38.9h11.25V28.1z"></path></svg>
-<p>Sem compromisso
-Cancele online quando quiser</p>
+<svg enable-background="new 0 0 24 24" id="icon-cancel" height="24px" id="Layer_1" version="1.1" viewBox="0 0 24 24" width="24px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M19.6,15.2c0-0.2,0-0.5,0.1-0.7c0-4.4-2.4-6.1-4.9-7.6c-0.2-0.1-0.4-0.1-0.5,0c-0.2,0.1-0.2,0.3-0.2,0.5   c0.3,1.5,0,2.8-0.7,3.7c-0.6,0.7-1.4,1-2.4,0.9c2-3.6,1-5.3,0.2-6.9C10.5,4,10,3,10.7,1.2c0.1-0.2,0-0.4-0.2-0.6   c-0.2-0.1-0.4-0.1-0.6,0c-3,2.1-5.8,7.8-5.7,11.9c0,0.9,0.1,1.8,0.2,2.7c-2.1,0.9-3.2,2.1-3.2,3.5c0,2.7,4.7,4.9,10.8,4.9   s10.8-2.1,10.8-4.9C22.8,17.3,21.6,16.1,19.6,15.2z M12,20.4c-2.8,0-5.1-1.8-5.1-4c0-1.1,0.6-2.2,1.7-3c0.2-0.1,0.4-0.1,0.5,0   c0.2,0.1,0.3,0.3,0.2,0.5c0,0,0,0.1,0,0.1c0,1.5,1.2,2.7,2.7,2.7s2.7-1.2,2.7-2.7c0,0,0-0.1,0-0.2c0-0.2,0.1-0.4,0.2-0.4   c0.2-0.1,0.4-0.1,0.5,0c1.1,0.8,1.7,1.9,1.7,3C17.1,18.6,14.8,20.4,12,20.4z"/></g></svg>
+<p>Redes Socias e Produtos!</p>
 </center>
 </li>
 
@@ -273,9 +272,7 @@ Cancele online quando quiser</p>
 <center>
 <style>
 .left{
-    width: 35vw;
-    float: left;
-    left: 15vw;
+    width: 45vw;
     position: relative;
     top: 5vw;
     padding: 2vw;
@@ -283,7 +280,27 @@ Cancele online quando quiser</p>
 
 .left span{
     font-size: 2vw;
+	display: inline-block;
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+	opacity: .7;
+	margin-left: 2vw;
 }
+
+.left span:hover{
+	opacity: 1;
+	-ms-transform: scale(1.3, 1.3); /* IE 9 */
+    -webkit-transform: scale(1.3, 1.3); /* Safari */
+    transform: scale(1.3, 1.3);
+	border-radius: 50%;
+}
+
+.left span img{
+	height: 6.5vw;
+	width: 6.5vw;
+	cursor: pointer;
+}
+
 
 .red-free{
     color: #fff;
@@ -304,53 +321,142 @@ Cancele online quando quiser</p>
     top: 1vw;
     font-size: 1vw;
 }
-</style>
-<div class="left">
-<span style="color: #fff;">Se você decidir não continuar a assinatura, tudo bem Sem compromisso Cancel online quando quiser.</span>
-<br><a href="/account/1"><button class="red-free">ASSISTA O MÊS GRÁTIS</button></a>
-</div>
-<img src="/static/cancel.png" style="width: 30vw; padding: 2vw;"/>
-</center>
-</div>
 
-<div class="onde">
-<div class="left">
-<span style="color: #fff;">Se você decidir não continuar a assinatura, tudo bem Sem compromisso Cancel online quando quiser.</span>
-<br><button class="red-free">ASSISTA O MÊS GRÁTIS</button>
-</div>
-<img src="/static/cancel.png" style="width: 30vw; padding: 2vw;position: relative; left: 10vw;"/>
-</center>
-</div>
+.left span p{
+	position: relative;
+	top: 1vw;
+	font-size: 1.25vw;
+	left: 0;
+}
 
-<style>
-footer{
-	background: #151515;
+.left a{
+	color: transparent;
+}
+
+.produtos{
 	width: 100%;
-	height: auto;
+	height: 16vw;
+	background: #141414;
+	top: 5vw;
 	position: relative;
-	bottom: 0vw;
-	color: #fff;
-	padding-bottom: 3vw;
+	display: none;
 }
 
-footer a{
-	position: relative;
-	font-size: 1.7vw;
-	top: 1.5vw;
-	left: 8vw;
-	cursor: pointer;
-	color: #fff;
-	text-decoration: none:
-}
 
-footer a:hover{
-	text-decoration: underline;
-}
+.close{
+		float: right;
+		right: 1vw;
+		top: 1vw;
+		position: absolute;
+	 	width: 2.5vw;
+		height: 2.5vw;
+		cursor: pointer;
+		padding: 0.3vw;
+		z-index: 1250;
+	}
+
+	.close:hover{
+		background: rgba(0,0,0,.50);
+	}
+
+	.close svg{
+		fill: #fff;
+	}
+
+	
+	.produto{
+		background: red;
+		width: 12vw;
+		height: 10vw;
+		top: 2vw;
+		position: relative;
+		-webkit-transition: all 1s; /* Safari */
+		transition: all 1s;
+		cursor: pointer;
+	}
+	
+	#scroll{
+		transition:all 0.3s ease;
+		position: relative;
+		height: auto;
+		overflow: hidden;
+		display: flex;
+		-webkit-transition: all 1s; /* Safari */
+		transition: all 1s;
+		height: 13vw;
+		width: 100%;
+		top: 4vw;
+	}
+
+	.produto img{
+		width: 100%;
+		height: 100%;
+	}
+	
+	.produto:hover{
+		-ms-transform: scale(1.3, 1.3); /* IE 9 */
+		-webkit-transform: scale(1.3, 1.3); /* Safari */
+		transform: scale(1.3, 1.3);
+	}
+	
+	.produtos a{
+		color: transparent;
+	}
+	
+	.produtos h1{
+		font-size: 1.95vw;
+		position: relative;
+		color: #fff;
+	}
 </style>
+<div class="left">
+<center>
+<a href="https://www.facebook.com/WoobyAnimes/" target="_blank">
+<span style="color: #fff;">
+<img src="/static/icon.png"/>
+<p>Facebook</p></span>
+</a>
+<span style="color: #fff;">
+<img src="/static/icon2.png"/>
+<p>Twitter</p></span>
+<span style="color: #fff;">
+<img src="/static/icon3.png"/>
+<p>YouTube</p></span>
+<span style="color: #fff;" id="prod">
+<img src="/static/icon4.png"/>
+<p>Produtos</p></span>
+</div>
+</center>
 
-<footer>
-<a href="ads.php">Anúncios</a>
-</footer>
+<div class="produtos" id="div-p">
+<center>
+<h1>Produtos</h1>
+</center>
+	<div class="close" id="close">
+	<svg height="2.5vw"  width="2.5vw" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+	</div>
+	
+
+		<center>
+		<a href="https://go.hotmart.com/O6950092W" target="_blank">
+		<div class="produto"><img src="static/logo1.jpg"/></div>
+		</a>
+		</center>
+
+</div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $('#prod').click(function(){
+	$("#div-p").fadeIn(600);
+    });
+	
+	 $('#close').click(function(){
+	$("#div-p").fadeOut(600);
+    });
+</script>
+
 
 </body>
 <?php } else{

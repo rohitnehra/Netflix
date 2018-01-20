@@ -7,7 +7,7 @@ require 'static/php/system/database.php';
 require 'static/php/system/config.php';
 ?>
 <?php
-if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
+if(isset($_COOKIE['iduser'])){
 	
 
 		$idcry = DBEscape( strip_tags(trim($_COOKIE['thecry']) ) );
@@ -75,11 +75,11 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 <title>
 <?php
 ob_start();
-if(empty($_COOKIE['iduser']) and (empty($_COOKIE['inisession']))){
+if(empty($_COOKIE['iduser'])){
     echo '404 NOT FOUND';
 }
 
-if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
+if(isset($_COOKIE['iduser']) ){
 	
 	if(empty($_COOKIE['usuario'])){
 		echo 'Change Profile';
@@ -105,7 +105,7 @@ if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){
 }
 </style>
 <?php
-if(isset($_COOKIE['iduser']) and (isset($_COOKIE['inisession']))){?>
+if(isset($_COOKIE['iduser'])){?>
 <html>
 <?php 
 if(empty($_COOKIE['usuario'])){
@@ -298,7 +298,7 @@ else{
 	?></div>
 <div class="what center">
 <?php
-$peoples = DBRead( 'profiles', "WHERE iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 5" );
+$peoples = DBRead( 'profiles', "WHERE iduser = '".$user['id']."'  ORDER BY id ASC LIMIT 5" );
 if (!$peoples)
 echo '';
 else  
@@ -777,6 +777,7 @@ body{
     min-width: 6em;
 	margin-top: 1vw;
 	z-index: 5000;
+	text-shadow: 2px 3px 2px #000;
 	position: relative;
 	}
 	</style>
@@ -1027,18 +1028,18 @@ if (strtotime($inicio) >= strtotime($expirado)) {
 }
 
 .left-t a:hover{
-	border-bottom: 0.2vw solid blue;
+	border-bottom: 0.2vw solid #4c08b8;
 	background: #515151;
 }
 
 .ativo{
-	border-bottom: 0.2vw solid blue;
+	border-bottom: 0.2vw solid #4c08b8;
 	background: #515151;
 }
 
 </style>
 
-<input type="text" class="buscaranime" placeholder="Busque animes" />
+<input type="text" class="buscaranime" placeholder="Procurar..." />
 <div id="box-s-h">
 		    <ul class="src">
 			</ul>
@@ -1151,7 +1152,8 @@ else
 <p style="color: #fff; padding: 0.5vw;">Menu</p>
 <hr>
 <?php
-$peoples = DBRead( 'profiles', "WHERE id and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 3" );
+
+$peoples = DBRead( 'profiles', "WHERE id <> '".$_COOKIE['usuario']."' and iduser = '".$user['id']."'  ORDER BY id DESC LIMIT 3" );
 if (!$peoples)
 echo '';	
 else  
@@ -1300,7 +1302,7 @@ else
 }
 
 .informa h1{
-	padding: 2vw;
+	left: 2vw;
 	font-size: 2.2vw;
 }
 
@@ -1412,7 +1414,7 @@ else
 <div class="video">
 <p style="color: #fff; font-size: 1.2vw; background: #000; width: 100%;">Episodio <?php echo $animel5['ep']; ?></p>
 <img src="<?php echo $animel['foto']; ?>" class="focus"/>
-<div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
+	="width: 80%; height: 12px; background: #fff; position: relative; top: 0.2vw;left: 13%; box-shadow: 3px 2px 3px #141414;">
 <div style="float: left;width:<?php if($animel5['progress'] < 1){ echo '3%;'; }?> <?php echo $animel5['progress'];?> <?php if(empty($animel5['progress'])){ echo '0'; }?>; height: inherit; background: #5e09e5;"></div>
 </div>
 </div>
@@ -1430,14 +1432,7 @@ $animels2 = DBRead( 'series', "WHERE id ORDER BY id DESC LIMIT 1" );
 else 
 	foreach ($animels2 as $animel):
  ?>
- <?php
- $videoid = $animel['id'];
-$videols2 = DBRead( 'videos', "WHERE id and idserie = '". $videoid ."' ORDER BY id ASC LIMIT 1" );
- if (!$videols2)
-	echo "";
-else 
-	foreach ($videols2 as $videol):
- ?>
+
 <img src="<?php echo $animel['logo']; ?>" class="logo-serie"></img>
 <div class="apresent-info">
 
@@ -1461,10 +1456,20 @@ else
 	else    
    echo substr( $str2, 0, $max2 ) . '...'?>
 </p2>
+ <?php
+ $videoid = $animel['id'];
+$videols2 = DBRead( 'videos', "WHERE id and idserie = '". $videoid ."' ORDER BY id ASC LIMIT 1" );
+ if (!$videols2)
+	echo "";
+else 
+	foreach ($videols2 as $videol):
+ ?>
 <a href="watch.php?id=<?php echo $videol['id']; ?>">
 <button class="asssitirs">Assistir</button>
 </a>
-<?php endforeach; endforeach; ?>
+<?php endforeach;?>
+
+<?php endforeach; ?>
 
 <style>
 .asssitirs{
@@ -1534,13 +1539,22 @@ else
 	position: relative;
 }
 
+.video{
+	
+opacity: 1;
+}
+
 .video:hover{
 	-ms-transform: scale(1.3, 1.3); /* IE 9 */
     -webkit-transform: scale(1.3, 1.3); /* Safari */
     transform: scale(1.3, 1.3);
 	position: relative;
 	z-index: 2500;
-	opacity: 1;
+-webkit-filter: grayscale(0%);
+   -moz-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+     -o-filter: grayscale(0%);
+filter: grayscale(0%);
 }
 
 
@@ -1630,7 +1644,7 @@ else
 <div class="video">
 <p style="color: #fff; font-size: 1.2vw; background: #000; width: 100%;">Episodio <?php echo $animel5['ep']; ?></p>
 <img src="<?php echo $animel['foto']; ?>" class="focus"/>
-<div style="width: 100%; height: 10px; background: #fff; position: relative; top: 0.2vw; box-shadow: 3px 2px 3px #141414;">
+<div style="width: 80%; height: 12px; background: #fff; position: relative; top: 0.2vw;left: 13%; box-shadow: 3px 2px 3px #141414;">
 <div style="width:<?php if($animel5['progress'] < 1){ echo '3%;'; }?> <?php echo $animel5['progress'];?> <?php if(empty($animel5['progress'])){ echo '0'; }?>; height: inherit; background: #5e09e5;"></div>
 </div>
 </div>
@@ -1784,8 +1798,9 @@ else
     -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
     -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
     transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-	opacity: 0.7;
 	z-index: 1500;
+
+opacity: 1;
 }
 
 .video-r .focus{
@@ -1800,8 +1815,13 @@ else
     transform: scale(1.3, 1.3);
 	position: relative;
 	z-index: 2500;
-	opacity: 1;
 	box-shadow: 0.4vw 0.3vw 0.5vw #000;
+		-webkit-filter: grayscale(0%);
+   -moz-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+     -o-filter: grayscale(0%);
+	filter: grayscale(0%);
+	opacity: 1;
 }
 
 .left-i-r{
@@ -1941,8 +1961,8 @@ else
     -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
     -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
     transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-	opacity: 0.7;
 	z-index: 1500;
+	opacity: 1;
 }
 
 .video .focus{
@@ -1959,6 +1979,12 @@ else
 	z-index: 2500;
 	opacity: 1;
 	box-shadow: 0.4vw 0.3vw 0.5vw #000;
+		-webkit-filter: grayscale(0%);
+   -moz-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+     -o-filter: grayscale(0%);
+	filter: grayscale(0%);
+	opacity: 1;
 }
 
 
@@ -2087,7 +2113,6 @@ else
     -o-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
     -moz-transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
     transition: all .54s cubic-bezier(.5,0,.1,1) 0s,opacity .44s cubic-bezier(.5,0,.1,1) .1s;
-	opacity: 0.7;
 }
 
 .video .focus{
@@ -2378,7 +2403,7 @@ else
 }
 
 .informa h1{
-	padding: 2vw;
+	margin-left: 2vw;
 	font-size: 2.2vw;
 }
 
@@ -2394,7 +2419,7 @@ else
 	bottom: 0;
 	height: 3vw;
 	background: rgba(0,0,0,.50);
-	z-index: 1060;
+	z-index: 10000000000000000;
 }
 
 .feels{
