@@ -1414,7 +1414,7 @@ else
 <div class="video">
 <p style="color: #fff; font-size: 1.2vw; background: #000; width: 100%;">Episodio <?php echo $animel5['ep']; ?></p>
 <img src="<?php echo $animel['foto']; ?>" class="focus"/>
-	="width: 80%; height: 12px; background: #fff; position: relative; top: 0.2vw;left: 13%; box-shadow: 3px 2px 3px #141414;">
+	<div style="width: 80%; height: 12px; background: #fff; position: relative; top: 0.2vw;left: 0%; box-shadow: 3px 2px 3px #141414;">
 <div style="float: left;width:<?php if($animel5['progress'] < 1){ echo '3%;'; }?> <?php echo $animel5['progress'];?> <?php if(empty($animel5['progress'])){ echo '0'; }?>; height: inherit; background: #5e09e5;"></div>
 </div>
 </div>
