@@ -1241,11 +1241,10 @@ document.addEventListener('click', function(){
 }
 
 .video:hover{
-	-ms-transform: scale(1.3, 1.3); /* IE 9 */
-    -webkit-transform: scale(1.3, 1.3); /* Safari */
-    transform: scale(1.3, 1.3);
-	z-index: 100;
-	box-shadow: 0.3vw 0.5vw 0.6vw #000;
+	transform: scale(1.3);
+    margin-left: 71px;
+    margin-right: 120px;
+    left: 30px;
 }
 
 .video .focus{
@@ -1382,11 +1381,10 @@ else
 }
 
 .video:hover{
-	-ms-transform: scale(1.3, 1.3); /* IE 9 */
-    -webkit-transform: scale(1.3, 1.3); /* Safari */
-    transform: scale(1.3, 1.3);
-	z-index: 100;
-	box-shadow: 0.3vw 0.5vw 0.6vw #000;
+	transform: scale(1.6);
+    margin-left: 71px;
+    margin-right: 120px;
+    left: 30px;
 }
 
 .video .focus{
@@ -1524,7 +1522,7 @@ else
 }
 .video-a{
 	position: relative;
-	height: auto;
+	height: 13vw;
 	overflow: hidden;
 	display: block;
 	-webkit-transition: all 1s; /* Safari */
@@ -1540,21 +1538,15 @@ else
 }
 
 .video{
-	
+	top: 2.5vw;
 opacity: 1;
 }
 
 .video:hover{
-	-ms-transform: scale(1.3, 1.3); /* IE 9 */
-    -webkit-transform: scale(1.3, 1.3); /* Safari */
-    transform: scale(1.3, 1.3);
-	position: relative;
-	z-index: 2500;
--webkit-filter: grayscale(0%);
-   -moz-filter: grayscale(0%);
-    -ms-filter: grayscale(0%);
-     -o-filter: grayscale(0%);
-filter: grayscale(0%);
+	transform: scale(1.3);
+    margin-left: 71px;
+    margin-right: 120px;
+    left: 30px;
 }
 
 
@@ -1668,7 +1660,7 @@ else
 }
 .video-a{
 	position: relative;
-	height: auto;
+	height: 13vw;
 	overflow: hidden;
 	display: flex;
 	-webkit-transition: all 1s; /* Safari */
@@ -1810,18 +1802,11 @@ opacity: 1;
 }
 
 .video-r:hover{
-	-ms-transform: scale(1.3, 1.3); /* IE 9 */
-    -webkit-transform: scale(1.3, 1.3); /* Safari */
-    transform: scale(1.3, 1.3);
-	position: relative;
-	z-index: 2500;
-	box-shadow: 0.4vw 0.3vw 0.5vw #000;
-		-webkit-filter: grayscale(0%);
-   -moz-filter: grayscale(0%);
-    -ms-filter: grayscale(0%);
-     -o-filter: grayscale(0%);
-	filter: grayscale(0%);
-	opacity: 1;
+	transform: scale(1.6);
+    margin-left: 71px;
+    margin-right: 120px;
+    box-shadow: 1px 1px 1px #000;
+    left: 30px;
 }
 
 .left-i-r{
@@ -1869,7 +1854,7 @@ opacity: 1;
 }
 
 </style>
-
+<!-- 
 <div class="videos-tab" style="position: relative; top: 2vw;">
 <cont>Recomendados pela nossa equipe</cont>
 <?php
@@ -1929,7 +1914,7 @@ else
 
 <?php endforeach; endforeach;?>
 </div>
-
+ -->
 
 
 
@@ -1944,7 +1929,7 @@ else
 }
 .video-a{
 	position: relative;
-	height: auto;
+	height: 13vw;
 	overflow: hidden;
 	display: flex;
 	-webkit-transition: all 1s; /* Safari */
@@ -1954,6 +1939,7 @@ else
 	margin-left: 0.14vw;
 	display: inline-block;
 	left: 2.5vw;
+	top: 2.5vw;
 	position: relative;
 	cursor: pointer;
 	box-sizing: border-box;
@@ -1972,19 +1958,10 @@ else
 }
 
 .video:hover{
-	-ms-transform: scale(1.3, 1.3); /* IE 9 */
-    -webkit-transform: scale(1.3, 1.3); /* Safari */
-    transform: scale(1.3, 1.3);
-	position: relative;
-	z-index: 2500;
-	opacity: 1;
-	box-shadow: 0.4vw 0.3vw 0.5vw #000;
-		-webkit-filter: grayscale(0%);
-   -moz-filter: grayscale(0%);
-    -ms-filter: grayscale(0%);
-     -o-filter: grayscale(0%);
-	filter: grayscale(0%);
-	opacity: 1;
+	transform: scale(1.3);
+    margin-left: 71px;
+    margin-right: 120px;
+    left: 30px;
 }
 
 
@@ -2096,7 +2073,7 @@ else
 }
 .video-a{
 	position: relative;
-	height: auto;
+	height: 13vw;
 	overflow: hidden;
 	display: flex;
 	-webkit-transition: all 1s; /* Safari */
@@ -2106,6 +2083,7 @@ else
 	margin-left: 0.14vw;
 	display: inline-block;
 	left: 2.5vw;
+	top: 2.5vw;
 	position: relative;
 	cursor: pointer;
 	box-sizing: border-box;
@@ -2122,12 +2100,10 @@ else
 }
 
 .video:hover{
-	-ms-transform: scale(1.3, 1.3); /* IE 9 */
-    -webkit-transform: scale(1.3, 1.3); /* Safari */
-    transform: scale(1.3, 1.3);
-	position: relative;
-	z-index: 2500;
-	opacity: 1;
+	transform: scale(1.3);
+    margin-left: 71px;
+    margin-right: 120px;
+    left: 30px;
 }
 
 
@@ -2260,7 +2236,7 @@ else
 }
 .video-a{
 	position: relative;
-	height: auto;
+	height: 13vw;
 	overflow: hidden;
 	display: flex;
 	-webkit-transition: all 1s; /* Safari */
