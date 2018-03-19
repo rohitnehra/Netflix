@@ -1242,8 +1242,8 @@ document.addEventListener('click', function(){
 
 .video:hover{
 	transform: scale(1.3);
-    margin-left: 71px;
-    margin-right: 120px;
+    margin-left: 4vw;
+    margin-right: 2vw;
     left: 30px;
 }
 
@@ -1382,8 +1382,8 @@ else
 
 .video:hover{
 	transform: scale(1.6);
-    margin-left: 71px;
-    margin-right: 120px;
+    margin-left: 4vw;
+    margin-right: 2vw;
     left: 30px;
 }
 
@@ -1544,8 +1544,8 @@ opacity: 1;
 
 .video:hover{
 	transform: scale(1.3);
-    margin-left: 71px;
-    margin-right: 120px;
+   margin-left: 4vw;
+    margin-right: 2vw;
     left: 30px;
 }
 
@@ -1959,8 +1959,8 @@ else
 
 .video:hover{
 	transform: scale(1.3);
-    margin-left: 71px;
-    margin-right: 120px;
+   	margin-left: 4vw;
+    margin-right: 2vw;
     left: 30px;
 }
 
@@ -2101,8 +2101,8 @@ else
 
 .video:hover{
 	transform: scale(1.3);
-    margin-left: 71px;
-    margin-right: 120px;
+   margin-left: 4vw;
+    margin-right: 2vw;
     left: 30px;
 }
 
