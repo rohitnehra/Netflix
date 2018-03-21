@@ -1559,6 +1559,7 @@ opacity: 1;
 	position: absolute;
 	cursor: pointer;
 	z-index: 3000;
+	top: 6vw;
 }
 
 .left-i svg{
@@ -1576,6 +1577,7 @@ opacity: 1;
 	position: absolute;
 	z-index: 3000;
 	cursor: pointer;
+	top: 6vw;
 }
 
 .right-i svg{
@@ -1677,6 +1679,7 @@ else
 	cursor: pointer;
 	z-index: 3000;
 	opacity: 0.6;
+	top: 6vw;
 }
 
 .left-i:hover{
@@ -1690,6 +1693,7 @@ else
 }
 
 .right-i{
+	top: 6vw;
 	float: right;
 	height: 9vw;
 	width: 2.5vw;
