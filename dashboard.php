@@ -2202,14 +2202,14 @@ else
 	foreach ($animels2 as $animel):
  ?>
 
-<div class="video" id="click0001<?php echo $animel['id']; ?>">
+<div class="video" id="click6<?php echo $animel['id']; ?>">
 <img src="<?php echo $animel['foto']; ?>" class="focus"/>
 </div>
 
 
 
 <script>
-  $('#click6<?php echo $animel['views'] ?><?php echo $animel['id']; ?>').click(function(){
+  $('#click6<?php echo $animel['id']; ?>').click(function(){
 	$("#infor4").fadeIn(600);
 	$("#infor2").fadeOut(600);
 	$("#infor1").fadeOut(600);
