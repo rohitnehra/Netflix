@@ -2202,7 +2202,9 @@ else
 	foreach ($animels2 as $animel):
  ?>
 
-
+<div class="video" id="click0001<?php echo $animel['id']; ?>">
+<img src="<?php echo $animel['foto']; ?>" class="focus"/>
+</div>
 
 
 
