@@ -137,20 +137,19 @@ foreach ($resultsearchs as $resultsearch):
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-size: 16px;
-    border: solid 1px #b3b3b3;
+    font-size: 1.2vw;
+    border: solid 0.1vw #b3b3b3;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border-radius: 2px;
+    border-radius: 0.1vw;
     display: block;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 85%;
-    max-width: 500px;
     color: #000;
-    padding: 10px 11px;
-    height: 44px;
+    padding: 1vw 1vw;
+    height: 2.4vw;
 }
 
 .email-input:focus{
@@ -162,21 +161,21 @@ foreach ($resultsearchs as $resultsearch):
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 16px;
-    border: solid 1px #b3b3b3;
+    border: solid 0.1vw #b3b3b3;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border-radius: 2px;
+    border-radius: 0.1vw;
     display: block;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 85%;
-    max-width: 500px;
     color: #000;
-    padding: 10px 11px;
     height: 44px;
     position: relative;
     top: 3vw;
+    padding: 1vw 1vw;
+    height: 2.4vw;
 }
 
 .pass-input:focus{
@@ -382,6 +381,7 @@ $(document).ready(function() {
     position: absolute;
     top: 30vw;
     left: 2vw;
+    font-size: 1.2vw;
 }
 
 .tens a{
