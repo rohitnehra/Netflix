@@ -1272,9 +1272,9 @@ else
 
 <script>
   $('#click76<?php echo $animel['id']; ?>').click(function(){
-	$("#infor").fadeIn(600);
-				$.post('/request.php?serie=<?php echo $animel['id']; ?>', function (html) {
-				$('#infor').html(html);
+	$("#infor0").fadeIn(600);
+				$.post('/request.php?serie=<?php echo $animel['id']; ?>&infor=0', function (html) {
+				$('#infor0').html(html);
 				});
     });
 </script>
@@ -1285,7 +1285,22 @@ else
 <?php endforeach;?>
 </center>
 
+<div class="conteudo-info" id="infor0">
+
+</div>
+
 <style>
+
+#infor0{
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+background: #000;
+z-index: 1000000217382713;
+display: none;
+}
 
 .conteudo-info{
 	width: 100%;
