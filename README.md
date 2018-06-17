@@ -1,3 +1,6 @@
+Obs: Estou recriando o projeto
+link da versão nova imcompleta: https://github.com/kaway404/Netflix-Clone
+
 Projeto streamer de vídeos parecido com Netflix
 
 Projeto criado por um unico membro
